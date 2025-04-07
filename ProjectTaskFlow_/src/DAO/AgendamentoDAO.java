@@ -49,10 +49,11 @@ public class AgendamentoDAO {
 		try {
 			stmt = con.prepareStatement("select * from Agendamento");
 			rs = stmt.executeQuery();
+			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
-				agendamento.setId(rs.getString(1));
+				agendamento.setId("" + i);
 				agendamento.setIdServico(rs.getString(2));
 				agendamento.setIdCliente(rs.getString(3));
 				agendamento.setDataAgendamento(rs.getString(4));				
@@ -60,6 +61,7 @@ public class AgendamentoDAO {
 				agendamento.setHorario(rs.getString(6));	
 
 				agendamento1.add(agendamento);
+				i++;
 			}
 
 		} catch (SQLException e) {
@@ -143,10 +145,11 @@ public class AgendamentoDAO {
 			stmt.setString(1, "%"+cpf+"%");
 
 			rs = stmt.executeQuery();
+			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
-				agendamento.setId(rs.getString(1));
+				agendamento.setId("" + i);
 				agendamento.setIdServico(rs.getString(2));
 				agendamento.setIdCliente(rs.getString(3));
 				agendamento.setDataAgendamento(rs.getString(4));				
@@ -154,6 +157,7 @@ public class AgendamentoDAO {
 				agendamento.setHorario(rs.getString(6));				
 
 				agendamentos.add(agendamento);
+				i++;
 			}
 
 		} catch (SQLException e) {

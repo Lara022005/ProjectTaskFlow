@@ -1,11 +1,12 @@
 package application;
-	
 import java.sql.Connection;
-
+import java.util.ArrayList;
 
 import ConnectionFactory.ConnectionDataBase;
-import DAO.AgendamentoDAO;
-import Model.Agendamento;
+import DAO.ServicoVendaDAO;
+import DAO.VendaDAO;
+import Model.ServicoVenda;
+import Model.Venda;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -27,6 +28,9 @@ public class Main extends Application {
 	}
 //	---------------------------------- create ------------------------------------
 	
+//	Agendamento agendamento = new Agendamento();
+//	AgendamentoDAO agendamentoDAO = new AgendamentoDAO();	
+	
 //		agendamento.setId("");
 //		agendamento.setIdServico("1");
 //		agendamento.setIdCliente("1");
@@ -37,26 +41,38 @@ public class Main extends Application {
 //		agendamentoDAO.create(agendamento);
 	
 // -------------------------------------------- read e search ----------------------------	
-//		Agendamento agendamento = new Agendamento();
-//		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-//		ArrayList<Agendamento> agendamentos = new ArrayList<>();
-	//	agendamento.setIdCliente("1");
+//		Produto produto = new Produto();
+//		ProdutoDAO produtoDAO = new ProdutoDAO();
+//		ArrayList<Produto> produtos = new ArrayList<>();
+//		agendamento.setIdCliente("1");
 //		agendamentos.addAll(agendamentoDAO.search("67890123456"));
-//	
-//
+	
+
 //		for(int i = 0; i < agendamentos.size(); i++) {
 //
 //			agendamento = agendamentos.get(i);
 //			System.out.println("");
-//			System.out.print(agendamento.getId());
-//			System.out.print(agendamento.getIdServico());
-//			System.out.print(agendamento.getIdCliente());
-//			System.out.print(agendamento.getDataAgendamento());
-//			System.out.print(agendamento.getDescricao());
-//			System.out.print(agendamento.getHorario());			
+//			System.out.print(produto.getId());
+//			System.out.print(produto.getIdServico());
+//			System.out.print(produto.getIdCliente());
+//			System.out.print(produto.getDataAgendamento());
+//			System.out.print(produto.getDescricao());
+//			System.out.print(produto.getHorario());			
 //		
 //		}
 
+	// -------------------------- update e delete ----------------------------
+//		Agendamento agendamento = new Agendamento();
+//		agendamento.setId("6");
+//		agendamento.setIdServico("1");
+//		agendamento.setIdCliente("1");
+//		agendamento.setDataAgendamento("2005-04-10");				
+//		agendamento.setDescricao("franjinha e selagem");
+//		agendamento.setHorario("10:00:00");
+//
+//
+//		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+//		agendamentoDAO.delete(agendamento);
 	
 
 	
@@ -64,19 +80,58 @@ public class Main extends Application {
 		Connection con = ConnectionDataBase.getConnection();
 		ConnectionDataBase.closeConnection(con);
 		
-		Agendamento agendamento = new Agendamento();
-		agendamento.setId("6");
-		agendamento.setIdServico("1");
-		agendamento.setIdCliente("1");
-		agendamento.setDataAgendamento("2005-04-10");				
-		agendamento.setDescricao("franjinha e selagem");
-		agendamento.setHorario("10:00:00");
-
-
-		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-		agendamentoDAO.delete(agendamento);
+//		---------------------------------- create ------------------------------------
 		
-				
+//		ServicoVenda servicoVenda = new ServicoVenda();
+//		ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();	
+//		
+//			servicoVenda.setId("");
+//			servicoVenda.setIdServico("1");
+//			servicoVenda.setIdVenda("1");
+//			servicoVenda.setQuantidade("10");				
+//		
+//			
+//			servicoVendaDAO.create(servicoVenda);
+		
+// -------------------------------------------- read e search ----------------------------			
+//		
+//		ServicoVenda servicoVenda = new ServicoVenda();
+//		ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
+//		ArrayList<ServicoVenda> servicoVendas = new ArrayList<>();
+//		servicoVenda.setIdServico("1");
+//		servicoVendas.addAll(servicoVendaDAO.read());
+//	
+//
+//		for(int i = 0; i < servicoVendas.size(); i++) {
+//
+//			servicoVenda = servicoVendas.get(i);			
+//			System.out.println("");
+//			System.out.print(servicoVenda.getId());
+//			System.out.print(servicoVenda.getIdServico());
+//			System.out.print(servicoVenda.getIdVenda());
+//			System.out.print(servicoVenda.getQuantidade());
+//					
+//		
+//		}
+		
+// -------------------------- update e delete ----------------------------	
+		
+		ServicoVenda servicoVenda = new ServicoVenda();
+		servicoVenda.setId("6");
+		servicoVenda.setIdServico("1");
+		servicoVenda.setIdVenda("1");
+		servicoVenda.setQuantidade("15");	
+			
+
+		ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
+		servicoVendaDAO.delete(servicoVenda);
+		
+							
 		launch(args);
 	}
 }
+
+
+
+
+

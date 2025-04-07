@@ -69,6 +69,14 @@ public class Venda {
 	public void setDesconto(String desconto) {
 		this.desconto = desconto;
 	}
+
+	public String getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	
 	
 	

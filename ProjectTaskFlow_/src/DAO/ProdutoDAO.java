@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import ConnectionFactory.ConnectionDataBase;
 import Model.Produto;
 
@@ -49,10 +48,11 @@ public class ProdutoDAO {
 		try {
 			stmt = con.prepareStatement("select * from Produto");
 			rs = stmt.executeQuery();
+			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Produto produto = new Produto();
-				produto.setId(rs.getString(1));			
+				produto.setId("" + i);			
 				produto.setNome(rs.getString(2));
 				produto.setCodBarra(rs.getString(3));			
 				produto.setDataFab(rs.getString(4));
@@ -61,6 +61,7 @@ public class ProdutoDAO {
 				produto.setEstoque(rs.getString(7));
 
 				produtos.add(produto);
+				i++;
 			}
 
 		} catch (SQLException e) {
@@ -81,9 +82,8 @@ public class ProdutoDAO {
 		PreparedStatement stmt = null;
 
 		try {
-//------------------------------------ ver para tirar ------------------------
-			stmt = con.prepareStatement("update Produto set nomeProduto = ?, codBarra = ? , dataFab = ?,dataVal = ?, \r\n"
-					+ "precoUnitario = ?, estoque = ? where idProduto = ? or nomeProduto = ? or codBarra = ?");			
+			stmt = con.prepareStatement("update Produto set Nome_Produto = ?, Code_Barra = ? , Data_Fab = ?,Data_Val = ?, \r\n"
+					+ "Preco_Uni = ?, Estoque = ? where Nome_Produto = ? or Code_Barra = ?");			
 			stmt.setString(1, produto.getNome());
 			stmt.setString(2, produto.getCodBarra());
 			stmt.setString(3, produto.getDataFab());
@@ -114,7 +114,7 @@ public class ProdutoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("delete from Produto where idProduto = ? or codBarra = ?");		
+			stmt = con.prepareStatement("delete from Produto where Id_Produto = ? or Code_Barra = ?");		
 			stmt.setString(1, produto.getId());
 			stmt.setString(2, produto.getCodBarra());
 
@@ -138,87 +138,15 @@ public class ProdutoDAO {
 		ArrayList<Produto> produtos = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from Produto where nomeProduto like ? or codBarra like ?");			
+			stmt = con.prepareStatement("select * from Produto where Nome_Produto like ? or Code_Barra like ?");			
 			stmt.setString(1,"%" +produto1.getNome() +"%");
 			stmt.setString(2, "%"+produto1.getCodBarra()+"%");
 			rs = stmt.executeQuery();
-
-			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-				Produto produto = new Produto();
-				produto.setId(rs.getString(1));			
-				produto.setNome(rs.getString(2));
-				produto.setCodBarra(rs.getString(3));			
-				produto.setDataFab(rs.getString(4));
-				produto.setDataVal(rs.getString(5));				
-				produto.setPrecoUni(rs.getString(6));
-				produto.setEstoque(rs.getString(7));
-
-				produtos.add(produto);
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException("Erro ao ler informações!", e);
-		}finally {
-			ConnectionDataBase.closeConnection(con, stmt, rs);
-		}
-		return produtos;
-
-	}
-
-	public ArrayList<Produto> searchID(Produto produto1){
-
-		Connection con = ConnectionDataBase.getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		ArrayList<Produto> produtos = new ArrayList<>();
-
-		try {
-			stmt = con.prepareStatement("select * from Produto where nomeProduto like ? or codBarra like ?");		
-			stmt.setString(1,"%" +produto1.getNome() +"%");
-			stmt.setString(2, "%"+produto1.getCodBarra()+"%");
-			rs = stmt.executeQuery();
-
-			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-				Produto produto = new Produto();
-				produto.setId(rs.getString(1));			
-				produto.setNome(rs.getString(2));
-				produto.setCodBarra(rs.getString(3));			
-				produto.setDataFab(rs.getString(4));
-				produto.setDataVal(rs.getString(5));				
-				produto.setPrecoUni(rs.getString(6));
-				produto.setEstoque(rs.getString(7));
-
-				produtos.add(produto);
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException("Erro ao ler informações!", e);
-		}finally {
-			ConnectionDataBase.closeConnection(con, stmt, rs);
-		}
-		return produtos;
-
-	}
-
-	//	--------------------- retorna estoque baixo ---------------------
-
-	public ArrayList<Produto> getByEstoque(){
-
-		Connection con = ConnectionDataBase.getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		ArrayList<Produto> produtos = new ArrayList<>();
-
-		try {
-			stmt = con.prepareStatement("select*from Produto where estoque < 15");
-			rs = stmt.executeQuery();
-
 			int i = 1;
+
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Produto produto = new Produto();
-				produto.setId(rs.getString(1));			
+				produto.setId("" + i);			
 				produto.setNome(rs.getString(2));
 				produto.setCodBarra(rs.getString(3));			
 				produto.setDataFab(rs.getString(4));
@@ -233,13 +161,49 @@ public class ProdutoDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException("Erro ao ler informações!", e);
-		}
-		finally {
+		}finally {
 			ConnectionDataBase.closeConnection(con, stmt, rs);
 		}
 		return produtos;
 
 	}
+
+//	public ArrayList<Produto> searchID(Produto produto1){
+//
+//		Connection con = ConnectionDataBase.getConnection();
+//		PreparedStatement stmt = null;
+//		ResultSet rs = null;
+//		ArrayList<Produto> produtos = new ArrayList<>();
+//
+//		try {
+//			stmt = con.prepareStatement("select * from Produto where nomeProduto like ? or codBarra like ?");		
+//			stmt.setString(1,"%" +produto1.getNome() +"%");
+//			stmt.setString(2, "%"+produto1.getCodBarra()+"%");
+//			rs = stmt.executeQuery();
+//
+//			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+//				Produto produto = new Produto();
+//				produto.setId(rs.getString(1));			
+//				produto.setNome(rs.getString(2));
+//				produto.setCodBarra(rs.getString(3));			
+//				produto.setDataFab(rs.getString(4));
+//				produto.setDataVal(rs.getString(5));				
+//				produto.setPrecoUni(rs.getString(6));
+//				produto.setEstoque(rs.getString(7));
+//
+//				produtos.add(produto);
+//			}
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			throw new RuntimeException("Erro ao ler informações!", e);
+//		}finally {
+//			ConnectionDataBase.closeConnection(con, stmt, rs);
+//		}
+//		return produtos;
+//
+//	}
+
 	public ArrayList<String> readProdutoByNome() {
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
@@ -247,7 +211,7 @@ public class ProdutoDAO {
 		ArrayList<String> produtos = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("SELECT nomeProduto FROM Produto");
+			stmt = con.prepareStatement("SELECT Nome_Produto FROM Produto");
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {

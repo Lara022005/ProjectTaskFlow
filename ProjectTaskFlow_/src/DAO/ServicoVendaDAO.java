@@ -5,26 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import ConnectionFactory.ConnectionDataBase;
-import Model.ProdutoVenda;
+import Model.ServicoVenda;
 
 
 
-public class ProdutoVendaDAO {
+public class ServicoVendaDAO {
 
 	//----------------------------------------------- Criar (Insert)----------------------------------------------
-	public void create(ProdutoVenda produtoVenda) {
+	public void create(ServicoVenda servicoVenda) {
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
 
-			stmt = con.prepareStatement("insert into ProdutoVenda values(?, ?, ?)");
-			stmt.setString(1, produtoVenda.getIdVenda());
-			stmt.setString(2, produtoVenda.getIdProduto());
-			stmt.setString(3, produtoVenda.getQuantidade());				
+			stmt = con.prepareStatement("insert into ServicoVenda values(?, ?, ?)");
+			stmt.setString(1, servicoVenda.getIdServico());
+			stmt.setString(2, servicoVenda.getIdVenda());
+			stmt.setString(3, servicoVenda.getQuantidade());				
 
 			stmt.executeUpdate();
 			System.out.println("Cadastrado com sucesso!");
@@ -37,25 +36,25 @@ public class ProdutoVendaDAO {
 	}
 
 	// ---------------------------------------  read ler (SELECT)	--------------------------------------------------------
-	public ArrayList<ProdutoVenda> read(){
+	public ArrayList<ServicoVenda> read(){
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		ArrayList<ProdutoVenda> produtoVenda1 = new ArrayList<>();
+		ArrayList<ServicoVenda> servicoVenda1 = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from ProdutoVenda");
+			stmt = con.prepareStatement("select * from ServicoVenda");
 			rs = stmt.executeQuery();
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-				ProdutoVenda produtoVenda = new ProdutoVenda();
-				produtoVenda.setId(rs.getString(1));
-				produtoVenda.setIdVenda(rs.getString(2));
-				produtoVenda.setIdProduto(rs.getString(3));				
-				produtoVenda.setQuantidade(rs.getString(4));				
+				ServicoVenda servicoVenda = new ServicoVenda();
+				servicoVenda.setId(rs.getString(1));
+				servicoVenda.setIdServico(rs.getString(3));				
+				servicoVenda.setIdVenda(rs.getString(2));
+				servicoVenda.setQuantidade(rs.getString(4));				
 
-				produtoVenda1.add(produtoVenda);
+				servicoVenda1.add(servicoVenda);
 			}
 
 		} catch (SQLException e) {
@@ -65,25 +64,25 @@ public class ProdutoVendaDAO {
 		finally {
 			ConnectionDataBase.closeConnection(con, stmt, rs);
 		}
-		return produtoVenda1;
+		return servicoVenda1;
 
 	}
 
 	//---------------------------------------  update atualizar (update)--------------------------------------- 
-	public void update(ProdutoVenda produtoVenda) {
+	public void update(ServicoVenda servicoVenda) {
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
 
-			stmt = con.prepareStatement("update ProdutoVenda set Fk_Venda = ?, Fk_Produto = ?, Quantidade_pv = ? \r\n"
-					+ "where Id_ProdutoVenda = ? or Fk_Venda = ?\r\n");			
-			stmt.setString(1, produtoVenda.getIdVenda());		
-			stmt.setString(2, produtoVenda.getIdProduto());
-			stmt.setString(3, produtoVenda.getQuantidade());
-			stmt.setString(4, produtoVenda.getId());	
-			stmt.setString(5, produtoVenda.getIdVenda());
+			stmt = con.prepareStatement("update ServicoVenda set Fk_Servico = ?, Fk_Venda = ?, Quantidade_sv = ? \r\n"
+					+ "where Id_ServicoVenda = ? or Fk_Servico = ?\r\n");			
+			stmt.setString(2, servicoVenda.getIdServico());
+			stmt.setString(1, servicoVenda.getIdVenda());		
+			stmt.setString(3, servicoVenda.getQuantidade());
+			stmt.setString(4, servicoVenda.getId());	
+			stmt.setString(5, servicoVenda.getIdServico());
 
 			stmt.executeUpdate();
 			System.out.println("Atualizar com sucesso!");
@@ -99,15 +98,15 @@ public class ProdutoVendaDAO {
 
 	// ---------------------------------------  delete apagar (DELETE) --------------------------------------- 
 
-	public void delete(ProdutoVenda produtoVenda) {
+	public void delete(ServicoVenda servicoVenda) {
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
 
-			stmt = con.prepareStatement("delete from ProdutoVenda where Id_ProdutoVenda = ?");		
-			stmt.setString(1, produtoVenda.getId());		
+			stmt = con.prepareStatement("delete from ServicoVenda where Id_ServicoVenda = ?");		
+			stmt.setString(1, servicoVenda.getId());		
 
 			stmt.executeUpdate();
 			System.out.println("Excluido com sucesso!");
@@ -123,27 +122,27 @@ public class ProdutoVendaDAO {
 	}
 
 	// ---------------------------------------  search pesquisar (SELECT + LIKE) --------------------------------------- 
-	public ArrayList<ProdutoVenda> search(ProdutoVenda produtoVenda2){
+	public ArrayList<ServicoVenda> search(ServicoVenda servicoVenda2){
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		ArrayList<ProdutoVenda> produtoVendas = new ArrayList<>();
+		ArrayList<ServicoVenda> servicoVendas = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from ProdutoVenda where Id_ProdutoVenda like ? or Fk_Venda like ? ");
-			stmt.setString(1, "%"+produtoVenda2.getId()+"%");
-			stmt.setString(2, "%"+produtoVenda2.getIdVenda()+"%");
+			stmt = con.prepareStatement("select * from ServicoVenda where Id_ServicoVenda like ? or Fk_Servico like ? ");
+			stmt.setString(1, "%"+servicoVenda2.getId()+"%");
+			stmt.setString(2, "%"+servicoVenda2.getIdServico()+"%");
 			rs = stmt.executeQuery();
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-				ProdutoVenda produtoVenda = new ProdutoVenda();
-				produtoVenda.setId(rs.getString(1));
-				produtoVenda.setIdVenda(rs.getString(2));
-				produtoVenda.setIdProduto(rs.getString(3));				
-				produtoVenda.setQuantidade(rs.getString(4));				
+				ServicoVenda servicoVenda = new ServicoVenda();
+				servicoVenda.setId(rs.getString(1));				
+				servicoVenda.setIdServico(rs.getString(3));				
+				servicoVenda.setIdVenda(rs.getString(2));
+				servicoVenda.setQuantidade(rs.getString(4));				
 
-				produtoVendas.add(produtoVenda);
+				servicoVendas.add(servicoVenda);
 			}
 
 		} catch (SQLException e) {
@@ -153,7 +152,7 @@ public class ProdutoVendaDAO {
 		finally {
 			ConnectionDataBase.closeConnection(con, stmt, rs);
 		}
-		return produtoVendas;
+		return servicoVendas;
 	}
 
 }

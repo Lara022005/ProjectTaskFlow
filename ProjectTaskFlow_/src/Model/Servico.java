@@ -6,19 +6,19 @@ public class Servico {
 	private String nome;
 	private String preco;
 	private String descricao;
-	private String dataServico;
+	
 	
 	
 	public Servico() {
 		super();
 	}
-	public Servico(String id, String nome, String preco, String descricao, String dataServico) {
+	public Servico(String id, String nome, String preco, String descricao) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
-		this.dataServico = dataServico;
+		
 	}
 	public String getId() {
 		return id;
@@ -43,12 +43,6 @@ public class Servico {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public String getDataServico() {
-		return dataServico;
-	}
-	public void setDataServico(String dataServico) {
-		this.dataServico = dataServico;
-	}
+	}	
 
 }
