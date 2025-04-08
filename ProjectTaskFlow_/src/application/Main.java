@@ -1,12 +1,6 @@
 package application;
 import java.sql.Connection;
-import java.util.ArrayList;
-
 import ConnectionFactory.ConnectionDataBase;
-import DAO.ServicoVendaDAO;
-import DAO.VendaDAO;
-import Model.ServicoVenda;
-import Model.Venda;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -116,15 +110,15 @@ public class Main extends Application {
 		
 // -------------------------- update e delete ----------------------------	
 		
-		ServicoVenda servicoVenda = new ServicoVenda();
-		servicoVenda.setId("6");
-		servicoVenda.setIdServico("1");
-		servicoVenda.setIdVenda("1");
-		servicoVenda.setQuantidade("15");	
-			
-
-		ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
-		servicoVendaDAO.delete(servicoVenda);
+//		ServicoVenda servicoVenda = new ServicoVenda();
+//		servicoVenda.setId("6");
+//		servicoVenda.setIdServico("1");
+//		servicoVenda.setIdVenda("1");
+//		servicoVenda.setQuantidade("15");	
+//			
+//
+//		ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
+//		servicoVendaDAO.delete(servicoVenda);
 		
 							
 		launch(args);

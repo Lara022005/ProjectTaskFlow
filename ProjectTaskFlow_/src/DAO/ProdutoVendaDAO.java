@@ -78,7 +78,7 @@ public class ProdutoVendaDAO {
 		try {
 
 			stmt = con.prepareStatement("update ProdutoVenda set Fk_Venda = ?, Fk_Produto = ?, Quantidade_pv = ? \r\n"
-					+ "where Id_ProdutoVenda = ? or Fk_Venda = ?\r\n");			
+					+ "where Id_ProdutoVenda = ? and Fk_Venda = ?\r\n");			
 			stmt.setString(1, produtoVenda.getIdVenda());		
 			stmt.setString(2, produtoVenda.getIdProduto());
 			stmt.setString(3, produtoVenda.getQuantidade());
