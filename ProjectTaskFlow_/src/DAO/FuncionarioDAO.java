@@ -93,7 +93,7 @@ public class FuncionarioDAO {
 		try {
 
 			stmt = con.prepareStatement("update Funcionario set Nome_Funcionario = ?, Cpf_Funcionario = ?, Email_Funcionario = ?,Endereco_Funcionario = ?,\r\n"
-					+ "Telefone_Funcionario = ?, Genero_Funcionario = ?, Data_Admissao = ?, Data_Nascimento = ? \r\n"
+					+ "Telefone_Funcionario = ?, Genero_Funcionario = ?, Data_Admissao = ?, Data_Nasc = ? \r\n"
 					+ "where Id_Funcionario = ? or Cpf_Funcionario = ?");
 			stmt.setString(1, funcionario.getNome());
 			stmt.setString(2, funcionario.getCpf());

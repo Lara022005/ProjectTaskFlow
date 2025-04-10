@@ -80,13 +80,14 @@ public class UsuarioDAO {
 
 		try {
 
-			stmt = con.prepareStatement("update Usuario set Fk_Usuario = ?, Nome_Usuario = ?,"
-					+ "Nivel_Usuario = ?, Senha_Usuario = ?");
+			stmt = con.prepareStatement("update Usuario set Fk_Funcionario = ?, Nome_Usuario = ?,"
+					+ "Nivel_Usuario = ?, Senha = ? where Nome_Usuario = ?");
 
 			stmt.setString(1, usuario.getIdFuncionario());
 			stmt.setString(2, usuario.getNome());
 			stmt.setString(3, usuario.getNivelUsuario());
 			stmt.setString(4, usuario.getSenha());
+			stmt.setString(5, usuario.getNome());
 
 			stmt.executeUpdate();
 			System.out.println("Atualizar com sucesso!");
@@ -158,8 +159,7 @@ public class UsuarioDAO {
 		}
 		return usuarios;
 	}	
-// ---------------------------- verificar se a senha e a mesma do banco ------------------------------
-	
+	// ---------------------------- verificar se a senha e a mesma do banco ------------------------------
 	public Usuario autenticarUser(String nome) {
 		Connection con = ConnectionDataBase.getConnection(); // conectar com banco
 		PreparedStatement stmt = null; // puxar informação do banco

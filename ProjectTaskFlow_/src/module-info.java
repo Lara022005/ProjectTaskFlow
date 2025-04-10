@@ -6,5 +6,6 @@ module ProjectTaskFlow_ {
 	requires javafx.base;
 	
 	opens application to javafx.graphics, javafx.fxml;	
+	opens Controller to javafx.graphics, javafx.fxml;
 
 }

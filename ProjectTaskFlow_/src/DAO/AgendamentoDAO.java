@@ -152,9 +152,9 @@ public class AgendamentoDAO {
 				agendamento.setId("" + i);
 				agendamento.setIdServico(rs.getString(2));
 				agendamento.setIdCliente(rs.getString(3));
-				agendamento.setDataAgendamento(rs.getString(4));				
-				agendamento.setDescricao(rs.getString(5));
-				agendamento.setHorario(rs.getString(6));				
+				agendamento.setDataAgendamento(rs.getString(5));				
+				agendamento.setDescricao(rs.getString(6));
+				agendamento.setHorario(rs.getString(7));				
 
 				agendamentos.add(agendamento);
 				i++;
