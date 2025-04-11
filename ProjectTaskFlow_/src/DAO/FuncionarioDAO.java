@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
 import Model.Funcionario;
-import Util.Alerts;
-import javafx.scene.control.Alert.AlertType;
+import Model.Usuario;
 
 
 public class FuncionarioDAO {
@@ -119,7 +118,7 @@ public class FuncionarioDAO {
 
 	}
 
-// ---------------------------------------  delete apagar (DELETE) ----------------------------------------
+	// ---------------------------------------  delete apagar (DELETE) ----------------------------------------
 	public void delete(Funcionario funcionario) {
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -144,7 +143,7 @@ public class FuncionarioDAO {
 
 	}
 
-// ---------------------------------------  search pesquisar (SELECT + LIKE) ------------------------------
+	// ---------------------------------------  search pesquisar (SELECT + LIKE) ------------------------------
 	public ArrayList<Funcionario>  search(Funcionario funcionario1){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -186,37 +185,33 @@ public class FuncionarioDAO {
 
 	}
 
-	public Funcionario autenticarUser(String cpf) {
-		Connection con = ConnectionDataBase.getConnection(); // conectar com banco
-		PreparedStatement stmt = null; // puxar informação do banco
-		ResultSet rs = null; // tras resultado do banco
+// ----------------------------- pesquisar pelo id funcionario e mostrar na tela --------------------------
+	public Funcionario searchName(Usuario usuario){
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		Funcionario funcionario = new Funcionario();
 
-		try {						
-			stmt = con.prepareStatement("select * from Funcionario where cpfFuncionario = ?");
-			stmt.setString(1, cpf);		
+		try {
+			stmt = con.prepareStatement("select Nome_Funcionario from Funcionario where Id_Funcionario = ?");
+			stmt.setString(1, usuario.getIdFuncionario());
 			rs = stmt.executeQuery();
 
-			while(rs.next()) {
-				funcionario.setId(rs.getString(1));
-				funcionario.setNome(rs.getString(2));
-				funcionario.setCpf(rs.getString(3));
-				funcionario.setEmail(rs.getString(4));
-				funcionario.setEndereco(rs.getString(5));
-				funcionario.setTelefone(rs.getString(6));			
-				funcionario.setGenero(rs.getString(7));
-				funcionario.setDataAdmissao(rs.getString(8));
-				funcionario.setDataNasc(rs.getString(9));
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				funcionario.setNome(rs.getString(1));
+
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			Alerts.showAlert("Erro!", "Erro de conexão!", "Falha ao consultar informações no banco de dados.", AlertType.ERROR);
-			throw new RuntimeException("Erro de autenticação", e);
-		} finally{
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
 			ConnectionDataBase.closeConnection(con, stmt, rs);
-		}				
-		return funcionario;		
+		}
+		return funcionario;
+
 	}
 
 }

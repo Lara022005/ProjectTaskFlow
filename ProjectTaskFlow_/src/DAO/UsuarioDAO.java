@@ -160,15 +160,16 @@ public class UsuarioDAO {
 		return usuarios;
 	}	
 	// ---------------------------- verificar se a senha e a mesma do banco ------------------------------
-	public Usuario autenticarUser(String nome) {
+	public Usuario autenticarUser(String nome, String senha) {
 		Connection con = ConnectionDataBase.getConnection(); // conectar com banco
 		PreparedStatement stmt = null; // puxar informação do banco
 		ResultSet rs = null; // tras resultado do banco
 		Usuario usuario = new Usuario();
 
 		try {						
-			stmt = con.prepareStatement("select * from Usuario where Nome_Usuario = ?");
-			stmt.setString(1, nome);		
+			stmt = con.prepareStatement("select * from Usuario where Nome_Usuario = ? and Senha = ?");
+			stmt.setString(1, nome);	
+			stmt.setString(2, senha);
 			rs = stmt.executeQuery();
 
 			while(rs.next()) {

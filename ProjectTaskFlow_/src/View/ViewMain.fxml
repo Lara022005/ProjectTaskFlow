@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E6E6FA;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controller.ControllerMain">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMain">
    <children>
       <Pane layoutX="-1.0" prefHeight="600.0" prefWidth="160.0" style="-fx-background-color: #371D49;">
          <children>
@@ -23,7 +22,7 @@
       </Pane>
       <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="590.0" style="-fx-background-color: ffffff;">
          <children>
-            <Label layoutX="71.0" layoutY="38.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
+            <Label fx:id="txtNome" layoutX="71.0" layoutY="38.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -32,11 +31,11 @@
       </Pane>
       <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="599.0">
         <columns>
-          <TableColumn prefWidth="28.79998779296875" />
-          <TableColumn fx:id="columnNome" prefWidth="159.99998474121094" text="Nome" />
-            <TableColumn fx:id="columnServico" prefWidth="152.0" text="Serviço" />
-            <TableColumn fx:id="columnData" prefWidth="140.79998779296875" text="Data" />
-            <TableColumn fx:id="columnHorario" prefWidth="116.8000366210938" text="Horario" />
+          <TableColumn fx:id="columnIndice" prefWidth="32.79998779296875" />
+          <TableColumn fx:id="columnNome" prefWidth="180.80003356933594" style="-fx-alignment: center;" text="Nome" />
+            <TableColumn fx:id="columnServico" prefWidth="191.99993896484375" style="-fx-alignment: center;" text="Serviço" />
+            <TableColumn fx:id="columnData" prefWidth="108.0" style="-fx-alignment: center;" text="Data" />
+            <TableColumn fx:id="columnHorario" prefWidth="85.5999755859375" style="-fx-alignment: center;" text="Horario" />
         </columns>
       </TableView>
       <Button fx:id="btAgendamento" alignment="CENTER" layoutX="191.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" text="Agendamento" />

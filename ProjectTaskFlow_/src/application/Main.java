@@ -1,6 +1,5 @@
 package application;
-import java.sql.Connection;
-import ConnectionFactory.ConnectionDataBase;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,11 +23,7 @@ public class Main extends Application {
 
 			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/View/viewLogin.fxml"));
 			login = new Scene(fxmlLogin);
-
-			//		Parent fxmlMain = FXMLLoader.load(getClass().getResource("/View/viewMain.fxml"));
-			//		main = new Scene(fxmlMain);
-
-
+		
 			primaryStage.setScene(login);
 			primaryStage.show();
 
@@ -45,14 +40,22 @@ public class Main extends Application {
 		}
 
 	}
+	
+	public static void TelaHome() throws IOException {
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/View/viewMain.fxml"));
+		Parent TelaHome = fxmlHome.load();
+		main = new Scene(TelaHome);
+		
+		stage.setScene(main);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+		
+	}
 
 	public static void main(String[] args) {
-		Connection con = ConnectionDataBase.getConnection();
-		ConnectionDataBase.closeConnection(con);
-
-
-
-
+		
 		launch(args);
 	}
 }
