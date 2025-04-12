@@ -33,13 +33,7 @@ public class ControllerLogin {
 	public static Funcionario funcionario = new Funcionario();
 	public static FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 	public static Usuario usuario = new Usuario();	
-
-	@FXML
-	void actionCadastrar(ActionEvent event) {
-
-
-	}
-
+	
 	@FXML
 	void actionEntrar(ActionEvent event) throws IOException{
 
