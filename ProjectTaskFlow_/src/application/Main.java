@@ -33,12 +33,19 @@ public class Main extends Application {
 
 	}
 	public static void changeScreen(String tela) {
+
 		if(tela.equals("main")) {
+
 			stage.setScene(main);
 			stage.centerOnScreen();
 			stage.setTitle("Menu principal");
-		}
+			
+		}else if(tela.equals("login")) {
 
+			stage.setScene(login);
+			stage.centerOnScreen();
+			stage.setTitle("TaskFlow - Login");
+		}
 	}
 	
 	public static void TelaHome() throws IOException {
