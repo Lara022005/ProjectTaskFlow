@@ -4,24 +4,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMain">
+<AnchorPane prefHeight="570.0" prefWidth="950.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMain">
    <children>
       <Pane layoutX="-1.0" prefHeight="600.0" prefWidth="160.0" style="-fx-background-color: #371D49;">
          <children>
-            <Button fx:id="btMain" alignment="BOTTOM_CENTER" layoutX="25.0" layoutY="121.0" mnemonicParsing="false" onAction="#telaMain" prefHeight="62.0" prefWidth="110.0" text="Menu " />
-            <Button fx:id="btCliente" alignment="BOTTOM_CENTER" layoutX="25.0" layoutY="199.0" mnemonicParsing="false" onAction="#telaCliente" prefHeight="62.0" prefWidth="110.0" text="Cliente" />
-            <Button fx:id="btProduto" alignment="BOTTOM_CENTER" layoutX="25.0" layoutY="278.0" mnemonicParsing="false" onAction="#telaProduto" prefHeight="62.0" prefWidth="110.0" text="Produto" />
-            <Button fx:id="btUsuario" alignment="BOTTOM_CENTER" layoutX="26.0" layoutY="361.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="62.0" prefWidth="110.0" text="Usuario" />
-            <Button fx:id="btSair" layoutX="57.0" layoutY="553.0" mnemonicParsing="false" onAction="#actionSair" prefHeight="33.0" prefWidth="49.0" text="Sair" />
-            <Button fx:id="btFuncionario" alignment="BOTTOM_CENTER" layoutX="27.0" layoutY="441.0" mnemonicParsing="false" onAction="#telaFuncionario" prefHeight="62.0" prefWidth="110.0" text="Funcionario" />
+            <ImageView fitHeight="600.0" fitWidth="223.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Group%20132.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btMain" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="181.0" mnemonicParsing="false" onAction="#telaMain" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
+            <Button fx:id="btCliente" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="260.0" mnemonicParsing="false" onAction="#telaCliente" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
+            <Button fx:id="btProduto" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="336.0" mnemonicParsing="false" onAction="#telaProduto" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
+            <Button fx:id="btSair" layoutX="41.0" layoutY="517.0" mnemonicParsing="false" onAction="#actionSair" prefHeight="46.0" prefWidth="79.0" style="-fx-opacity: 1; -fx-background-color: 100;" />
+            <Button fx:id="btFuncionario" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="414.0" mnemonicParsing="false" onAction="#telaFuncionario" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
          </children>
       </Pane>
-      <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="590.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="736.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="txtNome" layoutX="71.0" layoutY="38.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
                <font>
@@ -40,19 +46,20 @@
             </Label>
             <Text layoutX="145.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos realizados" wrappingWidth="148.0" />
             <Text layoutX="371.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faturamento " wrappingWidth="148.0" />
+            <Button fx:id="btRegistroVenda" alignment="CENTER" layoutX="544.0" layoutY="15.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="178.0" text="Registro venda" />
          </children>
       </Pane>
-      <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="599.0">
+      <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="736.0">
         <columns>
           <TableColumn fx:id="columnIndice" prefWidth="32.79998779296875" />
-          <TableColumn fx:id="columnNome" prefWidth="180.80003356933594" style="-fx-alignment: center;" text="Nome" />
-            <TableColumn fx:id="columnServico" prefWidth="191.99993896484375" style="-fx-alignment: center;" text="Serviço" />
-            <TableColumn fx:id="columnData" prefWidth="108.0" style="-fx-alignment: center;" text="Data" />
-            <TableColumn fx:id="columnHorario" prefWidth="85.5999755859375" style="-fx-alignment: center;" text="Horario" />
+          <TableColumn fx:id="columnNome" prefWidth="186.4000244140625" style="-fx-alignment: center;" text="Nome" />
+            <TableColumn fx:id="columnServico" prefWidth="233.60000610351562" style="-fx-alignment: center;" text="Serviço" />
+            <TableColumn fx:id="columnData" prefWidth="159.2000732421875" style="-fx-alignment: center;" text="Data" />
+            <TableColumn fx:id="columnHorario" prefWidth="124.800048828125" style="-fx-alignment: center;" text="Horario" />
         </columns>
       </TableView>
-      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="191.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" text="Agendamento" />
-      <Button fx:id="btServico" alignment="CENTER" layoutX="386.0" layoutY="220.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" text="Serviço" />
-      <Button fx:id="btRegistroVenda" alignment="CENTER" layoutX="593.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="178.0" text="Registro venda" />
+      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="188.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" text="Agendamento" />
+      <Button fx:id="btServico" alignment="CENTER" layoutX="467.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" text="Serviço" />
+      <Button fx:id="btUsuario" alignment="BOTTOM_CENTER" layoutX="753.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="46.0" prefWidth="170.0" text="Usuario" />
    </children>
 </AnchorPane>
