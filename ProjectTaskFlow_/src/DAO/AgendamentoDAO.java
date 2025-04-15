@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
 import Model.Agendamento;
+import Util.Alerts;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class AgendamentoDAO {
@@ -19,12 +21,11 @@ public class AgendamentoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("insert into Agendamento values( ?, ?, ?, ?, ?)");
-			stmt.setString(1, agendamento.getIdServico());
-			stmt.setString(2, agendamento.getIdCliente());
-			stmt.setString(3, agendamento.getDataAgendamento());
-			stmt.setString(4, agendamento.getDescricao());
-			stmt.setString(5, agendamento.getHorario());				
+			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?)");			
+			stmt.setString(1, agendamento.getIdCliente());
+			stmt.setString(2, agendamento.getDataAgendamento());
+			stmt.setString(3, agendamento.getDescricao());
+			stmt.setString(4, agendamento.getHorario());				
 
 			stmt.executeUpdate();
 			System.out.println("Cadastrado com sucesso!");
@@ -53,12 +54,11 @@ public class AgendamentoDAO {
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
-				agendamento.setId("" + i);
-				agendamento.setIdServico(rs.getString(2));
-				agendamento.setIdCliente(rs.getString(3));
-				agendamento.setDataAgendamento(rs.getString(4));				
-				agendamento.setDescricao(rs.getString(5));
-				agendamento.setHorario(rs.getString(6));	
+				agendamento.setId("" + i);				
+				agendamento.setIdCliente(rs.getString(2));
+				agendamento.setDataAgendamento(rs.getString(3));				
+				agendamento.setDescricao(rs.getString(4));
+				agendamento.setHorario(rs.getString(5));	
 
 				agendamento1.add(agendamento);
 				i++;
@@ -73,33 +73,31 @@ public class AgendamentoDAO {
 		}
 		return agendamento1;
 	}	
-	
-// -------------------------------------- ler os relacionamentos entre as tabelas ----------------------------	
+
+	// -------------------------------------- ler os relacionamentos entre as tabelas ----------------------------	
 	public ArrayList<Agendamento> readNomes(){
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		ArrayList<Agendamento> agendamento1 = new ArrayList<>();
-
+		ArrayList<Agendamento> agendamento1 = new ArrayList<>();	
+		
 		try {
 			stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario"
-					+ " FROM Agendamento a, Cliente, Servico,ServicoAgendamento sa"
-					+ " where Id_Agendamento = Fk_Agendamento "
+					+ " FROM Agendamento, Cliente, Servico,ServicoAgendamento sa"
+					+ " where Id_Agendamento = sa.Fk_Agendamento "
 					+ "AND Id_Cliente = Fk_Cliente "
-					+ "AND Id_Servico = a.Fk_Servico ");
-												
+					+ "AND Id_Servico = sa.Fk_Servico");
+
 			rs = stmt.executeQuery();			
 			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
 				agendamento.setId("" + i);
-				agendamento.setIdCliente(rs.getString(2));
+				agendamento.setIdCliente(rs.getString(2));			
 				agendamento.setIdServico(rs.getString(3));
-				agendamento.setDataAgendamento(rs.getString(4));				
-//				agendamento.setDescricao(rs.getString(5));
-				
+				agendamento.setDataAgendamento(rs.getString(4));							
 				agendamento.setHorario(rs.getString(5));	
 				String aux = agendamento.getHorario();
 				aux = aux.replace(":00.0000000", "");
@@ -126,15 +124,14 @@ public class AgendamentoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("UPDATE Agendamento set Fk_Servico = ?, Fk_Cliente = ?,"
-					+ "Data_Agendamento = ?, Descricao_Agendamento = ?, Horario = ? where Id_Agendamento = ?");					
-			stmt.setString(1, agendamento.getIdServico());
-			stmt.setString(2, agendamento.getIdCliente());						
-			stmt.setString(3, agendamento.getDataAgendamento());
-			stmt.setString(4, agendamento.getDescricao());
-			stmt.setString(5, agendamento.getHorario());
-			stmt.setString(6, agendamento.getId());
-			
+			stmt = con.prepareStatement("UPDATE Agendamento set Fk_Cliente = ?,"
+					+ "Data_Agendamento = ?, Descricao_Agendamento = ?, Horario = ? where Id_Agendamento = ?");							
+			stmt.setString(1, agendamento.getIdCliente());						
+			stmt.setString(2, agendamento.getDataAgendamento());
+			stmt.setString(3, agendamento.getDescricao());
+			stmt.setString(4, agendamento.getHorario());
+			stmt.setString(5, agendamento.getId());
+
 
 			stmt.executeUpdate();
 			System.out.println("Atualizado com sucesso!");
@@ -186,7 +183,7 @@ public class AgendamentoDAO {
 					+ "AND Id_Cliente = Fk_Cliente "
 					+ "AND Id_Servico = a.Fk_Servico "
 					+ "and Cpf_Cliente like ?"); 
-			
+
 			stmt.setString(1, "%"+cpf+"%");
 
 			rs = stmt.executeQuery();
@@ -194,12 +191,11 @@ public class AgendamentoDAO {
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
-				agendamento.setId("" + i);
-				agendamento.setIdServico(rs.getString(2));
-				agendamento.setIdCliente(rs.getString(3));
-				agendamento.setDataAgendamento(rs.getString(5));				
-				agendamento.setDescricao(rs.getString(6));
-				agendamento.setHorario(rs.getString(7));				
+				agendamento.setId("" + i);			
+				agendamento.setIdCliente(rs.getString(2));
+				agendamento.setDataAgendamento(rs.getString(3));				
+				agendamento.setDescricao(rs.getString(4));
+				agendamento.setHorario(rs.getString(5));				
 
 				agendamentos.add(agendamento);
 				i++;
@@ -214,6 +210,34 @@ public class AgendamentoDAO {
 		}
 		return agendamentos;
 	}
+	// --------------------------------------- mostra total de agendamento do dia ---------------------------------
+
+	public String getTotalAgendamento() {
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		String TotalAgendamento = null;
+
+		try {
+			stmt = con.prepareStatement("select count(Id_Agendamento) as TotalAgendamento from Agendamento where DATEDIFF(DD, Data_Agendamento, GETDATE()) = 0;");			
+			rs = stmt.executeQuery();
+
+			while(rs.next()) {
+				TotalAgendamento = rs.getString(1);				
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			Alerts.showAlert("Erro!", "Erro de conexão!", "Falha ao consultar informações no banco de dados.", AlertType.ERROR);
+			throw new RuntimeException("Erro!", e);
+		} finally{
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}		
+
+		return TotalAgendamento;
+	}
+
 
 
 }

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
 import Model.Funcionario;
 import Model.Usuario;
+import Util.Alerts;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class FuncionarioDAO {
@@ -185,7 +187,7 @@ public class FuncionarioDAO {
 
 	}
 
-// ----------------------------- pesquisar pelo id funcionario e mostrar na tela --------------------------
+	// ----------------------------- pesquisar pelo id funcionario e mostrar na tela --------------------------
 	public Funcionario searchName(Usuario usuario){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -214,6 +216,36 @@ public class FuncionarioDAO {
 
 	}
 
+	//----------------------------------------- soma valor total -------------------------------------- 
+	public String getTotalVendido(String id) {
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		String TotalVendido = null;
+
+		try {
+			stmt = con.prepareStatement("select SUM(Preco_Total) as TotalVendido from Venda,Funcionario where Fk_Usuario = ?");
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+
+			while(rs.next()) {
+				TotalVendido = rs.getString(1);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			Alerts.showAlert("Erro!", "Erro de conexão!", "Falha ao consultar informações no banco de dados.", AlertType.ERROR);
+			throw new RuntimeException("Erro!", e);
+		} finally{
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}		
+
+		return TotalVendido;
+	}
+
+	
 }
 
 
