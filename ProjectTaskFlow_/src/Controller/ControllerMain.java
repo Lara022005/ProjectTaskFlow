@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import DAO.AgendamentoDAO;
+import DAO.FuncionarioDAO;
 import Model.Agendamento;
 import Model.Funcionario;
 import Model.Usuario;
@@ -50,6 +51,13 @@ public class ControllerMain implements Initializable {
     
     @FXML
     private Label txtNome;
+    
+    @FXML
+    private Label txtAgendamento;
+  
+    @FXML
+    private Label txtTotalVendido;
+
 
     @FXML
     private TableView<Agendamento> tableClientesAgend;   
@@ -72,6 +80,8 @@ public class ControllerMain implements Initializable {
     public static Funcionario funcionario = new Funcionario();
     
     public static Usuario usuario = new Usuario();
+    
+    public static Agendamento agendamento = new Agendamento();
 
     @FXML
     void actionSair(ActionEvent event) {
@@ -136,9 +146,22 @@ public class ControllerMain implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-		txtNome.setText(ControllerLogin.funcionario.getNome());
-		CarregarTableAgendamento();
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+		
+		String totalVendido;
+		String totalAgendamento;
+		
+		totalVendido = funcionarioDAO.getTotalVendido(ControllerLogin.usuario.getIdFuncionario());		
+		totalAgendamento = agendamentoDAO.getTotalAgendamento();
 				
+		double valorTotal = Double.parseDouble(totalVendido);
+		totalVendido = String.format("%.2f", valorTotal);
+			
+		txtNome.setText(ControllerLogin.funcionario.getNome());
+		txtTotalVendido.setText("R$ " + totalVendido);
+		txtAgendamento.setText(totalAgendamento);			
+		CarregarTableAgendamento();				
 	}    
 
 

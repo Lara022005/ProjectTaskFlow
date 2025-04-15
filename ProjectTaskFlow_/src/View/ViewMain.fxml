@@ -28,12 +28,12 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtNome1" alignment="CENTER" layoutX="165.0" layoutY="79.0" prefHeight="30.0" prefWidth="58.0" text="10">
+            <Label fx:id="txtAgendamento" alignment="CENTER" layoutX="165.0" layoutY="79.0" prefHeight="30.0" prefWidth="58.0" text="10">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtNome11" alignment="CENTER" layoutX="384.0" layoutY="79.0" prefHeight="30.0" prefWidth="121.0" text="10.00">
+            <Label fx:id="txtTotalVendido" alignment="CENTER" layoutX="384.0" layoutY="79.0" prefHeight="30.0" prefWidth="121.0" text="10.00">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
