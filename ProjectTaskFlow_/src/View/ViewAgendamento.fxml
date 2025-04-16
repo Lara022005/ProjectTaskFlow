@@ -23,14 +23,14 @@
          </font>
       </Text>
       <TextField layoutX="202.0" layoutY="123.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView layoutX="202.0" layoutY="202.0" prefHeight="256.0" prefWidth="688.0">
+      <TableView layoutX="206.0" layoutY="194.0" prefHeight="256.0" prefWidth="688.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button layoutX="202.0" layoutY="496.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" text="Agendar" />
-      <Button layoutX="475.0" layoutY="496.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" text="Alterar" />
-      <Button layoutX="763.0" layoutY="497.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" text="Concluir" />
+      <Button layoutX="206.0" layoutY="488.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
+      <Button layoutX="479.0" layoutY="488.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
+      <Button layoutX="767.0" layoutY="489.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Concluir" textFill="WHITE" />
    </children>
 </AnchorPane>
