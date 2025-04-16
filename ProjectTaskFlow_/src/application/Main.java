@@ -12,6 +12,7 @@ public class Main extends Application {
 	private static Stage stage;
 	private static Scene login;
 	private static Scene main;
+	private static Scene agendamento;
 
 
 	@Override
@@ -55,6 +56,19 @@ public class Main extends Application {
 		main = new Scene(TelaHome);
 		
 		stage.setScene(main);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+		
+	}
+	
+	public static void TelaAgendamento() throws IOException {
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/View/viewAgendamento.fxml"));
+		Parent TelaAgendamento = fxmlHome.load();
+		agendamento = new Scene(TelaAgendamento);
+		
+		stage.setScene(agendamento);
 		stage.setResizable(false);
 		stage.centerOnScreen();
 		stage.show();

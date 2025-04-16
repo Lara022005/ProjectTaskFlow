@@ -92,8 +92,8 @@ public class ControllerMain implements Initializable {
     }
 
     @FXML
-    void telaAgendamento(ActionEvent event) {
-
+    void telaAgendamento(ActionEvent event) throws IOException {
+    	Main.TelaAgendamento();      	
     }
 
     @FXML
