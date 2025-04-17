@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane minHeight="0.0" prefHeight="570.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<AnchorPane minHeight="0.0" prefHeight="570.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="578.0" fitWidth="155.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/Group%20134%20(1).png" />
          </image>
       </ImageView>
+      <Button fx:id="btMain" layoutX="52.0" layoutY="177.0" mnemonicParsing="false" onAction="#ActionMain" prefHeight="44.0" prefWidth="52.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btCliente" layoutX="52.0" layoutY="251.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="44.0" prefWidth="52.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btProduto" layoutX="52.0" layoutY="321.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="44.0" prefWidth="58.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btFuncionario" layoutX="52.0" layoutY="395.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btSair" layoutX="39.0" layoutY="487.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: 1;" />
    </children>
 </AnchorPane>
