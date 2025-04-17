@@ -2,8 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
 import DAO.AgendamentoDAO;
 import DAO.FuncionarioDAO;
 import Model.Agendamento;
@@ -15,7 +15,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -87,8 +90,15 @@ public class ControllerMain implements Initializable {
     @FXML
     void actionSair(ActionEvent event) throws IOException {
   		
- //   	Alerts.showAlert("Sair!", "Desejar realmente sair?", "Voltará para tela de login", AlertType.INFORMATION);    	  	   	
-    	Main.changeScreen("login");
+    	Alert confirmation = new Alert (AlertType.CONFIRMATION);
+		confirmation.setContentText("Deseja realmente sair do sistema?");
+
+		Optional<ButtonType> resultado = confirmation.showAndWait();
+
+		if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
+	    	Main.changeScreen("login");
+		}
+    	
     }
 
     @FXML

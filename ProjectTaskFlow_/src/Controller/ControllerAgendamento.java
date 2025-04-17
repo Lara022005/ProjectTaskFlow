@@ -1,10 +1,11 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import DAO.AgendamentoDAO;
 import Model.Agendamento;
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +32,9 @@ public class ControllerAgendamento implements Initializable{
     private Button btPesquisar;
     
     @FXML
+    private Button btSair;
+   
+    @FXML
     private TableColumn<Agendamento, String> columnData;
 
     @FXML
@@ -53,7 +57,12 @@ public class ControllerAgendamento implements Initializable{
 
     @FXML
     private TextField txtPesquisar;
+    
+    @FXML
+    void actionSair(ActionEvent event) throws IOException {
+    	Main.TelaHome();
 
+    }
     @FXML
     void actionAgendar(ActionEvent event) {
 
@@ -71,14 +80,13 @@ public class ControllerAgendamento implements Initializable{
 
     @FXML
     void actionPesquisar(ActionEvent event) {
-
+    	PesquisarTableAgedamento();
     }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
-		
+				
 		CarregarTableAgendamento();
 		
 	}
@@ -97,5 +105,24 @@ public class ControllerAgendamento implements Initializable{
 		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
 		tableAgendamentos.setItems(ArrayAgendamentos);						
 	}
+	
+	public void PesquisarTableAgedamento() {
+		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+		Agendamento agendamento = new Agendamento();
+		agendamento.setIdCliente(txtPesquisar.getText());
+//		agendamento.setNome(txtPesquisar.getText());
 
+		ArrayAgendamentos = FXCollections.observableArrayList(agendamentoDAO.search(agendamento.getIdCliente(), agendamento.getIdCliente()));
+
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+		columnData.setCellValueFactory(new PropertyValueFactory<>("dataAgendamento"));
+		columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+		columnHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));	
+		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
+		tableAgendamentos.setItems(ArrayAgendamentos);						
+
+	}    
+	
+	
 }

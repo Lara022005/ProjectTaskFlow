@@ -170,7 +170,7 @@ public class AgendamentoDAO {
 
 	}
 	// ---------------------------------------  search pesquisar (SELECT + LIKE) --------------------------------------- 
-	public ArrayList<Agendamento> search(String cpf){
+	public ArrayList<Agendamento> search(String nome, String cpf){
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
@@ -178,25 +178,32 @@ public class AgendamentoDAO {
 		ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("SELECT Id_Agendamento as Numero_Agendamento, Nome_Servico, Nome_Cliente, Cpf_Cliente, "
-					+ "Data_Agendamento, Descricao_Agendamento, Horario FROM Agendamento a, Cliente, Servico,ServicoAgendamento sa"
-					+ " where Id_Agendamento = Fk_Agendamento "
-					+ "AND Id_Cliente = Fk_Cliente "
-					+ "AND Id_Servico = a.Fk_Servico "
-					+ "and Cpf_Cliente like ?"); 
+			stmt = con.prepareStatement("SELECT Id_Agendamento as Numero_Agendamento, Nome_Servico, Nome_Cliente, Cpf_Cliente,"				
+					+ "    Data_Agendamento, Descricao_Agendamento, Horario FROM Agendamento a "										
+					+ "    JOIN ServicoAgendamento sa ON a.Id_Agendamento = sa.Fk_Agendamento"
+					+ "    JOIN Servico s ON sa.Fk_Servico = s.Id_Servico\r\n"
+					+ "    JOIN Cliente c ON a.Fk_Cliente = c.Id_Cliente\r\n"
+					+ " WHERE"
+					+ "    (? IS NULL OR Nome_Cliente LIKE ?)"
+					+ "    or (? IS NULL OR Cpf_Cliente LIKE ?)"); 
 
-			stmt.setString(1, "%"+cpf+"%");
-
+			stmt.setString(1, "%"+nome+"%");
+			stmt.setString(2, "%"+nome+"%");
+			stmt.setString(3, "%"+cpf+"%");
+			stmt.setString(4, "%"+cpf+"%");
+					
 			rs = stmt.executeQuery();
 			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
 				agendamento.setId("" + i);			
-				agendamento.setIdCliente(rs.getString(2));
-				agendamento.setDataAgendamento(rs.getString(3));				
-				agendamento.setDescricao(rs.getString(4));
-				agendamento.setHorario(rs.getString(5));				
+				agendamento.setIdServico(rs.getString(2));
+				agendamento.setIdCliente(rs.getString(3));				
+				agendamento.setDataAgendamento(rs.getString(4));				
+				agendamento.setDescricao(rs.getString(5));
+				agendamento.setHorario(rs.getString(6));
+					
 
 				agendamentos.add(agendamento);
 				i++;

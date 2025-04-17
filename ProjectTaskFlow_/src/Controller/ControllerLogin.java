@@ -50,6 +50,8 @@ public class ControllerLogin {
 		else if(usuario.getNome().equals(txtNome.getText()) && usuario.getSenha().equals(txtSenha.getText())) {    		
 			funcionario = funcionarioDAO.searchName(usuario);
 			Alerts.showAlert("Login bem sucedido!", "Seja bem vindo, " + funcionario.getNome(),"Se sinta a vontade para navegar no nosso sistema!", AlertType.INFORMATION); 
+			txtNome.setText("");
+			txtSenha.setText("");			
 			Main.TelaHome();    			
 		}	
 	}   
