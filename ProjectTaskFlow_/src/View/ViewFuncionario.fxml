@@ -28,7 +28,7 @@
          </font>
       </Text>
       <TextField fx:id="txtPesquisar" layoutX="207.0" layoutY="122.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView fx:id="tableAgendamentos" layoutX="178.0" layoutY="188.0" prefHeight="256.0" prefWidth="742.0">
+      <TableView fx:id="tableFuncionarios" layoutX="178.0" layoutY="188.0" prefHeight="256.0" prefWidth="742.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
             <TableColumn fx:id="columnNomeCliente" prefWidth="172.79994201660156" style="-fx-alignment: center;" text=" Cliente" />
@@ -38,9 +38,9 @@
             <TableColumn fx:id="columnServico" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="Serviço" />
          </columns>
       </TableView>
-      <Button fx:id="btAgendar" layoutX="207.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
+      <Button fx:id="btCadastrar" layoutX="207.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="480.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
-      <Button fx:id="btConcluir" layoutX="768.0" layoutY="481.0" mnemonicParsing="false" onAction="#actionConcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Concluir" textFill="WHITE" />
+      <Button fx:id="btExcluir" layoutX="768.0" layoutY="481.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Button fx:id="btPesquisar" layoutX="591.0" layoutY="122.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
    </children>
 </AnchorPane>
