@@ -13,7 +13,7 @@ public class Main extends Application {
 	private static Scene login;
 	private static Scene main;
 	private static Scene agendamento;
-	private static Scene RegistroAgendamento;
+	private static Scene registroAgendamento;
 	
 
 
@@ -48,6 +48,12 @@ public class Main extends Application {
 			stage.setScene(login);
 			stage.centerOnScreen();
 			stage.setTitle("TaskFlow - Login");
+			
+		}else if(tela.equals("registroAgendamento")) {
+
+			stage.setScene(registroAgendamento);
+			stage.centerOnScreen();
+			stage.setTitle("Registrar Agendamento");
 		}
 	}
 	
@@ -79,9 +85,9 @@ public class Main extends Application {
 		FXMLLoader fxmlHome = new FXMLLoader();
 		fxmlHome.setLocation(Main.class.getResource("/View/viewRegistrarAgendamento.fxml"));
 		Parent TelaRegistrarAgendamento = fxmlHome.load();
-		RegistroAgendamento = new Scene(TelaRegistrarAgendamento);
+		registroAgendamento = new Scene(TelaRegistrarAgendamento);
 		
-		stage.setScene(RegistroAgendamento);
+		stage.setScene(registroAgendamento);
 		stage.setResizable(false);
 		stage.centerOnScreen();
 		stage.show();	
