@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.image.Image?>
@@ -63,3 +64,13 @@
       </Pane>
    </children>
 </AnchorPane>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+	<!-- TODO Add Nodes -->
+</AnchorPane>
+>>>>>>> branch 'master' of https://github.com/Lara022005/ProjectTaskFlow.git
