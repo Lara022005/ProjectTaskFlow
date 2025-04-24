@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="560.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="240.0" fitWidth="966.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Rectangle%2046.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="332.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Venda" wrappingWidth="302.6781005859375">
+         <font>
+            <Font name="System Bold Italic" size="40.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="41.0" fitWidth="95.0" layoutX="56.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/sair.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="37.0" layoutY="126.0" prefHeight="400.0" prefWidth="478.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Line endX="130.4000244140625" endY="172.4000244140625" layoutX="348.0" layoutY="-47.0" startX="-348.0" startY="172.4000244140625" stroke="#dfe1e6" />
+            <Line endX="127.4000244140625" endY="172.4000244140625" layoutX="351.0" layoutY="95.0" startX="-351.0" startY="172.4000244140625" stroke="#dfe1e6" />
+            <Text fill="#3c42ff" layoutX="16.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente Cadastrado">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#3c42ff" layoutX="16.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#3c42ff" layoutX="16.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="578.0" layoutY="126.0" prefHeight="400.0" prefWidth="354.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Text fill="#3c42ff" layoutX="27.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Itens da Venda">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#3c42ff" layoutX="24.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmar Pagamento">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
