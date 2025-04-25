@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -13,10 +14,8 @@ public class Main extends Application {
 	private static Scene login;
 	private static Scene main;
 	private static Scene agendamento;
-	private static Scene RegistroAgendamento;
 	
-
-
+		
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -48,6 +47,12 @@ public class Main extends Application {
 			stage.setScene(login);
 			stage.centerOnScreen();
 			stage.setTitle("TaskFlow - Login");
+			
+		}else if(tela.equals("Agendamento")) {
+
+			stage.setScene(agendamento);
+			stage.centerOnScreen();
+			stage.setTitle("Cadastrar Agendamento");
 		}
 	}
 	
@@ -75,16 +80,20 @@ public class Main extends Application {
 		stage.centerOnScreen();
 		stage.show();	
 	}
+	
+	private static Stage cadAgendamento;
 	public static void TelaRegistrarAgendamento() throws IOException {
-		FXMLLoader fxmlHome = new FXMLLoader();
-		fxmlHome.setLocation(Main.class.getResource("/View/viewRegistrarAgendamento.fxml"));
-		Parent TelaRegistrarAgendamento = fxmlHome.load();
-		RegistroAgendamento = new Scene(TelaRegistrarAgendamento);
+		FXMLLoader fxmlCadastroAgendamento = new FXMLLoader();
+		fxmlCadastroAgendamento.setLocation(Main.class.getResource("/View/ViewRegistrarAgendamento.fxml"));
+		Parent cadastroAgendamento = fxmlCadastroAgendamento.load();
+		Scene scene2 = new Scene(cadastroAgendamento);
 		
-		stage.setScene(RegistroAgendamento);
-		stage.setResizable(false);
-		stage.centerOnScreen();
-		stage.show();	
+		cadAgendamento = new Stage();
+		cadAgendamento.setTitle("Cadastro/Edição de Agendamento");
+		cadAgendamento.initModality(Modality.WINDOW_MODAL);
+		cadAgendamento.setScene(scene2);
+		cadAgendamento.centerOnScreen();
+		cadAgendamento.showAndWait();
 	}
 	
 

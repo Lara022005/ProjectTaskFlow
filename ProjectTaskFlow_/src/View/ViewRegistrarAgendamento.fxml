@@ -21,8 +21,8 @@
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtNomeCliente" layoutX="228.0" layoutY="163.0" onInputMethodTextChanged="#actionCPFtype" onKeyTyped="#actionCPFtype" onMouseClicked="#actionCPFclick" onMouseEntered="#actionCPFclick" prefHeight="26.0" prefWidth="290.0" />
-      <TextField fx:id="txtCpf" layoutX="574.0" layoutY="164.0" prefHeight="26.0" prefWidth="183.0" />
+      <TextField fx:id="txtNomeCliente" layoutX="228.0" layoutY="163.0" prefHeight="26.0" prefWidth="290.0" />
+      <TextField fx:id="txtCpf" layoutX="574.0" layoutY="164.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" prefHeight="26.0" prefWidth="183.0" />
       <TextField fx:id="txtServico" layoutX="228.0" layoutY="236.0" prefHeight="26.0" prefWidth="290.0" />
       <TextField fx:id="txtDescricao" layoutX="229.0" layoutY="306.0" prefHeight="26.0" prefWidth="290.0" />
       <TextField fx:id="txtHorario" layoutX="577.0" layoutY="306.0" prefHeight="26.0" prefWidth="175.0" />

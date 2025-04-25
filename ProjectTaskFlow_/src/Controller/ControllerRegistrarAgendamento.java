@@ -1,12 +1,20 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import org.controlsfx.control.textfield.TextFields;
 import DAO.AgendamentoDAO;
+import DAO.ClienteDAO;
+import DAO.ServicoDAO;
 import Model.Agendamento;
+import Model.Cliente;
+import Model.Servico;
 import Util.Alerts;
 import Util.cpfValidador;
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +64,14 @@ public class ControllerRegistrarAgendamento implements Initializable{
     	
     	AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
     	Agendamento agendamento = new Agendamento();
+    	ClienteDAO clienteDAO = new ClienteDAO();
+    	Cliente cliente = new Cliente();
+    	Servico servico = new Servico();
+    	
+    	ArrayList<Cliente> clientes = new ArrayList<>();
+    	cliente.setCpf(txtCpf.getText());
+		clientes = clienteDAO.search(cliente);
+		cliente = clientes.get(0);
     	
     if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
     		txtHorario.getText() == "") {   		
@@ -63,29 +79,38 @@ public class ControllerRegistrarAgendamento implements Initializable{
     }else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
     		Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
     }
-    else {
-    	agendamento.setIdCliente(txtNomeCliente.getText());
-    	agendamento.setIdServico(txtServico.getText());
+    else { 	
+    	agendamento.setIdCliente(cliente.getId());
+    	agendamento.setIdServico(servico.getId());
     	agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 		agendamento.setDescricao(txtDescricao.getText());
 		agendamento.setHorario(txtHorario.getText());	
 		
 		if(ControllerAgendamento.agendamentoAlterar == null) {
-			agendamentoDAO.create(agendamento);   		
-    		Alerts.showAlert("Sucesso!", "Cliente cadastrado", "Seja bem vindo", AlertType.INFORMATION);
-    		Stage stage = (Stage) btCancelar.getScene().getWindow();
-        	stage.close();
+			agendamentoDAO.create(agendamento);  
+			
+    		Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
+ //   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+ //       	stage.close();
     		}else if(ControllerAgendamento.agendamentoAlterar != null) {
     		agendamentoDAO.update(agendamento);   		
     		Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
-    		Stage stage = (Stage) btCancelar.getScene().getWindow();
-        	stage.close();
+ //   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+ //       	stage.close();
     		}			
-    	}    
+    	} 
+
     }
 
     @FXML
-    void actionCancelar(ActionEvent event) {
+    void actionCancelar(ActionEvent event) throws IOException {
+    	txtCpf.setText("");
+    	txtDescricao.setText("");
+    	txtHorario.setText("");
+    	txtNomeCliente.setText("");
+    	txtServico.setText("");
+    	Stage stage = (Stage) btCancelar.getScene().getWindow();
+		stage.close();
 
     }
 
@@ -95,15 +120,34 @@ public class ControllerRegistrarAgendamento implements Initializable{
     }
     
     @FXML
-    void actionCPFclick(MouseEvent event) {
-
+    void actionNomeClick(MouseEvent event) {
+    	if(txtCpf.getText().length() > 10) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setCpf(txtCpf.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();		
+			clientes = clienteDAO.search(cliente);
+			cliente = clientes.get(0);
+			txtNomeCliente.setText(cliente.getNome());						
+		}
     }
 
     @FXML
-    void actionCPFtype(KeyEvent event)throws Exception  {
-
-    }
-    
+    void actionNomeType(KeyEvent event)throws Exception  {
+    	
+    	if(txtCpf.getText().length() > 10) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setCpf(txtCpf.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();		
+			clientes = clienteDAO.search(cliente);
+			cliente = clientes.get(0);
+			txtNomeCliente.setText(cliente.getNome());						
+		}else {
+			txtNomeCliente.setText("");
+		}
+	}    	
+     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -119,7 +163,27 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			txtDescricao.setText(agendamentoEditar.getDescricao());
 			txtHorario.setText(agendamentoEditar.getHorario());			
 		}
+		// -------------------- barra de pesquisar servico --------------------				
+		ServicoDAO servicoDAO = new ServicoDAO();
+		ArrayList<String> nomesServicos = new ArrayList<String>();
+		nomesServicos = servicoDAO.readServicoByNome();
+		String[] servico = new String[nomesServicos.size()];
+
+		for (int i = 0; i < nomesServicos.size(); i++) {
+			servico[i] = nomesServicos.get(i);
+		}
+		TextFields.bindAutoCompletion(txtServico, servico);	
 		
+// -------------------- barra de pesquisar cliente --------------------		
+		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList<String> nomesClientes = new ArrayList<String>();
+		nomesClientes = clienteDAO.readClienteByNome();
+		String[] cliente = new String[nomesClientes.size()];
+
+		for (int i = 0; i < nomesClientes.size(); i++) {
+			cliente[i] = nomesClientes.get(i);
+		}
+		TextFields.bindAutoCompletion(txtNomeCliente, cliente);	
 	}
 
 

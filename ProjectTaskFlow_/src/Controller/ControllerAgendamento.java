@@ -67,14 +67,14 @@ public class ControllerAgendamento implements Initializable{
     @FXML
     void actionSair(ActionEvent event) throws IOException {
     	Main.TelaHome();
-
+    	CarregarTableAgendamento();
     }
     @FXML
     void actionAgendar(ActionEvent event) throws IOException {
     	agendamentoAlterar = null;
     	Main.TelaRegistrarAgendamento();
-		CarregarTableAgendamento();
-  	    	   
+		CarregarTableAgendamento();	  
+		System.out.println("teste");
     }
     
     public static Agendamento agendamentoAlterar = new Agendamento();
@@ -89,7 +89,7 @@ public class ControllerAgendamento implements Initializable{
 			Main.TelaRegistrarAgendamento();			
 		}
 		CarregarTableAgendamento();
-
+		System.out.println("teste");
     }
 
     @FXML
@@ -100,6 +100,7 @@ public class ControllerAgendamento implements Initializable{
     @FXML
     void actionPesquisar(ActionEvent event) {
     	PesquisarTableAgedamento();
+    	tableAgendamentos.refresh();
     }
 
 	@Override
@@ -116,7 +117,8 @@ public class ControllerAgendamento implements Initializable{
 		for (int i = 0; i < nomesClientes.size(); i++) {
 			cliente[i] = nomesClientes.get(i);
 		}
-		TextFields.bindAutoCompletion(txtPesquisar, cliente);						
+		TextFields.bindAutoCompletion(txtPesquisar, cliente);
+			
 	}
 	
 	private ObservableList<Agendamento> ArrayAgendamentos;

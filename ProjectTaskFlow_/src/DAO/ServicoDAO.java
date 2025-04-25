@@ -150,6 +150,28 @@ public class ServicoDAO {
 			return servicos;
 
 		}
+		
+		public ArrayList<String> readServicoByNome() {
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<String> servicos = new ArrayList<>();
 
+			try {
+				stmt = con.prepareStatement("SELECT Nome_Servico FROM Servico");
+				rs = stmt.executeQuery();
+
+				while (rs.next()) {
+					String nome;
+					nome = rs.getString(1);
+					servicos.add(nome);
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("Erro ao ler os clientes!", e);
+			} finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return servicos;
+		}
 
 }
