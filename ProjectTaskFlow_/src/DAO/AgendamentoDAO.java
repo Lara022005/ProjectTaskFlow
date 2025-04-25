@@ -21,12 +21,11 @@ public class AgendamentoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?, ?)");			
+			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?)");			
 			stmt.setString(1, agendamento.getIdCliente());
-//			stmt.setString(2, agendamento.getIdServico());
-			stmt.setString(3, agendamento.getDataAgendamento());
-			stmt.setString(4, agendamento.getDescricao());
-			stmt.setString(5, agendamento.getHorario());				
+			stmt.setString(2, agendamento.getDataAgendamento());
+			stmt.setString(3, agendamento.getDescricao());
+			stmt.setString(4, agendamento.getHorario());				
 
 			stmt.executeUpdate();
 			System.out.println("Cadastrado com sucesso!");
@@ -291,4 +290,5 @@ public class AgendamentoDAO {
 		return agendamento1;
 	}	
 	
+
 }
