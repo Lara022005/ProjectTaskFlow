@@ -8,13 +8,14 @@ import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
 import DAO.AgendamentoDAO;
 import DAO.ClienteDAO;
+import DAO.ServicoAgendamentoDAO;
 import DAO.ServicoDAO;
 import Model.Agendamento;
 import Model.Cliente;
 import Model.Servico;
+import Model.ServicoAgendamento;
 import Util.Alerts;
 import Util.cpfValidador;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,100 +29,154 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ControllerRegistrarAgendamento implements Initializable{
 
-    @FXML
-    private TextField NomeCliente;
+	@FXML
+	private TextField NomeCliente;
 
-    @FXML
-    private Button btAgendar;
+	@FXML
+	private Button btAgendar;
 
-    @FXML
-    private Button btCancelar;
+	@FXML
+	private Button btCancelar;
 
-    @FXML
-    private Button btExcluir;
+	@FXML
+	private Button btExcluir;
 
-    @FXML
-    private TextField txtNomeCliente;
+	@FXML
+	private TextField txtNomeCliente;
 
-    @FXML
-    private TextField txtCpf;
+	@FXML
+	private TextField txtCpf;
 
-    @FXML
-    private DatePicker dpDataAgend;
+	@FXML
+	private DatePicker dpDataAgend;
 
-    @FXML
-    private TextField txtDescricao;
+	@FXML
+	private TextField txtDescricao;
 
-    @FXML
-    private TextField txtHorario;
+	@FXML
+	private TextField txtHorario;
 
-    @FXML
-    private TextField txtServico;
+	@FXML
+	private TextField txtServico;
 
 
-    @FXML
-    void actionAgendar(ActionEvent event) {
-    	
-    	AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-    	Agendamento agendamento = new Agendamento();
-    	ClienteDAO clienteDAO = new ClienteDAO();
-    	Cliente cliente = new Cliente();
-    	Servico servico = new Servico();
-    	
-    	ArrayList<Cliente> clientes = new ArrayList<>();
-    	cliente.setCpf(txtCpf.getText());
+	@FXML
+	void actionAgendar(ActionEvent event) {
+
+		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+		Agendamento agendamento = new Agendamento();
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente cliente = new Cliente();
+		ServicoDAO servicoDAO = new ServicoDAO();
+		Servico servico = new Servico();
+
+		ArrayList<Cliente> clientes = new ArrayList<>();
+		cliente.setCpf(txtCpf.getText());
+		cliente.setNome(txtNomeCliente.getText());
 		clientes = clienteDAO.search(cliente);
 		cliente = clientes.get(0);
-    	
-    if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
-    		txtHorario.getText() == "") {   		
-    	Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
-    }else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
-    		Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
-    }
-    else { 	
-    	agendamento.setIdCliente(cliente.getId());
-    	agendamento.setIdServico(servico.getId());
-    	agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
-		agendamento.setDescricao(txtDescricao.getText());
-		agendamento.setHorario(txtHorario.getText());	
-		
-		if(ControllerAgendamento.agendamentoAlterar == null) {
-			agendamentoDAO.create(agendamento);  
-			
-    		Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
- //   		Stage stage = (Stage) btCancelar.getScene().getWindow();
- //       	stage.close();
-    		}else if(ControllerAgendamento.agendamentoAlterar != null) {
-    		agendamentoDAO.update(agendamento);   		
-    		Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
- //   		Stage stage = (Stage) btCancelar.getScene().getWindow();
- //       	stage.close();
-    		}			
-    	} 
 
-    }
+		ArrayList<Servico> servicos = new ArrayList<>();
+		servico.setNome(txtServico.getText());
+		servicos = servicoDAO.search(servico);
+		servico = servicos.get(0);
 
-    @FXML
-    void actionCancelar(ActionEvent event) throws IOException {
-    	txtCpf.setText("");
-    	txtDescricao.setText("");
-    	txtHorario.setText("");
-    	txtNomeCliente.setText("");
-    	txtServico.setText("");
-    	Stage stage = (Stage) btCancelar.getScene().getWindow();
+		ArrayList<Agendamento> agendamentos = new ArrayList<>();
+
+
+		if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
+				txtHorario.getText() == "") {   		
+			Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
+		}else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
+			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
+		}
+		else { 	
+			agendamento.setIdCliente(cliente.getId());
+			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
+			agendamento.setDescricao(txtDescricao.getText());
+			agendamento.setHorario(txtHorario.getText());	
+
+			if(ControllerAgendamento.agendamentoAlterar == null) {
+				agendamentoDAO.create(agendamento);
+				agendamentos = agendamentoDAO.readIDAdcionado();
+				ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
+				ServicoAgendamento sa = new ServicoAgendamento();
+				agendamento = agendamentos.get(0);
+				sa.setIdServico(servico.getId());
+				sa.setIdAgendamento(agendamento.getId());
+				sa.setQuantidade("1");
+				saDAO.create(sa);
+
+				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
+				//   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+				//       	stage.close();
+			}else {
+
+				ArrayList<Cliente> clientes1 = new ArrayList<>();
+				cliente.setCpf(null);
+				cliente.setNome(ControllerAgendamento.agendamentoAlterar.getIdCliente());
+				clientes1 = clienteDAO.search(cliente);
+				System.out.println(ControllerAgendamento.agendamentoAlterar.getIdCliente()); 
+				cliente = clientes1.get(0);
+				System.out.println("Cliente: "+ cliente.getId());
+				ControllerAgendamento.agendamentoAlterar.setIdCliente(cliente.getId());
+				System.out.println(ControllerAgendamento.agendamentoAlterar.getHorario()); 
+				System.out.println(ControllerAgendamento.agendamentoAlterar.getDataAgendamento());
+				agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.agendamentoAlterar);
+				agendamento = agendamentos.get(0); 
+				cliente.setCpf(txtCpf.getText());
+				cliente.setNome(txtNomeCliente.getText());
+				clientes = clienteDAO.search(cliente);
+				cliente = clientes.get(0);
+				ArrayList<Servico> servicos1 = new ArrayList<>();
+				servico.setNome(txtServico.getText());
+				servicos1 = servicoDAO.search(servico);
+				servico = servicos1.get(0);
+				agendamento.setIdCliente(cliente.getId());
+				agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
+				agendamento.setDescricao(txtDescricao.getText());
+				agendamento.setHorario(txtHorario.getText());	
+				System.out.println("Agendamento: "+ agendamento.getId()); 
+				agendamentoDAO.update(agendamento);
+				ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
+				ServicoAgendamento sa = new ServicoAgendamento();
+				sa.setIdServico(servico.getId());
+				sa.setIdAgendamento(agendamento.getId());
+				sa.setQuantidade("1");
+				saDAO.update(sa);
+
+
+				ControllerAgendamento.agendamentoAlterar = null;
+				
+
+				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
+				//   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+				//       	stage.close();
+			}			
+		} 
+
+	}
+
+	@FXML
+	void actionCancelar(ActionEvent event) throws IOException {
+		txtCpf.setText("");
+		txtDescricao.setText("");
+		txtHorario.setText("");
+		txtNomeCliente.setText("");
+		txtServico.setText("");
+		Stage stage = (Stage) btCancelar.getScene().getWindow();
 		stage.close();
 
-    }
+	}
 
-    @FXML
-    void actionExcluir(ActionEvent event) {
+	@FXML
+	void actionExcluir(ActionEvent event) {
 
-    }
-    
-    @FXML
-    void actionNomeClick(MouseEvent event) {
-    	if(txtCpf.getText().length() > 10) {
+	}
+
+	@FXML
+	void actionNomeClick(MouseEvent event) {
+		if(txtCpf.getText().length() > 10) {
 			ClienteDAO clienteDAO = new ClienteDAO();
 			Cliente cliente = new Cliente();
 			cliente.setCpf(txtCpf.getText());
@@ -130,12 +185,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			cliente = clientes.get(0);
 			txtNomeCliente.setText(cliente.getNome());						
 		}
-    }
+	}
 
-    @FXML
-    void actionNomeType(KeyEvent event)throws Exception  {
-    	
-    	if(txtCpf.getText().length() > 10) {
+	@FXML
+	void actionNomeType(KeyEvent event)throws Exception  {
+
+		if(txtCpf.getText().length() > 10) {
 			ClienteDAO clienteDAO = new ClienteDAO();
 			Cliente cliente = new Cliente();
 			cliente.setCpf(txtCpf.getText());
@@ -147,11 +202,11 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			txtNomeCliente.setText("");
 		}
 	}    	
-     
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 		if(ControllerAgendamento.agendamentoAlterar != null) {
 			btAgendar.setText("Salvar");
 			Agendamento agendamentoEditar = new Agendamento();
@@ -173,8 +228,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			servico[i] = nomesServicos.get(i);
 		}
 		TextFields.bindAutoCompletion(txtServico, servico);	
-		
-// -------------------- barra de pesquisar cliente --------------------		
+
+		// -------------------- barra de pesquisar cliente --------------------		
 		ClienteDAO clienteDAO = new ClienteDAO();
 		ArrayList<String> nomesClientes = new ArrayList<String>();
 		nomesClientes = clienteDAO.readClienteByNome();

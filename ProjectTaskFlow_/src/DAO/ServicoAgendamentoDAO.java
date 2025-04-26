@@ -74,8 +74,8 @@ public class ServicoAgendamentoDAO {
 
 			try {
 
-				stmt = con.prepareStatement("update ServicoAgendamento set Fk_Servico = ?, Fk_Agendamento = ?, Quantidade_pv = ? \r\n"
-						+ "where Id_ServicoAgendamento = ? and Fk_Agendamento = ?\r\n");			
+				stmt = con.prepareStatement("update ServicoAgendamento set Fk_Servico = ?, Fk_Agendamento = ?, Quantidade_sa = ? \r\n"
+						+ "where Id_ServicoAgendamneto = ? and Fk_Agendamento = ?\r\n");			
 				stmt.setString(1, servicoAgendamento.getIdServico());
 				stmt.setString(2, servicoAgendamento.getIdAgendamento());		
 				stmt.setString(3, servicoAgendamento.getQuantidade());

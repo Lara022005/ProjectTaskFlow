@@ -142,11 +142,11 @@ public class ClienteDAO {
 			stmt.setString(1, "%"+cliente1.getCpf()+"%");
 			stmt.setString(2, "%"+cliente1.getNome()+"%");
 			rs = stmt.executeQuery();
-			int i = 1;
+			
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Cliente cliente = new Cliente();
-				cliente.setId("" + i);
+				cliente.setId(rs.getString(1));
 				cliente.setNome(rs.getString(2));
 				cliente.setCpf(rs.getString(3));
 				cliente.setEndereco(rs.getString(4));
@@ -154,7 +154,7 @@ public class ClienteDAO {
 				cliente.setEmail(rs.getString(6));	
 
 				clientes.add(cliente);
-				i++;
+				
 
 			}
 

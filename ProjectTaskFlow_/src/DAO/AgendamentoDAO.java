@@ -172,7 +172,7 @@ public class AgendamentoDAO {
 	}
 	// ---------------------------------------  search pesquisar (SELECT + LIKE) --------------------------------------- 
 	public ArrayList<Agendamento> search(String nome, String cpf){
-
+		
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -289,6 +289,81 @@ public class AgendamentoDAO {
 			ConnectionDataBase.closeConnection(con, stmt, rs);
 		}
 		return agendamento1;
+	}
+// ----------------------- retorna o ultimo id adicionado ------------------------
+	public ArrayList<Agendamento> readIDAdcionado(){
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Agendamento> agendamento1 = new ArrayList<>();
+
+		try {
+			stmt = con.prepareStatement("SELECT * FROM Agendamento ORDER BY Id_Agendamento DESC");					
+			rs = stmt.executeQuery();
+			
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				Agendamento agendamento = new Agendamento();
+				agendamento.setId(rs.getString(1));								
+
+				agendamento1.add(agendamento);				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return agendamento1;
 	}	
+	
+	
+public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
+		
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Agendamento> agendamentos = new ArrayList<>();
+
+		try {
+			stmt = con.prepareStatement("SELECT * from Agendamento WHERE "
+					+ "Fk_Cliente = ? and Data_Agendamento = ? and Horario = ?"); 
+
+			stmt.setString(1, agendamento1.getIdCliente());
+			stmt.setString(2, agendamento1.getDataAgendamento());
+			stmt.setString(3, agendamento1.getHorario());
+
+					
+			rs = stmt.executeQuery();
+			
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				Agendamento agendamento = new Agendamento();
+				agendamento.setId(rs.getString(1));			
+				agendamento.setIdCliente(rs.getString(2));				
+				agendamento.setDataAgendamento(rs.getString(3));				
+				agendamento.setDescricao(rs.getString(4));
+				agendamento.setHorario(rs.getString(5));
+					
+
+				agendamentos.add(agendamento);
+				
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return agendamentos;
+	}
+	
+	
+	
+	
 	
 }

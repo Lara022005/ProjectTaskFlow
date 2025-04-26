@@ -86,7 +86,8 @@ public class ControllerAgendamento implements Initializable{
 			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um cliente para editar", AlertType.ERROR);   		
 		}else {
 			agendamentoAlterar = tableAgendamentos.getItems().get(i);
-			Main.TelaRegistrarAgendamento();			
+			Main.TelaRegistrarAgendamento();
+			agendamentoAlterar = null;
 		}
 		CarregarTableAgendamento();
 		System.out.println("teste");
@@ -130,9 +131,9 @@ public class ControllerAgendamento implements Initializable{
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
 		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
 		columnData.setCellValueFactory(new PropertyValueFactory<>("dataAgendamento"));
+		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
 		columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
 		columnHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));	
-		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
 		tableAgendamentos.setItems(ArrayAgendamentos);						
 	}
 	
