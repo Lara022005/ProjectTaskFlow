@@ -7,32 +7,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="583.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegistrarAgendamento">
+<AnchorPane prefHeight="583.0" prefWidth="663.0" style="-fx-border-radius: 5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegistrarAgendamento">
    <children>
-      <Text fill="#3c42ff" layoutX="180.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Agendamentos">
+      <Text fill="#3c42ff" layoutX="145.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Agendamentos">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtNomeCliente" layoutX="87.0" layoutY="163.0" prefHeight="26.0" prefWidth="290.0" />
-      <TextField fx:id="txtCpf" layoutX="428.0" layoutY="161.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" prefHeight="26.0" prefWidth="183.0" />
-      <TextField fx:id="txtServico" layoutX="87.0" layoutY="236.0" prefHeight="26.0" prefWidth="290.0" />
-      <TextField fx:id="txtDescricao" layoutX="88.0" layoutY="306.0" prefHeight="26.0" prefWidth="290.0" />
-      <TextField fx:id="txtHorario" layoutX="431.0" layoutY="306.0" prefHeight="26.0" prefWidth="175.0" />
-      <Text layoutX="92.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
-      <Text layoutX="439.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
-      <Text layoutX="94.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço" />
-      <Text layoutX="435.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
-      <Text fill="#ff0101" layoutX="81.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fill="RED" layoutX="83.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fill="RED" layoutX="425.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fill="#ff0909" layoutX="428.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text layoutX="443.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horário" />
-      <Text fill="#ff0909" layoutX="431.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text layoutX="91.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Button fx:id="btAgendar" layoutX="81.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
-      <Button fx:id="btExcluir" layoutX="342.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
-      <Button fx:id="btCancelar" layoutX="583.0" layoutY="464.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
-      <DatePicker fx:id="dpDataAgend" layoutX="432.0" layoutY="236.0" />
+      <TextField fx:id="txtNomeCliente" layoutX="47.0" layoutY="202.0" prefHeight="26.0" prefWidth="290.0" />
+      <TextField fx:id="txtCpf" layoutX="401.0" layoutY="201.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" prefHeight="26.0" prefWidth="183.0" />
+      <TextField fx:id="txtServico" layoutX="47.0" layoutY="275.0" prefHeight="26.0" prefWidth="290.0" />
+      <TextField fx:id="txtDescricao" layoutX="48.0" layoutY="345.0" prefHeight="26.0" prefWidth="290.0" />
+      <TextField fx:id="txtHorario" layoutX="406.0" layoutY="345.0" prefHeight="26.0" prefWidth="175.0" />
+      <Text layoutX="52.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
+      <Text layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+      <Text layoutX="54.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço" />
+      <Text layoutX="414.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
+      <Text fill="#ff0101" layoutX="41.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="RED" layoutX="43.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="RED" layoutX="404.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="#ff0909" layoutX="404.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text layoutX="420.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horário" />
+      <Text fill="#ff0909" layoutX="408.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text layoutX="51.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
+      <Button fx:id="btAgendar" layoutX="70.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
+      <Button fx:id="btExcluir" layoutX="272.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
+      <Button fx:id="btCancelar" layoutX="461.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
+      <DatePicker fx:id="dpDataAgend" layoutX="406.0" layoutY="275.0" />
    </children>
 </AnchorPane>

@@ -14,6 +14,7 @@ public class Main extends Application {
 	private static Scene login;
 	private static Scene main;
 	private static Scene agendamento;
+	private static Scene usuario;
 	
 		
 	@Override
@@ -81,6 +82,7 @@ public class Main extends Application {
 		stage.show();	
 	}
 	
+	
 	private static Stage cadAgendamento;
 	public static void TelaRegistrarAgendamento() throws IOException {
 		FXMLLoader fxmlCadastroAgendamento = new FXMLLoader();
@@ -94,6 +96,32 @@ public class Main extends Application {
 		cadAgendamento.setScene(scene2);
 		cadAgendamento.centerOnScreen();
 		cadAgendamento.showAndWait();
+	}
+	
+	public static void TelaUsuario() throws IOException {
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/View/viewUsuario.fxml"));
+		Parent TelaUsuario = fxmlHome.load();
+		usuario = new Scene(TelaUsuario);
+		
+		stage.setScene(usuario);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();	
+	}
+	private static Stage cadastrarUsuario;
+	public static void TelaCadastrarUsuario() throws IOException {
+		FXMLLoader fxmlCadastroUsuario = new FXMLLoader();
+		fxmlCadastroUsuario.setLocation(Main.class.getResource("/View/ViewCadastrarUsuario.fxml"));
+		Parent cadastroUsuario = fxmlCadastroUsuario.load();
+		Scene scene2 = new Scene(cadastroUsuario);
+		
+		cadastrarUsuario = new Stage();
+		cadastrarUsuario.setTitle("Cadastro/Edição de Usuario");
+		cadastrarUsuario.initModality(Modality.WINDOW_MODAL);
+		cadastrarUsuario.setScene(scene2);
+		cadastrarUsuario.centerOnScreen();
+		cadastrarUsuario.showAndWait();
 	}
 	
 

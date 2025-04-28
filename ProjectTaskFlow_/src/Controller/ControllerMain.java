@@ -137,8 +137,8 @@ public class ControllerMain implements Initializable {
     }
 
     @FXML
-    void telaUsuario(ActionEvent event) {
-
+    void telaUsuario(ActionEvent event) throws IOException {
+    	Main.TelaUsuario();
     }
     
     private ObservableList<Agendamento> ArrayAgendamentos;
