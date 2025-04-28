@@ -21,7 +21,7 @@ public class Main extends Application {
 
 		try {
 			stage = primaryStage;
-			primaryStage.setTitle("TaskFlow - Login");
+			primaryStage.setTitle("TaskFlow");
 
 			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/View/viewLogin.fxml"));
 			login = new Scene(fxmlLogin);
