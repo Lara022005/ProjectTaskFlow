@@ -169,10 +169,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 	}
 
-	@FXML
-	void actionExcluir(ActionEvent event) {
-
-	}
 
 	@FXML
 	void actionNomeClick(MouseEvent event) {

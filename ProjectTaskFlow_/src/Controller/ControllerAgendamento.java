@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
 import DAO.AgendamentoDAO;
@@ -16,9 +17,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -83,7 +86,7 @@ public class ControllerAgendamento implements Initializable{
     	
     	int i = tableAgendamentos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
 		if(i == -1) {
-			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um cliente para editar", AlertType.ERROR);   		
+			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
 		}else {
 			agendamentoAlterar = tableAgendamentos.getItems().get(i);
 			Main.TelaRegistrarAgendamento();
@@ -95,7 +98,27 @@ public class ControllerAgendamento implements Initializable{
 
     @FXML
     void actionConcluir(ActionEvent event) {
+    	
+    	int i = tableAgendamentos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+		if(i == -1) {
+			Alerts.showAlert("ERRO!", "Falha ao concluir", "Selecione um agendamento", AlertType.ERROR);   		
+		}else {
+			Agendamento agendamento = new Agendamento();
+			agendamento = tableAgendamentos.getItems().get(i);
 
+			Alert confirmation = new Alert (AlertType.CONFIRMATION);
+			confirmation.setContentText("Deseja realmente excluir o agendamento? \n  ");
+
+			Optional<ButtonType> resultado = confirmation.showAndWait();
+
+			if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
+				AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+				agendamentoDAO.delete(agendamento);
+
+				Alerts.showAlert("Sucesso!", "Agendamento excluído", "O foi excluido com sucesso", AlertType.INFORMATION);
+				CarregarTableAgendamento();
+			}
+		}		   	
     }
 
     @FXML

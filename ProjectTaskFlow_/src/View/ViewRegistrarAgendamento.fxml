@@ -31,8 +31,7 @@
       <Text fill="#ff0909" layoutX="408.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text layoutX="51.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
       <Button fx:id="btAgendar" layoutX="70.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
-      <Button fx:id="btExcluir" layoutX="272.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
-      <Button fx:id="btCancelar" layoutX="461.0" layoutY="463.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
+      <Button fx:id="btCancelar" layoutX="431.0" layoutY="459.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
       <DatePicker fx:id="dpDataAgend" layoutX="406.0" layoutY="275.0" />
    </children>
 </AnchorPane>
