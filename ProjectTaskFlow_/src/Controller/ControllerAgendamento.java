@@ -92,8 +92,7 @@ public class ControllerAgendamento implements Initializable{
 			Main.TelaRegistrarAgendamento();
 			agendamentoAlterar = null;
 		}
-		CarregarTableAgendamento();
-		System.out.println("teste");
+		CarregarTableAgendamento();		
     }
 
     @FXML
