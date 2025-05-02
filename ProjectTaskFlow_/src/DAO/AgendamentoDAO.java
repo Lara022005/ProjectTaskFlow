@@ -180,7 +180,7 @@ public class AgendamentoDAO {
 
 		try {
 			stmt = con.prepareStatement("SELECT Id_Agendamento as Numero_Agendamento, Nome_Servico, Nome_Cliente, Cpf_Cliente,"				
-					+ "    Data_Agendamento, Descricao_Agendamento, Horario FROM Agendamento a "										
+					+ "    Data_Agendamento, Descricao_Agendamento, Horario, statusAgendamento FROM Agendamento a "										
 					+ "    JOIN ServicoAgendamento sa ON a.Id_Agendamento = sa.Fk_Agendamento"
 					+ "    JOIN Servico s ON sa.Fk_Servico = s.Id_Servico\r\n"
 					+ "    JOIN Cliente c ON a.Fk_Cliente = c.Id_Cliente\r\n"

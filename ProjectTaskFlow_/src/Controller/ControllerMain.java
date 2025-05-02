@@ -107,33 +107,33 @@ public class ControllerMain implements Initializable {
     }
 
     @FXML
-    void telaCliente(ActionEvent event) {
-
+    void telaCliente(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
     }
 
     @FXML
-    void telaFuncionario(ActionEvent event) {
-
+    void telaFuncionario(ActionEvent event) throws IOException {
+    	Main.TelaFuncionario();
     }
 
     @FXML
-    void telaMain(ActionEvent event) {
-
+    void telaMain(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
-    void telaProduto(ActionEvent event) {
-
+    void telaProduto(ActionEvent event) throws IOException {
+    	Main.TelaProduto();
     }
 
     @FXML
-    void telaRegistroVenda(ActionEvent event) {
-
+    void telaRegistroVenda(ActionEvent event) throws IOException {
+    	Main.TelaRegistroVenda();
     }
 
     @FXML
-    void telaServico(ActionEvent event) {
-
+    void telaServico(ActionEvent event) throws IOException {
+    	Main.TelaServico();
     }
 
     @FXML

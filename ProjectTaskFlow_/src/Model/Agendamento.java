@@ -8,6 +8,7 @@ public class Agendamento {
 	private String dataAgendamento;
 	private String descricao;
 	private String horario;
+	private String statusAgendamento;
 
 
 	public Agendamento() {
@@ -15,7 +16,7 @@ public class Agendamento {
 	}
 
 	public Agendamento(String id, String idServico, String idCliente, String dataAgendamento, String descricao,
-			String horario) {
+			String horario, String statusAgendamento) {
 		super();
 		this.id = id;
 		this.idServico = idServico;
@@ -23,6 +24,7 @@ public class Agendamento {
 		this.dataAgendamento = dataAgendamento;
 		this.descricao = descricao;
 		this.horario = horario;
+		this.statusAgendamento = statusAgendamento;
 	}
 
 	public String getId() {
@@ -61,5 +63,12 @@ public class Agendamento {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+	public String getStatusAgendamento() {
+		return statusAgendamento;
+	}
+	public void setStatusAgendamento(String statusAgendamento) {
+		this.statusAgendamento = statusAgendamento;
+	}
+	
 
 }
