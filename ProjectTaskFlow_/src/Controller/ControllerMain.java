@@ -97,35 +97,28 @@ public class ControllerMain implements Initializable {
 
 		if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
 	    	Main.changeScreen("login");
-		}
-    	
+		}	
     }
-
     @FXML
     void telaAgendamento(ActionEvent event) throws IOException {
     	Main.TelaAgendamento();      	
     }
-
     @FXML
     void telaCliente(ActionEvent event) throws IOException {
     	Main.TelaCliente();
     }
-
     @FXML
     void telaFuncionario(ActionEvent event) throws IOException {
     	Main.TelaFuncionario();
     }
-
     @FXML
     void telaMain(ActionEvent event) throws IOException {
     	Main.TelaHome();
     }
-
     @FXML
     void telaProduto(ActionEvent event) throws IOException {
     	Main.TelaProduto();
     }
-
     @FXML
     void telaRegistroVenda(ActionEvent event) throws IOException {
     	Main.TelaRegistroVenda();
@@ -135,7 +128,6 @@ public class ControllerMain implements Initializable {
     void telaServico(ActionEvent event) throws IOException {
     	Main.TelaServico();
     }
-
     @FXML
     void telaUsuario(ActionEvent event) throws IOException {
     	Main.TelaUsuario();
