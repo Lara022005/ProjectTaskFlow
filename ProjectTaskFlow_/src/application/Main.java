@@ -65,7 +65,7 @@ public class Main extends Application {
 	
 	public static void TelaHome() throws IOException {
 		FXMLLoader fxmlHome = new FXMLLoader();
-		fxmlHome.setLocation(Main.class.getResource("/View/viewMain.fxml"));
+		fxmlHome.setLocation(Main.class.getResource("/View/ViewMain.fxml"));
 		Parent TelaHome = fxmlHome.load();
 		main = new Scene(TelaHome);
 		
