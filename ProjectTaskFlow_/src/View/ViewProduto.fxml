@@ -38,7 +38,7 @@
             <TableColumn fx:id="columnServico" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="Serviço" />
          </columns>
       </TableView>
-      <Button fx:id="btAgendar" layoutX="211.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendar" textFill="WHITE" />
+      <Button fx:id="btAgendar" layoutX="211.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="484.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btConcluir" layoutX="772.0" layoutY="496.0" mnemonicParsing="false" onAction="#actionConcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Concluir" textFill="WHITE" />
       <Button fx:id="btPesquisar" layoutX="595.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
