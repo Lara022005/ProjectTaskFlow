@@ -79,33 +79,7 @@ public class ControllerCadastrarUsuario {
         String senha = txtSenha.getText();
         String nivel = txtNivel.getText();
         
-        if (nome.isEmpty() || senha.isEmpty() || nivel.isEmpty()) {
-            
-            System.out.println("Erro! Campos obrigatórios! Preencha todos os campos e tente novamente.");
-        } 
         
-        else if (!nivel.matches("[12]")) { 
-            
-            System.out.println("Erro! Nível inválido! O nível deve ser 1 ou 2.");
-        }
-        
-        else if (!NivelValidator.podeCriarUsuario(nivel)) {
-            
-            System.out.println("Erro! Permissão Negada! Somente usuários de nível 1 podem criar novos usuários.");
-        }
-       
-        else {
-            
-            usuario.setNome(nome);
-            usuario.setSenha(senha);
-            usuario.setNivelUsuario(nivel); 
-
-            
-            usuarioDAO.create(usuario);
-            
-            
-            System.out.println("Sucesso! Usuário cadastrado! O usuário foi cadastrado com sucesso.");
-        }
     }
 
 

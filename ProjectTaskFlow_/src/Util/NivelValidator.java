@@ -6,6 +6,6 @@ public class NivelValidator {
         if (nivelUsuario == null) {
             return false;
         }
-        return nivelUsuario.equals("1"); // Só nível 1 pode criar
+        
     }
 }
