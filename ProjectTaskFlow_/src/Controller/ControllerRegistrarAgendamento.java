@@ -121,8 +121,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				saDAO.create(sa);
 
 				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
-				//   		Stage stage = (Stage) btCancelar.getScene().getWindow();
-				//       	stage.close();
+				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+				       	stage.close();
 			}else {
 
 				ArrayList<Cliente> clientes1 = new ArrayList<>();
@@ -163,8 +163,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				
 
 				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
-				//   		Stage stage = (Stage) btCancelar.getScene().getWindow();
-				//       	stage.close();
+				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
+				       	stage.close();
 			}			
 		} 
 	}
