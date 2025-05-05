@@ -143,7 +143,7 @@ public class ControllerMain implements Initializable {
 		columnNome.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
 		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
 		columnData.setCellValueFactory(new PropertyValueFactory<>("dataAgendamento"));
-		columnHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));		
+		columnHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));				
 		tableClientesAgend.setItems(ArrayAgendamentos);						
 	}
 

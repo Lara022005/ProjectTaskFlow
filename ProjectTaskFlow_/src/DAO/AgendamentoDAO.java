@@ -23,7 +23,7 @@ public class AgendamentoDAO {
 
 			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?)");			
 			stmt.setString(1, agendamento.getIdCliente());
-//			stmt.setString(2, agendamento.getIdServico());
+			//			stmt.setString(2, agendamento.getIdServico());
 			stmt.setString(2, agendamento.getDataAgendamento());
 			stmt.setString(3, agendamento.getDescricao());
 			stmt.setString(4, agendamento.getHorario());				
@@ -60,7 +60,7 @@ public class AgendamentoDAO {
 				agendamento.setDataAgendamento(rs.getString(3));				
 				agendamento.setDescricao(rs.getString(4));
 				agendamento.setHorario(rs.getString(5));	
-//				agendamento.setIdServico(rs.getString(6));
+				//				agendamento.setIdServico(rs.getString(6));
 
 				agendamento1.add(agendamento);
 				i++;
@@ -83,13 +83,17 @@ public class AgendamentoDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		ArrayList<Agendamento> agendamento1 = new ArrayList<>();	
-		
+
 		try {
-			stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario"
-					+ " FROM Agendamento, Cliente, Servico,ServicoAgendamento sa"
-					+ " where Id_Agendamento = sa.Fk_Agendamento "
-					+ "AND Id_Cliente = Fk_Cliente "
-					+ "AND Id_Servico = sa.Fk_Servico");
+			stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario,"
+					+ "Descricao_Agendamento, statusAgendamento\r\n"
+					+ "FROM Agendamento, Cliente, Servico,ServicoAgendamento sa\r\n"
+					+ "where Id_Agendamento = sa.Fk_Agendamento\r\n"
+					+ "and Data_Agendamento >= CAST(GETDATE() AS DATE)\r\n"
+					+ "AND Data_Agendamento < DATEADD(DAY, 1, CAST(GETDATE() AS DATE))\r\n"
+					+ "AND Id_Cliente = Fk_Cliente\r\n"
+					+ "AND Id_Servico = sa.Fk_Servico\r\n"
+					+ "");
 
 			rs = stmt.executeQuery();			
 			int i = 1;
@@ -100,7 +104,9 @@ public class AgendamentoDAO {
 				agendamento.setIdCliente(rs.getString(2));			
 				agendamento.setIdServico(rs.getString(3));
 				agendamento.setDataAgendamento(rs.getString(4));							
-				agendamento.setHorario(rs.getString(5));	
+				agendamento.setHorario(rs.getString(5));
+				agendamento.setStatusAgendamento(rs.getString(6));
+				
 				String aux = agendamento.getHorario();
 				aux = aux.replace(":00.0000000", "");
 				agendamento.setHorario(aux);
@@ -172,7 +178,7 @@ public class AgendamentoDAO {
 	}
 	// ---------------------------------------  search pesquisar (SELECT + LIKE) --------------------------------------- 
 	public ArrayList<Agendamento> search(String nome, String cpf){
-		
+
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -192,7 +198,7 @@ public class AgendamentoDAO {
 			stmt.setString(2, "%"+nome+"%");
 			stmt.setString(3, "%"+cpf+"%");
 			stmt.setString(4, "%"+cpf+"%");
-					
+
 			rs = stmt.executeQuery();
 			int i = 1;
 
@@ -204,7 +210,7 @@ public class AgendamentoDAO {
 				agendamento.setDataAgendamento(rs.getString(4));				
 				agendamento.setDescricao(rs.getString(5));
 				agendamento.setHorario(rs.getString(6));
-					
+
 
 				agendamentos.add(agendamento);
 				i++;
@@ -246,17 +252,17 @@ public class AgendamentoDAO {
 
 		return TotalAgendamento;
 	}
-	
-// --------------------------------------- ler as tabelas todas juntas
+
+	// --------------------------------------- ler as tabelas todas juntas ----------------------
 	public ArrayList<Agendamento> readCompleta(){
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		ArrayList<Agendamento> agendamento1 = new ArrayList<>();	
-		
+
 		try {
-			stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario, Descricao_Agendamento"
+			stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario, Descricao_Agendamento, statusAgendamento"
 					+ " FROM Agendamento, Cliente, Servico,ServicoAgendamento sa"
 					+ " where Id_Agendamento = sa.Fk_Agendamento "
 					+ "AND Id_Cliente = Fk_Cliente "
@@ -290,7 +296,7 @@ public class AgendamentoDAO {
 		}
 		return agendamento1;
 	}
-// ----------------------- retorna o ultimo id adicionado ------------------------
+	// ----------------------- retorna o ultimo id adicionado ------------------------
 	public ArrayList<Agendamento> readIDAdcionado(){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -301,7 +307,7 @@ public class AgendamentoDAO {
 		try {
 			stmt = con.prepareStatement("SELECT * FROM Agendamento ORDER BY Id_Agendamento DESC");					
 			rs = stmt.executeQuery();
-			
+
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
@@ -318,10 +324,10 @@ public class AgendamentoDAO {
 		}
 		return agendamento1;
 	}	
-	
-	
-public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
-		
+
+
+	public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
+
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -335,9 +341,9 @@ public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
 			stmt.setString(2, agendamento1.getDataAgendamento());
 			stmt.setString(3, agendamento1.getHorario());
 
-					
+
 			rs = stmt.executeQuery();
-			
+
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Agendamento agendamento = new Agendamento();
@@ -346,10 +352,10 @@ public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
 				agendamento.setDataAgendamento(rs.getString(3));				
 				agendamento.setDescricao(rs.getString(4));
 				agendamento.setHorario(rs.getString(5));
-					
+
 
 				agendamentos.add(agendamento);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -361,9 +367,8 @@ public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
 		}
 		return agendamentos;
 	}
+	// ------------------------------ mostrar na tabela apenas os agendamentos do dia na main -----------------
 	
-	
-	
-	
-	
+
+
 }
