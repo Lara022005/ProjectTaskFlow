@@ -1,16 +1,17 @@
 package Controller;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ControllerCliente {
+public class ControllerCliente implements Initializable {
 
     @FXML
     private Button btAlterar;
@@ -84,8 +85,8 @@ public class ControllerCliente {
     }
 
     @FXML
-    void ActionSair(ActionEvent event) throws IOException {
-    	Main.TelaHome();
+    void ActionSair(ActionEvent event) {
+
     }
 
     @FXML
@@ -108,4 +109,11 @@ public class ControllerCliente {
 
     }
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
+
