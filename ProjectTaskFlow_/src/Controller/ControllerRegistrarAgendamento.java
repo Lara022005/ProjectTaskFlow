@@ -16,7 +16,6 @@ import Model.Servico;
 import Model.ServicoAgendamento;
 import Util.Alerts;
 import Util.cpfValidador;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,18 +41,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 	@FXML
 	private Button btExcluir;
 	
-	@FXML
-    private Button btCliente;
-	
-	@FXML
-    private Button btFuncionario;
-	
-	@FXML
-    private Button btMain;
-	
-	@FXML
-    private Button btProduto;
-
 	@FXML
 	private TextField txtNomeCliente;
 
@@ -95,7 +82,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 		servico = servicos.get(0);
 
 		ArrayList<Agendamento> agendamentos = new ArrayList<>();
-
 
 		if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
 				txtHorario.getText() == "") {   		
@@ -167,27 +153,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				       	stage.close();
 			}			
 		} 
-	}
-	
-	@FXML
-    void telaCliente(ActionEvent event) throws IOException {
-		Main.TelaCliente();
-    }
-
-    @FXML
-    void telaFuncionario(ActionEvent event) throws IOException {
-    	Main.TelaFuncionario();
-    }
-
-    @FXML
-    void telaMain(ActionEvent event) throws IOException {
-    	Main.TelaHome();
-    }
-
-    @FXML
-    void telaProduto(ActionEvent event) throws IOException {
-    	Main.TelaProduto();
-    }
+	}	
 
 	@FXML
 	void actionCancelar(ActionEvent event) throws IOException {

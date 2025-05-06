@@ -20,7 +20,7 @@
                   <Image url="@../Images/Group%20132.png" />
                </image>
             </ImageView>
-            <Button fx:id="btMain" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="181.0" mnemonicParsing="false" onAction="#telaMain" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
+            <Button fx:id="btMain" alignment="BOTTOM_CENTER" layoutX="28.0" layoutY="181.0" mnemonicParsing="false" onAction="#telaMain" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
             <Button fx:id="btCliente" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="260.0" mnemonicParsing="false" onAction="#telaCliente" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
             <Button fx:id="btProduto" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="336.0" mnemonicParsing="false" onAction="#telaProduto" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
             <Button fx:id="btSair" layoutX="41.0" layoutY="517.0" mnemonicParsing="false" onAction="#actionSair" prefHeight="46.0" prefWidth="79.0" style="-fx-opacity: 1; -fx-background-color: 100;" />
