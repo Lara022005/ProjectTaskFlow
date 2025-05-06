@@ -31,15 +31,15 @@
       <TableView fx:id="tableCliente" layoutX="179.0" layoutY="187.0" prefHeight="256.0" prefWidth="742.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
-            <TableColumn fx:id="columnNomeCliente" prefWidth="172.79994201660156" style="-fx-alignment: center;" text=" Cliente" />
-            <TableColumn fx:id="columnData" prefWidth="108.0" style="-fx-alignment: center;" text="Data " />
-            <TableColumn fx:id="columnDescricao" prefWidth="156.800048828125" style="-fx-alignment: center;" text="Descrição" />
-            <TableColumn fx:id="columnHorario" prefWidth="116.0" style="-fx-alignment: center;" text="Horario" />
-            <TableColumn fx:id="columnServico" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="Serviço" />
+            <TableColumn fx:id="columnNomeCliente" prefWidth="172.79994201660156" style="-fx-alignment: center;" text="Nome" />
+            <TableColumn fx:id="columnCPF" prefWidth="108.0" style="-fx-alignment: center;" text="CPF" />
+            <TableColumn fx:id="columnEndereco" prefWidth="156.800048828125" style="-fx-alignment: center;" text="Endereço" />
+            <TableColumn fx:id="columnTelefone" prefWidth="116.0" style="-fx-alignment: center;" text="Telefone" />
+            <TableColumn fx:id="columnEmail" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="E-mail" />
          </columns>
       </TableView>
       <Button fx:id="btCadastrar" layoutX="208.0" layoutY="479.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
-      <Button fx:id="btAlterar" layoutX="481.0" layoutY="479.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
+      <Button fx:id="btAlterar" layoutX="481.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="769.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Button fx:id="btPesquisar" layoutX="592.0" layoutY="121.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
    </children>

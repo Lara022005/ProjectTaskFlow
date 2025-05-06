@@ -1,14 +1,23 @@
 package Controller;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-import application.Main;
+import javax.print.DocFlavor.URL;
+
+import org.controlsfx.control.textfield.TextFields;
+
+import DAO.ClienteDAO;
+import Model.Cliente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerCliente {
 
@@ -40,25 +49,25 @@ public class ControllerCliente {
     private Button btSair;
 
     @FXML
-    private TableColumn<?, ?> columnData;
+    private TableColumn<Cliente, String> columnCPF;
 
     @FXML
-    private TableColumn<?, ?> columnDescricao;
+    private TableColumn<Cliente, String> columnEmail;
 
     @FXML
-    private TableColumn<?, ?> columnHorario;
+    private TableColumn<Cliente, String> columnEndereco;
 
     @FXML
-    private TableColumn<?, ?> columnIndice;
+    private TableColumn<Cliente, String> columnIndice;
 
     @FXML
-    private TableColumn<?, ?> columnNomeCliente;
+    private TableColumn<Cliente, String> columnNomeCliente;
 
     @FXML
-    private TableColumn<?, ?> columnServico;
+    private TableColumn<Cliente, String> columnTelefone;
 
     @FXML
-    private TableView<?> tableCliente;
+    private TableView<Cliente> tableCliente;
 
     @FXML
     private TextField txtPesquisar;
@@ -84,8 +93,8 @@ public class ControllerCliente {
     }
 
     @FXML
-    void ActionSair(ActionEvent event) throws IOException {
-    	Main.TelaHome();
+    void ActionSair(ActionEvent event) {
+
     }
 
     @FXML
@@ -108,4 +117,41 @@ public class ControllerCliente {
 
     }
 
+
+
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+		CarregarTableCliente();
+		
+		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList<String> nomesClientes = new ArrayList<String>();
+		nomesClientes = clienteDAO.readClienteByNome();
+		String[] cliente = new String[nomesClientes.size()];
+
+		for (int i = 0; i < nomesClientes.size(); i++) {
+			cliente[i] = nomesClientes.get(i);
+		}
+		TextFields.bindAutoCompletion(txtPesquisar, cliente);
+		
+	}
+	
+	private ObservableList<Cliente> ArrayCliente;
+	
+	public void CarregarTableCliente() {
+    	ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayCliente = FXCollections.observableArrayList(clienteDAO.read());
+		
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		columnCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+		columnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+		columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		tableCliente.setItems(ArrayCliente);		
+					
+	}
+	
+
 }
+

@@ -22,7 +22,7 @@
       <Button fx:id="btSair" layoutX="38.0" layoutY="477.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: 1;" />
       <Button fx:id="btCadastrar" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="778.0" layoutY="490.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
-      <Button fx:id="btCadastrar1" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="btCadastrar1" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Salvar" textFill="WHITE" />
       <Button fx:id="btExcluir1" layoutX="778.0" layoutY="490.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Text fill="#3c42ff" layoutX="215.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Produto" wrappingWidth="368.4033203125">
          <font>
