@@ -33,5 +33,7 @@
       <Text layoutX="229.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
       <Text layoutX="672.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível" />
       <Text layoutX="231.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+      <TextField fx:id="txtCPF" layoutX="630.0" layoutY="264.0" prefHeight="26.0" prefWidth="243.0" />
+      <Text layoutX="630.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
    </children>
 </AnchorPane>
