@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
+import Controller.ControllerCadastrarUsuario;
 import Model.Usuario;
 import Util.Alerts;
 import javafx.scene.control.Alert.AlertType;
@@ -189,5 +190,11 @@ public class UsuarioDAO {
 		}				
 		return usuario;		
 	}
+	
+	
+	
+
+
+	
 
 }
