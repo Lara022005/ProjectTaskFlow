@@ -330,7 +330,7 @@ public class AgendamentoDAO {
 		return agendamento1;
 	}	
 
-//-----------------------------------
+//----------------------------------- pesquisar informações do agendamento ----------------------
 	public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
 
 		Connection con = ConnectionDataBase.getConnection();

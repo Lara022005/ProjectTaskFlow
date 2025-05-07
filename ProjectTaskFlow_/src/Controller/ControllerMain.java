@@ -105,7 +105,7 @@ public class ControllerMain implements Initializable {
     }
     @FXML
     void telaCliente(ActionEvent event) throws IOException {
-    	Main.TelaCliente();
+    	Main.TelaCliente();  	
     }
     @FXML
     void telaFuncionario(ActionEvent event) throws IOException {

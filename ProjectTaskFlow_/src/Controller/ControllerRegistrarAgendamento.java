@@ -216,12 +216,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 		}
 		// -------------------- barra de pesquisar servico --------------------				
 		ServicoDAO servicoDAO = new ServicoDAO();
-		ArrayList<String> nomesServicos = new ArrayList<String>();
-		nomesServicos = servicoDAO.readServicoByNome();
-		String[] servico = new String[nomesServicos.size()];
+		ArrayList<String> nomeServicos = new ArrayList<String>();
+		nomeServicos = servicoDAO.readServicoByNome();
+		String[] servico = new String[nomeServicos.size()];
 
-		for (int i = 0; i < nomesServicos.size(); i++) {
-			servico[i] = nomesServicos.get(i);
+		for (int i = 0; i < nomeServicos.size(); i++) {
+			servico[i] = nomeServicos.get(i);
 		}
 		TextFields.bindAutoCompletion(txtServico, servico);	
 
