@@ -21,12 +21,13 @@ public class AgendamentoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?)");			
-			stmt.setString(1, agendamento.getIdCliente());
-			//			stmt.setString(2, agendamento.getIdServico());
+			stmt = con.prepareStatement("insert into Agendamento values(?, ?, ?, ?, ?)");			
+//			stmt.setString(1, agendamento.getIdServico());
+			stmt.setString(1, agendamento.getIdCliente());		
 			stmt.setString(2, agendamento.getDataAgendamento());
 			stmt.setString(3, agendamento.getDescricao());
-			stmt.setString(4, agendamento.getHorario());				
+			stmt.setString(4, agendamento.getHorario());		
+			stmt.setString(5, "Não concluído");
 
 			stmt.executeUpdate();
 			System.out.println("Cadastrado com sucesso!");
@@ -77,6 +78,7 @@ public class AgendamentoDAO {
 	}	
 
 	// -------------------------------------- ler os relacionamentos entre as tabelas ----------------------------	
+	// ------------------------------ mostrar na tabela apenas os agendamentos do dia na main -----------------
 	public ArrayList<Agendamento> readNomes(){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -210,7 +212,7 @@ public class AgendamentoDAO {
 				agendamento.setDataAgendamento(rs.getString(4));				
 				agendamento.setDescricao(rs.getString(5));
 				agendamento.setHorario(rs.getString(6));
-
+				agendamento.setStatusAgendamento(rs.getString(7));
 
 				agendamentos.add(agendamento);
 				i++;
@@ -254,6 +256,7 @@ public class AgendamentoDAO {
 	}
 
 	// --------------------------------------- ler as tabelas todas juntas ----------------------
+	
 	public ArrayList<Agendamento> readCompleta(){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -282,6 +285,8 @@ public class AgendamentoDAO {
 				aux = aux.replace(":00.0000000", "");
 				agendamento.setHorario(aux);
 				agendamento.setDescricao(rs.getString(6));
+				agendamento.setStatusAgendamento(rs.getString(7));
+				
 
 				agendamento1.add(agendamento);
 				i++;
@@ -325,7 +330,7 @@ public class AgendamentoDAO {
 		return agendamento1;
 	}	
 
-
+//-----------------------------------
 	public ArrayList<Agendamento> searchIdAgendamento(Agendamento agendamento1){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -367,8 +372,27 @@ public class AgendamentoDAO {
 		}
 		return agendamentos;
 	}
-	// ------------------------------ mostrar na tabela apenas os agendamentos do dia na main -----------------
+// ------------------------------- update em não concluido na tabela status ------------------
+	public void updateStatusAgend(Agendamento agendamento) {
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+
+		try {
+			stmt = con.prepareStatement("update Agendamento set statusAgendamento = 'Concluído' where Id_Agendamento = ?");	
+			stmt.setString(1, agendamento.getId());			
+
+			stmt.executeUpdate();
+			System.out.println("Concluído com sucesso!");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao concluir!", e);
+		} 
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt);
+		}
+	}
 	
-
-
+	
 }

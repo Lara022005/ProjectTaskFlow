@@ -16,7 +16,6 @@ import Model.Servico;
 import Model.ServicoAgendamento;
 import Util.Alerts;
 import Util.cpfValidador;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,18 +41,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 	@FXML
 	private Button btExcluir;
 	
-	@FXML
-    private Button btCliente;
-	
-	@FXML
-    private Button btFuncionario;
-	
-	@FXML
-    private Button btMain;
-	
-	@FXML
-    private Button btProduto;
-
 	@FXML
 	private TextField txtNomeCliente;
 
@@ -96,7 +83,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 		ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
-
 		if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
 				txtHorario.getText() == "") {   		
 			Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
@@ -104,10 +90,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
 		}
 		else { 	
+//			agendamento.setIdServico(servico.getId());
 			agendamento.setIdCliente(cliente.getId());
 			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 			agendamento.setDescricao(txtDescricao.getText());
-			agendamento.setHorario(txtHorario.getText());	
+			agendamento.setHorario(txtHorario.getText());
+//			agendamento.setStatusAgendamento(null);
 
 			if(ControllerAgendamento.agendamentoAlterar == null) {
 				agendamentoDAO.create(agendamento);
@@ -117,7 +105,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				agendamento = agendamentos.get(0);
 				sa.setIdServico(servico.getId());
 				sa.setIdAgendamento(agendamento.getId());
-				sa.setQuantidade("1");
+				sa.setQuantidade("0");
 				saDAO.create(sa);
 
 				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
@@ -167,27 +155,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				       	stage.close();
 			}			
 		} 
-	}
-	
-	@FXML
-    void telaCliente(ActionEvent event) throws IOException {
-		Main.TelaCliente();
-    }
-
-    @FXML
-    void telaFuncionario(ActionEvent event) throws IOException {
-    	Main.TelaFuncionario();
-    }
-
-    @FXML
-    void telaMain(ActionEvent event) throws IOException {
-    	Main.TelaHome();
-    }
-
-    @FXML
-    void telaProduto(ActionEvent event) throws IOException {
-    	Main.TelaProduto();
-    }
+	}	
 
 	@FXML
 	void actionCancelar(ActionEvent event) throws IOException {

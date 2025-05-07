@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="0.0" prefHeight="570.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="0.0" prefHeight="570.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerProdutos">
    <children>
       <ImageView fitHeight="578.0" fitWidth="155.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,9 +18,9 @@
          </image>
       </ImageView>
       <Button fx:id="btMain" layoutX="52.0" layoutY="177.0" mnemonicParsing="false" onAction="#ActionMain" prefHeight="44.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btCliente" layoutX="52.0" layoutY="251.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="44.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btProduto" layoutX="52.0" layoutY="321.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="44.0" prefWidth="58.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btFuncionario" layoutX="52.0" layoutY="395.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btCliente" layoutX="44.0" layoutY="242.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="57.0" prefWidth="66.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btProduto" layoutX="47.0" layoutY="317.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="58.0" prefWidth="66.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btFuncionario" layoutX="41.0" layoutY="385.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="58.0" prefWidth="90.0" style="-fx-background-color: 1;" />
       <Button fx:id="btSair" layoutX="39.0" layoutY="487.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: 1;" />
       <Text fill="#3c42ff" layoutX="211.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos">
          <font>
@@ -28,19 +28,20 @@
          </font>
       </Text>
       <TextField fx:id="txtPesquisar" layoutX="211.0" layoutY="137.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView fx:id="tableAgendamentos" layoutX="182.0" layoutY="203.0" prefHeight="256.0" prefWidth="742.0">
+      <TableView fx:id="tableProdutos" layoutX="182.0" layoutY="203.0" prefHeight="256.0" prefWidth="742.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
-            <TableColumn fx:id="columnNomeCliente" prefWidth="172.79994201660156" style="-fx-alignment: center;" text=" Cliente" />
-            <TableColumn fx:id="columnData" prefWidth="108.0" style="-fx-alignment: center;" text="Data " />
-            <TableColumn fx:id="columnDescricao" prefWidth="156.800048828125" style="-fx-alignment: center;" text="Descrição" />
-            <TableColumn fx:id="columnHorario" prefWidth="116.0" style="-fx-alignment: center;" text="Horario" />
-            <TableColumn fx:id="columnServico" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="Serviço" />
+            <TableColumn fx:id="columnProduto" prefWidth="172.8000030517578" style="-fx-alignment: center;" text="Produto" />
+            <TableColumn fx:id="columnCodBarra" prefWidth="133.5999755859375" style="-fx-alignment: center;" text="Código de barra" />
+            <TableColumn fx:id="columnDataFab" prefWidth="116.0" style="-fx-alignment: center;" text="Data fabricação" />
+            <TableColumn fx:id="columnDataVal" prefWidth="112.00006103515625" style="-fx-alignment: center;" text="Data  validade" />
+            <TableColumn fx:id="columnPreco" prefWidth="102.39996337890625" style="-fx-alignment: center;" text="Preço" />
+            <TableColumn fx:id="columnEstoque" prefWidth="69.5999755859375" style="-fx-alignment: center;" text="Estoque" />
          </columns>
       </TableView>
-      <Button fx:id="btAgendar" layoutX="211.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionAgendar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="btCadastrar" layoutX="211.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="484.0" layoutY="495.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
-      <Button fx:id="btConcluir" layoutX="772.0" layoutY="496.0" mnemonicParsing="false" onAction="#actionConcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Concluir" textFill="WHITE" />
+      <Button fx:id="btExcluir" layoutX="772.0" layoutY="496.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Button fx:id="btPesquisar" layoutX="595.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
    </children>
 </AnchorPane>
