@@ -90,10 +90,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
 		}
 		else { 	
+//			agendamento.setIdServico(servico.getId());
 			agendamento.setIdCliente(cliente.getId());
 			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 			agendamento.setDescricao(txtDescricao.getText());
-			agendamento.setHorario(txtHorario.getText());	
+			agendamento.setHorario(txtHorario.getText());
+//			agendamento.setStatusAgendamento(null);
 
 			if(ControllerAgendamento.agendamentoAlterar == null) {
 				agendamentoDAO.create(agendamento);
@@ -103,7 +105,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				agendamento = agendamentos.get(0);
 				sa.setIdServico(servico.getId());
 				sa.setIdAgendamento(agendamento.getId());
-				sa.setQuantidade("1");
+				sa.setQuantidade("0");
 				saDAO.create(sa);
 
 				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);

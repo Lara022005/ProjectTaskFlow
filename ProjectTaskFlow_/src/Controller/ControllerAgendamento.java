@@ -73,10 +73,11 @@ public class ControllerAgendamento implements Initializable{
     private TableColumn<Agendamento, String> columnServico;
 
     @FXML
-    private TableView<Agendamento> tableAgendamentos;
+    private TableColumn<Agendamento, String> columnStatusAgend;
     
     @FXML
-    private TableColumn<Agendamento, String> columnStatusAgend;
+    private TableView<Agendamento> tableAgendamentos;
+    
 
     @FXML
     private TextField txtPesquisar;
@@ -91,8 +92,7 @@ public class ControllerAgendamento implements Initializable{
     void actionAgendar(ActionEvent event) throws IOException {
     	agendamentoAlterar = null;
     	Main.TelaRegistrarAgendamento();
-		CarregarTableAgendamento();	  
-		System.out.println("teste");
+		CarregarTableAgendamento();	  		
     }
     
     public static Agendamento agendamentoAlterar = new Agendamento();
@@ -215,7 +215,6 @@ public class ControllerAgendamento implements Initializable{
 		AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
 		Agendamento agendamento = new Agendamento();
 		agendamento.setIdCliente(txtPesquisar.getText());
-//		agendamento.setNome(txtPesquisar.getText());
 
 		ArrayAgendamentos = FXCollections.observableArrayList(agendamentoDAO.search(agendamento.getIdCliente(), agendamento.getIdCliente()));
 
