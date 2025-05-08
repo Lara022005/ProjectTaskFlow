@@ -1,10 +1,12 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import DAO.ClienteDAO;
 import Model.Cliente;
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -70,8 +72,9 @@ public class ControllerCliente  implements Initializable {
     private TextField txtPesquisar;
 
     @FXML
-    void ActionSair(ActionEvent event) {
-
+    void ActionSair(ActionEvent event) throws IOException {
+    	Main.TelaHome();
+    	CarregarTableCliente();
     }
 
     @FXML
@@ -80,8 +83,8 @@ public class ControllerCliente  implements Initializable {
     }
 
     @FXML
-    void actionCadastrar(ActionEvent event) {
-
+    void actionCadastrar(ActionEvent event) throws IOException {
+    	Main.TelaCadastrarCliente();
     }
 
     @FXML
@@ -95,23 +98,23 @@ public class ControllerCliente  implements Initializable {
     }
 
     @FXML
-    void telaCliente(ActionEvent event) {
-
+    void telaCliente(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
     }
 
     @FXML
-    void telaFuncionario(ActionEvent event) {
-
+    void telaFuncionario(ActionEvent event) throws IOException {
+    	Main.TelaFuncionario();
     }
 
     @FXML
-    void telaMain(ActionEvent event) {
-
+    void telaMain(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
-    void telaProduto(ActionEvent event) {
-
+    void telaProduto(ActionEvent event) throws IOException {
+    	Main.TelaProduto();
     }
 
 
