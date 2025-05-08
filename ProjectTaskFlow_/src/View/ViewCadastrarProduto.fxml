@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="493.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCadastrarProduto">
    <children>
       <Button fx:id="btCadastrar" layoutX="89.0" layoutY="420.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
-      <Button fx:id="btExcluir" layoutX="429.0" layoutY="421.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
+      <Button fx:id="btConcluir" layoutX="429.0" layoutY="421.0" mnemonicParsing="false" onAction="#actionConcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Concluir" textFill="WHITE" />
       <Text fill="#3c42ff" layoutX="168.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Produto" wrappingWidth="368.4033203125">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />

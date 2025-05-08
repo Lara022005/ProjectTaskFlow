@@ -108,6 +108,7 @@ public class ControllerProduto implements Initializable {
 	@FXML
 	void actionAlterar(ActionEvent event) throws IOException {
 		Main.TelaCadastrarProduto();
+		
 			
 	}
 	@FXML
