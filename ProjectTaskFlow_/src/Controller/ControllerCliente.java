@@ -1,12 +1,10 @@
 package Controller;
 
-
-import java.io.IOException;
+import java.net.URL;
 import java.util.ResourceBundle;
-import javax.print.DocFlavor.URL;
+
 import DAO.ClienteDAO;
 import Model.Cliente;
-import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,88 +16,109 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class ControllerCliente implements Initializable{
+public class ControllerCliente  implements Initializable {
 
-	@FXML
-	private Button btAlterar;
+    @FXML
+    private Button btAlterar;
 
-	@FXML
-	private Button btCadastrar;
+    @FXML
+    private Button btCadastrar;
 
-	@FXML
-	private Button btCliente;
+    @FXML
+    private Button btCliente;
 
-	@FXML
-	private Button btExcluir;
+    @FXML
+    private Button btExcluir;
 
-	@FXML
-	private Button btFuncionario;
+    @FXML
+    private Button btFuncionario;
 
-	@FXML
-	private Button btMain;
+    @FXML
+    private Button btMain;
 
-	@FXML
-	private Button btPesquisar;
+    @FXML
+    private Button btPesquisar;
 
-	@FXML
-	private Button btProduto;
+    @FXML
+    private Button btProduto;
 
-	@FXML
-	private Button btSair;
+    @FXML
+    private Button btSair;
 
-	@FXML
-	private TableColumn<Cliente, String> columnCPF;
+    @FXML
+    private TableColumn<Cliente, String> columnCPF;
 
-	@FXML
-	private TableColumn<Cliente, String> columnEmail;
+    @FXML
+    private TableColumn<Cliente, String> columnEmail;
 
-	@FXML
-	private TableColumn<Cliente, String> columnEndereco;
+    @FXML
+    private TableColumn<Cliente, String> columnEndereco;
 
-	@FXML
-	private TableColumn<Cliente, String> columnIndice;
+    @FXML
+    private TableColumn<Cliente, String> columnIndice;
 
-	@FXML
-	private TableColumn<Cliente, String> columnNomeCliente;
+    @FXML
+    private TableColumn<Cliente, String> columnNomeCliente;
 
-	@FXML
-	private TableColumn<Cliente, String> columnTelefone;
+    @FXML
+    private TableColumn<Cliente, String> columnTelefone;
 
-	@FXML
-	private TableView<Cliente> tableCliente;
+    @FXML
+    private TableView<Cliente> tableCliente;
 
-	@FXML
-	private TextField txtPesquisar;
+    @FXML
+    private TextField txtPesquisar;
 
-	  void actionPesquisar(ActionEvent event) {
-	    	
-	    }
-	    
-	    @FXML
-	    void telaCliente(ActionEvent event) throws IOException {
-			Main.TelaCliente();
-			CarregarTableCliente();
-	    }
+    @FXML
+    void ActionSair(ActionEvent event) {
 
-	    @FXML
-	    void telaFuncionario(ActionEvent event) throws IOException {
-	    	Main.TelaFuncionario();
-	    }
+    }
 
-	    @FXML
-	    void telaMain(ActionEvent event) throws IOException {
-	    	Main.TelaHome();
-	    }
+    @FXML
+    void actionAlterar(ActionEvent event) {
 
-	    @FXML
-	    void telaProduto(ActionEvent event) throws IOException {
-	    	Main.TelaProduto();
-	    }
+    }
+
+    @FXML
+    void actionCadastrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionPesquisar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaCliente(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaFuncionario(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaMain(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaProduto(ActionEvent event) {
+
+    }
 
 
-	private ObservableList<Cliente> ArrayCliente;
-
-	public void CarregarTableCliente() {
+    
+    private ObservableList<Cliente> ArrayCliente;
+    
+    public void CarregarTableCliente() {
 		
 		
 		ClienteDAO clienteDAO = new ClienteDAO();
@@ -115,15 +134,13 @@ public class ControllerCliente implements Initializable{
 
 	}
 
+
 	@Override
-	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 		CarregarTableCliente();
 		
 	}
 
-
-
 }
-

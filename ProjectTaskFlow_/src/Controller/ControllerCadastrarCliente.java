@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class ControllerCadastrarCliente implements Initializable  {
+public class ControllerCadastrarCliente implements Initializable{
 
     @FXML
     private Button btCadastrar;
