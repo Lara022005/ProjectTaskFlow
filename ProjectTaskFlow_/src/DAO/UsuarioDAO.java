@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
 import Controller.ControllerCadastrarUsuario;
+import Model.Agendamento;
 import Model.Usuario;
 import Util.Alerts;
 import javafx.scene.control.Alert.AlertType;
@@ -191,6 +192,49 @@ public class UsuarioDAO {
 		return usuario;		
 	}
 	
+	// --------------------------------------- ler as tabelas todas juntas
+		public ArrayList<Usuario> readCompleta(){
+
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Usuario> usuario1 = new ArrayList<>();	
+			
+			try {
+				stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario, Descricao_Agendamento"
+						+ " FROM Agendamento, Cliente, Servico,ServicoAgendamento sa"
+						+ " where Id_Agendamento = sa.Fk_Agendamento "
+						+ "AND Id_Cliente = Fk_Cliente "
+						+ "AND Id_Servico = sa.Fk_Servico");
+
+				rs = stmt.executeQuery();			
+				int i = 1;
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Agendamento agendamento = new Agendamento();
+					agendamento.setId("" + i);
+					agendamento.setIdCliente(rs.getString(2));			
+					agendamento.setIdServico(rs.getString(3));
+					agendamento.setDataAgendamento(rs.getString(4));							
+					agendamento.setHorario(rs.getString(5));	
+					String aux = agendamento.getHorario();
+					aux = aux.replace(":00.0000000", "");
+					agendamento.setHorario(aux);
+					agendamento.setDescricao(rs.getString(6));
+
+					agendamento1.add(agendamento);
+					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return agendamento1;
+		}
 	
 	
 

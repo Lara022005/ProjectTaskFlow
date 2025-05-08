@@ -122,7 +122,7 @@ public class ControllerUsuario implements Initializable{
     
     public void CarregarTableAgendamento() {
     	UsuarioDAO usuarioDAO = new UsuarioDAO();
-//    	terminar a readTerminar para funcionar
+//    	terminar a readTerminar para funcionar=================================================================
     	ArrayUsuarios = FXCollections.observableArrayList(usuarioDAO.readCompleta());
 		
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
