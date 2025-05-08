@@ -117,7 +117,7 @@ public class ControllerUsuario implements Initializable{
 		
 		
 	}
-	
+	  
 	private ObservableList<Usuario> ArrayUsuarios;
     
     public void CarregarTableAgendamento() {
