@@ -1,8 +1,10 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,27 +34,30 @@ public class ControllerCadastrarCliente implements Initializable{
     private Button btSair;
 
     @FXML
-    void ActionCliente(ActionEvent event) {
-
+    void ActionCliente(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
     }
 
     @FXML
-    void ActionFuncionario(ActionEvent event) {
-
+    void ActionFuncionario(ActionEvent event) throws IOException {
+    	Main.TelaFuncionario();
+    	
     }
 
     @FXML
-    void ActionMain(ActionEvent event) {
-
+    void ActionMain(ActionEvent event) throws IOException {
+    	Main.TelaHome();
+    	
     }
 
     @FXML
-    void ActionProduto(ActionEvent event) {
-
+    void ActionProduto(ActionEvent event) throws IOException {
+    	Main.TelaProduto();
     }
 
     @FXML
     void ActionSair(ActionEvent event) {
+    
 
     }
 

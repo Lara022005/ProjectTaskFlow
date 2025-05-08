@@ -1,10 +1,15 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.ServicoDAO;
 //import DAO.ServicoDAO;
 import Model.Servico;
+import application.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 //import javafx.collections.FXCollections;
 //import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 //import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerServico implements Initializable {
 
@@ -70,28 +76,28 @@ public class ControllerServico implements Initializable {
     private TextField txtPesquisar;
 
     @FXML
-    void ActionCliente(ActionEvent event) {
-
+    void ActionCliente(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
     }
 
     @FXML
-    void ActionFuncionario(ActionEvent event) {
-
+    void ActionFuncionario(ActionEvent event) throws IOException {
+    	Main.TelaFuncionario();
     }
 
     @FXML
-    void ActionMain(ActionEvent event) {
-
+    void ActionMain(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
-    void ActionProduto(ActionEvent event) {
-
+    void ActionProduto(ActionEvent event) throws IOException {
+    	Main.TelaProduto();
     }
 
     @FXML
-    void ActionSair(ActionEvent event) {
-
+    void ActionSair(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
@@ -100,8 +106,8 @@ public class ControllerServico implements Initializable {
     }
 
     @FXML
-    void actionCadastrar(ActionEvent event) {
-
+    void actionCadastrar(ActionEvent event) throws IOException {
+    	Main.TelaCadastrarServico();
     }
 
     @FXML
@@ -114,22 +120,22 @@ public class ControllerServico implements Initializable {
 
     }
     
-//	private ObservableList<Servico> ArrayServico;
+	private ObservableList<Servico> ArrayServico;
 
     
     
-//    public void CarregarTableCliente() {
-//		
-//		
-//		ServicoDAO servicoDAO = new ServicoDAO();
-//		ArrayServico = FXCollections.observableArrayList(servicoDAO.read());
-//
-//		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
-//		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
-//		
-//
-//
-//	}
+    public void CarregarTableCliente() {
+		
+		
+		ServicoDAO servicoDAO = new ServicoDAO();
+		ArrayServico = FXCollections.observableArrayList(servicoDAO.read());
+
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		
+
+
+	}
 
     
     
