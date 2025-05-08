@@ -23,7 +23,7 @@
          </font>
       </Text>
       <TextField fx:id="txtPesquisar" layoutX="205.0" layoutY="121.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView layoutX="179.0" layoutY="178.0" prefHeight="256.0" prefWidth="742.0">
+      <TableView fx:id="tableUsuarios" layoutX="179.0" layoutY="178.0" prefHeight="256.0" prefWidth="742.0">
          <columns>
             <TableColumn prefWidth="75.0" text="C1" />
             <TableColumn prefWidth="75.0" text="C2" />

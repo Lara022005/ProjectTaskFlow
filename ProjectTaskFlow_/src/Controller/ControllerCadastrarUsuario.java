@@ -2,18 +2,18 @@ package Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import DAO.AgendamentoDAO;
-import DAO.ClienteDAO;
-import DAO.ServicoDAO;
-import Model.Agendamento;
-import Model.Cliente;
-import Model.Servico;
+import DAO.FuncionarioDAO;
+import DAO.UsuarioDAO;
+import Model.Funcionario;
+import Model.Usuario;
+import Util.Alerts;
+import Util.cpfValidador;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class ControllerCadastrarUsuario {
@@ -43,7 +43,7 @@ public class ControllerCadastrarUsuario {
     private Button btSair;
 
     @FXML
-    private TextField txtCPF;
+    private TextField txtCpf;
 
     @FXML
     private TextField txtNivel;
@@ -81,25 +81,37 @@ public class ControllerCadastrarUsuario {
 
     @FXML
     void actionCadastrar(ActionEvent event) {
-    	AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-		Agendamento agendamento = new Agendamento();
-		ClienteDAO clienteDAO = new ClienteDAO();
-		Cliente cliente = new Cliente();
-		ServicoDAO servicoDAO = new ServicoDAO();
-		Servico servico = new Servico();
+    	UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		Funcionario funcionario = new Funcionario();
 
-		ArrayList<Cliente> clientes = new ArrayList<>();
-		cliente.setCpf(txtCpf.getText());
-		cliente.setNome(txtNomeCliente.getText());
-		clientes = clienteDAO.search(cliente);
-		cliente = clientes.get(0);
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		usuario.setSenha(txtSenha.getText());
+		usuario.setNome(txtNome.getText());
+		usuario.setNivelUsuario(txtNivel.getText());
+		usuarios = usuarioDAO.search(usuario);
+		usuario = usuarios.get(0);
 
-		ArrayList<Servico> servicos = new ArrayList<>();
-		servico.setNome(txtServico.getText());
-		servicos = servicoDAO.search(servico);
-		servico = servicos.get(0);
+		ArrayList<Funcionario> funcionarios = new ArrayList<>();
+		funcionario.setCpf(txtCpf.getText());
+		funcionarios = funcionarioDAO.search(funcionario);
+		funcionario = funcionarios.get(0);
 
-		ArrayList<Agendamento> agendamentos = new ArrayList<>();
+		
+		if(txtNome.getText() == "" || txtSenha.getText() == "" || txtNivel.getText() == "") {   		
+			
+			Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
+		}else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
+			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
+		}
+		else {
+			usuario.setId(usuario.getId());
+			usuario.setNome(txtNome.getText());
+			usuario.setSenha(txtSenha.getText());
+			usuario.setNivelUsuario(txtNivel.getText());
+			
+		}
     }
 
     @FXML
