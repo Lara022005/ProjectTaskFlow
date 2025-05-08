@@ -105,14 +105,26 @@ public class ControllerProduto implements Initializable {
 		PesquisarTableProduto();
 	}
 
+	public static Produto alterarProduto = new Produto();
+	
 	@FXML
 	void actionAlterar(ActionEvent event) throws IOException {
 		Main.TelaCadastrarProduto();
-		
-			
+		int i = tableProdutos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+		if(i == -1) {
+			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
+		}else {
+			alterarProduto = tableProdutos.getItems().get(i);
+			Main.TelaRegistrarAgendamento();
+			alterarProduto = null;
+		}
+		CarregarTableProduto();	
+				
 	}
 	@FXML
-	void actionCadastrar(ActionEvent event) {
+	void actionCadastrar(ActionEvent event) throws IOException {
+		alterarProduto = null;
+		Main.TelaCadastrarProduto();
 
 	}
 
@@ -140,7 +152,6 @@ public class ControllerProduto implements Initializable {
 			}
 		}
 	}
-
 	private ObservableList<Produto> ArrayProdutos;
 
 	public void CarregarTableProduto() {
