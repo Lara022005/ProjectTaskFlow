@@ -2,8 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import DAO.ProdutoDAO;
 import Model.Produto;
 import Util.Alerts;
@@ -70,7 +70,7 @@ public class ControllerCadastrarProduto implements Initializable {
     		Alerts.showAlert("Sucesso!", "Produto editado", "O produto foi editado com sucesso", AlertType.INFORMATION);    
     		Stage stage = (Stage) btCancelar.getScene().getWindow();
         	stage.close();
-    	}   	   		  		
+    		}   	   		  		
     	} 	    	
     }
 
@@ -93,6 +93,21 @@ public class ControllerCadastrarProduto implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+
+		if(ControllerProduto.alterarProduto != null) {
+			btCadastrar.setText("Salvar");
+			Produto produtoEditar = new Produto();
+			produtoEditar = ControllerProduto.alterarProduto;
+			txtCodBarra.setText(produtoEditar.getCodBarra());
+			txtEstoque.setText(produtoEditar.getEstoque());
+			txtPrecoUni.setText(produtoEditar.getPrecoUni());
+			txtProduto.setText(produtoEditar.getNome());		
+			LocalDate dateFab = LocalDate.parse(produtoEditar.getDataFab());
+			dpDataFab.setValue(dateFab);
+			LocalDate dateVal = LocalDate.parse(produtoEditar.getDataVal());
+			dpDataVal.setValue(dateVal);
+		}
 		
 	}
 }

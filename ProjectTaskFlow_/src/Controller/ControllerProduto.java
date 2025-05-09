@@ -125,7 +125,7 @@ public class ControllerProduto implements Initializable {
 	void actionCadastrar(ActionEvent event) throws IOException {
 		alterarProduto = null;
 		Main.TelaCadastrarProduto();
-
+		CarregarTableProduto();	
 	}
 
 	@FXML
@@ -192,7 +192,7 @@ public class ControllerProduto implements Initializable {
 		// TODO Auto-generated method stub
 		CarregarTableProduto();
 
-		// -------------------- barra de pesquisar servico --------------------				
+		// -------------------- barra de pesquisar produto --------------------				
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 		ArrayList<String> nomeProdutos = new ArrayList<String>();
 		nomeProdutos = produtoDAO.readProdutoByNome();
