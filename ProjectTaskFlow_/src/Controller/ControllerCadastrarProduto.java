@@ -103,10 +103,10 @@ public class ControllerCadastrarProduto implements Initializable {
 			txtEstoque.setText(produtoEditar.getEstoque());
 			txtPrecoUni.setText(produtoEditar.getPrecoUni());
 			txtProduto.setText(produtoEditar.getNome());		
-			LocalDate dateFab = LocalDate.parse(produtoEditar.getDataFab());
-			dpDataFab.setValue(dateFab);
-			LocalDate dateVal = LocalDate.parse(produtoEditar.getDataVal());
-			dpDataVal.setValue(dateVal);
+			LocalDate dataFab = LocalDate.parse(produtoEditar.getDataFab());
+			dpDataFab.setValue(dataFab);
+			LocalDate dataVal = LocalDate.parse(produtoEditar.getDataVal());
+			dpDataVal.setValue(dataVal);
 		}
 		
 	}
