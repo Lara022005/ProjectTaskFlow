@@ -90,12 +90,12 @@ public class ControllerAgendamento implements Initializable{
     }
     @FXML
     void actionAgendar(ActionEvent event) throws IOException {
-    	agendamentoAlterar = null;
+    	alterarAgendamento = null;
     	Main.TelaRegistrarAgendamento();
 		CarregarTableAgendamento();	  		
     }
     
-    public static Agendamento agendamentoAlterar = new Agendamento();
+    public static Agendamento alterarAgendamento = new Agendamento();
     public static Agendamento AlterarStatusAgend = new Agendamento();
     @FXML
     void actionAlterar(ActionEvent event) throws IOException {
@@ -104,9 +104,9 @@ public class ControllerAgendamento implements Initializable{
 		if(i == -1) {
 			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
 		}else {
-			agendamentoAlterar = tableAgendamentos.getItems().get(i);
+			alterarAgendamento = tableAgendamentos.getItems().get(i);
 			Main.TelaRegistrarAgendamento();
-			agendamentoAlterar = null;
+			alterarAgendamento = null;
 		}
 		CarregarTableAgendamento();		
     }    

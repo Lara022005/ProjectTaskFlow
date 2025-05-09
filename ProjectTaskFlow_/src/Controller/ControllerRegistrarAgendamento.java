@@ -97,7 +97,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			agendamento.setHorario(txtHorario.getText());
 //			agendamento.setStatusAgendamento(null);
 
-			if(ControllerAgendamento.agendamentoAlterar == null) {
+			if(ControllerAgendamento.alterarAgendamento == null) {
 				agendamentoDAO.create(agendamento);
 				agendamentos = agendamentoDAO.readIDAdcionado();
 				ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
@@ -115,15 +115,15 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 				ArrayList<Cliente> clientes1 = new ArrayList<>();
 				cliente.setCpf(null);
-				cliente.setNome(ControllerAgendamento.agendamentoAlterar.getIdCliente());
+				cliente.setNome(ControllerAgendamento.alterarAgendamento.getIdCliente());
 				clientes1 = clienteDAO.search(cliente);
-				System.out.println(ControllerAgendamento.agendamentoAlterar.getIdCliente()); 
+				System.out.println(ControllerAgendamento.alterarAgendamento.getIdCliente()); 
 				cliente = clientes1.get(0);
 				System.out.println("Cliente: "+ cliente.getId());
-				ControllerAgendamento.agendamentoAlterar.setIdCliente(cliente.getId());
-				System.out.println(ControllerAgendamento.agendamentoAlterar.getHorario()); 
-				System.out.println(ControllerAgendamento.agendamentoAlterar.getDataAgendamento());
-				agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.agendamentoAlterar);
+				ControllerAgendamento.alterarAgendamento.setIdCliente(cliente.getId());
+				System.out.println(ControllerAgendamento.alterarAgendamento.getHorario()); 
+				System.out.println(ControllerAgendamento.alterarAgendamento.getDataAgendamento());
+				agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.alterarAgendamento);
 				agendamento = agendamentos.get(0); 
 				cliente.setCpf(txtCpf.getText());
 				cliente.setNome(txtNomeCliente.getText());
@@ -134,6 +134,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				servicos1 = servicoDAO.search(servico);
 				servico = servicos1.get(0);
 				agendamento.setIdCliente(cliente.getId());
+				agendamento.setIdCliente(cliente.getCpf());
 				agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 				agendamento.setDescricao(txtDescricao.getText());
 				agendamento.setHorario(txtHorario.getText());	
@@ -146,10 +147,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				sa.setQuantidade("1");
 				saDAO.update(sa);
 
-
-				ControllerAgendamento.agendamentoAlterar = null;
+				ControllerAgendamento.alterarAgendamento = null;
 				
-
 				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
 				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
 				       	stage.close();
@@ -203,10 +202,10 @@ public class ControllerRegistrarAgendamento implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-		if(ControllerAgendamento.agendamentoAlterar != null) {
+		if(ControllerAgendamento.alterarAgendamento != null) {
 			btAgendar.setText("Salvar");
 			Agendamento agendamentoEditar = new Agendamento();
-			agendamentoEditar = ControllerAgendamento.agendamentoAlterar;
+			agendamentoEditar = ControllerAgendamento.alterarAgendamento;
 			txtNomeCliente.setText(agendamentoEditar.getIdCliente());
 			txtServico.setText(agendamentoEditar.getIdServico());
 			LocalDate dataAgendamento = LocalDate.parse(agendamentoEditar.getDataAgendamento());

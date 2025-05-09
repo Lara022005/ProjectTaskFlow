@@ -3,20 +3,25 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
 import DAO.ProdutoDAO;
 import Model.Produto;
+import Util.Alerts;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerProduto implements Initializable {
@@ -100,21 +105,53 @@ public class ControllerProduto implements Initializable {
 		PesquisarTableProduto();
 	}
 
+	public static Produto alterarProduto = new Produto();
+	
 	@FXML
-	void actionAlterar(ActionEvent event) {
-		
-		
+	void actionAlterar(ActionEvent event) throws IOException {
+		Main.TelaCadastrarProduto();
+		int i = tableProdutos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+		if(i == -1) {
+			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
+		}else {
+			alterarProduto = tableProdutos.getItems().get(i);
+			Main.TelaRegistrarAgendamento();
+			alterarProduto = null;
+		}
+		CarregarTableProduto();	
+				
 	}
 	@FXML
-	void actionCadastrar(ActionEvent event) {
-
+	void actionCadastrar(ActionEvent event) throws IOException {
+		alterarProduto = null;
+		Main.TelaCadastrarProduto();
+		CarregarTableProduto();	
 	}
 
 	@FXML
 	void actionExcluir(ActionEvent event) {
+		
+		int i = tableProdutos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+		if(i == -1) {
+			Alerts.showAlert("ERRO!", "Falha ao concluir", "Selecione um produto", AlertType.ERROR);   		
+		}else {
+			Produto produto = new Produto();
+			produto = tableProdutos.getItems().get(i);
 
+			Alert confirmation = new Alert (AlertType.CONFIRMATION);
+			confirmation.setContentText("Deseja realmente excluir esse produto? \n   " + produto.getNome());
+
+			Optional<ButtonType> resultado = confirmation.showAndWait();
+
+			if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				produtoDAO.delete(produto);
+
+				Alerts.showAlert("Sucesso!", "Produto excluído", "O pruduto "+ produto.getNome()+", foi excluido com sucesso", AlertType.INFORMATION);
+				CarregarTableProduto();
+			}
+		}
 	}
-
 	private ObservableList<Produto> ArrayProdutos;
 
 	public void CarregarTableProduto() {
@@ -155,7 +192,7 @@ public class ControllerProduto implements Initializable {
 		// TODO Auto-generated method stub
 		CarregarTableProduto();
 
-		// -------------------- barra de pesquisar servico --------------------				
+		// -------------------- barra de pesquisar produto --------------------				
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 		ArrayList<String> nomeProdutos = new ArrayList<String>();
 		nomeProdutos = produtoDAO.readProdutoByNome();
