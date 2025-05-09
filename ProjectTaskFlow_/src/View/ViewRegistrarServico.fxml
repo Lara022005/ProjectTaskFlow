@@ -8,11 +8,6 @@
 
 <AnchorPane prefHeight="493.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCadastrarServico">
    <children>
-      <Button fx:id="btMain" layoutX="50.0" layoutY="176.0" mnemonicParsing="false" onAction="#ActionMain" prefHeight="38.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btCliente" layoutX="50.0" layoutY="248.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="38.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btProduto" layoutX="50.0" layoutY="320.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="38.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btFuncionario" layoutX="41.0" layoutY="387.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="46.0" prefWidth="74.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btSair" layoutX="38.0" layoutY="477.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="46.0" prefWidth="74.0" style="-fx-background-color: 1;" />
       <Button fx:id="btCadastrar" layoutX="66.0" layoutY="433.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="466.0" layoutY="433.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Text fill="#3c42ff" layoutX="75.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços">

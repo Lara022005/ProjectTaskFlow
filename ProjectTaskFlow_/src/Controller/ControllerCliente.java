@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.AgendamentoDAO;
 import DAO.ClienteDAO;
+import Model.Agendamento;
 import Model.Cliente;
 import application.Main;
 import javafx.collections.FXCollections;
@@ -94,8 +96,22 @@ public class ControllerCliente  implements Initializable {
 
     @FXML
     void actionPesquisar(ActionEvent event) {
+    	 CarregarTableCliente();
+    
 
     }
+    
+	public void PesquisarTableCliente() {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente cliente = new Cliente();
+		cliente.setId(txtPesquisar.getText());
+
+		ArrayCliente = FXCollections.observableArrayList(clienteDAO.search(cliente));
+
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+
+	}    
 
     @FXML
     void telaCliente(ActionEvent event) throws IOException {
