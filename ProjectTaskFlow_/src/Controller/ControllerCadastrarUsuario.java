@@ -28,7 +28,7 @@ public class ControllerCadastrarUsuario {
     private Button btCliente;
 
     @FXML
-    private Button btExcluir;
+    private Button btCancelar;
 
     @FXML
     private Button btFuncionario;
@@ -115,7 +115,7 @@ public class ControllerCadastrarUsuario {
     }
 
     @FXML
-    void actionExcluir(ActionEvent event) {
+    void actionCancelar(ActionEvent event) {
 
     }
 

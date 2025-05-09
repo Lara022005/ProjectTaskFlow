@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
-import Controller.ControllerCadastrarUsuario;
-import Model.Agendamento;
+import Model.Funcionario;
 import Model.Usuario;
 import Util.Alerts;
 import javafx.scene.control.Alert.AlertType;
@@ -199,30 +198,25 @@ public class UsuarioDAO {
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			ArrayList<Usuario> usuario1 = new ArrayList<>();	
+			Funcionario funcionario = new Funcionario();
 			
 			try {
-				stmt = con.prepareStatement("SELECT Id_Agendamento, Nome_Cliente, Nome_Servico,Data_Agendamento, Horario, Descricao_Agendamento"
-						+ " FROM Agendamento, Cliente, Servico,ServicoAgendamento sa"
-						+ " where Id_Agendamento = sa.Fk_Agendamento "
-						+ "AND Id_Cliente = Fk_Cliente "
-						+ "AND Id_Servico = sa.Fk_Servico");
+				stmt = con.prepareStatement("select Id_Usuario, Nome_Funcionario, Cpf_Funcionario, Nome_Usuario, Nivel_Usuario\n"
+						+ "from Usuario, Funcionario\n"
+						+ "where Id_Funcionario = Fk_Funcionario");
 
 				rs = stmt.executeQuery();			
 				int i = 1;
 
 				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-					Agendamento agendamento = new Agendamento();
-					agendamento.setId("" + i);
-					agendamento.setIdCliente(rs.getString(2));			
-					agendamento.setIdServico(rs.getString(3));
-					agendamento.setDataAgendamento(rs.getString(4));							
-					agendamento.setHorario(rs.getString(5));	
-					String aux = agendamento.getHorario();
-					aux = aux.replace(":00.0000000", "");
-					agendamento.setHorario(aux);
-					agendamento.setDescricao(rs.getString(6));
+					Usuario usuario = new Usuario();
+					usuario.setId("" + i);
+					usuario.setIdFuncionario(rs.getString(2));	
+					usuario.setSenha(rs.getString(3));	
+					usuario.setNome(rs.getString(4));									
+					usuario.setNivelUsuario(rs.getString(5));
 
-					agendamento1.add(agendamento);
+					usuario1.add(usuario);
 					i++;
 				}
 
@@ -233,8 +227,9 @@ public class UsuarioDAO {
 			finally {
 				ConnectionDataBase.closeConnection(con, stmt, rs);
 			}
-			return agendamento1;
+			return usuario1;
 		}
+		
 	
 	
 

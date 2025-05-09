@@ -244,6 +244,37 @@ public class FuncionarioDAO {
 
 		return TotalVendido;
 	}
+	
+	public ArrayList<Funcionario> readCPF(){
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Funcionario> funcionario1 = new ArrayList<>();	
+		
+		try {
+			stmt = con.prepareStatement("select Cpf_Funcionario\n"
+					+ "from Funcionario, Usuario\n"
+					+ "where Id_Funcionario = Fk_Funcionario");
+
+			rs = stmt.executeQuery();			
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				Funcionario funcionario = new Funcionario();
+				funcionario.setCpf(rs.getString(1));	
+
+				funcionario1.add(funcionario);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return funcionario1;
+	}
 
 	
 }

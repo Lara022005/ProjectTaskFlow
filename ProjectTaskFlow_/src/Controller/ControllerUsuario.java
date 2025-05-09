@@ -1,11 +1,10 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import DAO.AgendamentoDAO;
+import DAO.FuncionarioDAO;
 import DAO.UsuarioDAO;
-import Model.Agendamento;
 import Model.Usuario;
 import Util.Alerts;
 import application.Main;
@@ -17,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -48,6 +48,21 @@ public class ControllerUsuario implements Initializable{
 
     @FXML
     private Button btSair;
+    
+    @FXML
+    private TableColumn<Usuario, String> columnCpf;
+
+    @FXML
+    private TableColumn<Usuario, String> columnIndice;
+
+    @FXML
+    private TableColumn<Usuario, String> columnNivel;
+
+    @FXML
+    private TableColumn<Usuario, String> columnNome;
+
+    @FXML
+    private TableColumn<Usuario, String> columnUsuario;
 
     @FXML
     private TableView<Usuario> tableUsuarios;
@@ -58,7 +73,7 @@ public class ControllerUsuario implements Initializable{
     public static Usuario usuarioAlterar = new Usuario();
 
     @FXML
-    void ActionAlterar(ActionEvent event) {
+    void ActionAlterar(ActionEvent event) throws IOException {
     	int i = tableUsuarios.getSelectionModel().getSelectedIndex(); // valor clicado na tela
 		if(i == -1) {
 			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
@@ -114,25 +129,24 @@ public class ControllerUsuario implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		CarregarTableUsuario();
 		
 	}
 	  
 	private ObservableList<Usuario> ArrayUsuarios;
     
-    public void CarregarTableAgendamento() {
-    	UsuarioDAO usuarioDAO = new UsuarioDAO();
-//    	terminar a readTerminar para funcionar=================================================================
+    public void CarregarTableUsuario() {
+    	UsuarioDAO usuarioDAO = new UsuarioDAO();  	
+    	
+//    	terminar a readTerminar para funcionar===========================================================
     	ArrayUsuarios = FXCollections.observableArrayList(usuarioDAO.readCompleta());
 		
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
-		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
-		columnData.setCellValueFactory(new PropertyValueFactory<>("dataAgendamento"));
-		columnServico.setCellValueFactory(new PropertyValueFactory<>("idServico"));	
-		columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-		columnHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));	
-		columnStatusAgend.setCellValueFactory(new PropertyValueFactory<>("statusAgendamento"));
-		tableAgendamentos.setItems(ArrayAgendamentos);						
+		columnNome.setCellValueFactory(new PropertyValueFactory<>("idFuncionario"));
+		columnCpf.setCellValueFactory(new PropertyValueFactory<>("senha"));
+		columnUsuario.setCellValueFactory(new PropertyValueFactory<>("nome"));	
+		columnNivel.setCellValueFactory(new PropertyValueFactory<>("nivelUsuario"));	
+		tableUsuarios.setItems(ArrayUsuarios);						
 	}
     
     

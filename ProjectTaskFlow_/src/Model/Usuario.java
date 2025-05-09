@@ -4,6 +4,7 @@ public class Usuario {
 	
 	private String id;
 	private String idFuncionario;
+	private String cpf;
 	private String nome;
 	private String nivelUsuario;
 	private String senha;
@@ -19,8 +20,9 @@ public class Usuario {
 		this.nome = nome;
 		this.nivelUsuario = nivelUsuario;
 		this.senha = senha;
-	}
 	
+	}
+
 	public String getId() {
 		return id;
 	}
