@@ -134,6 +134,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				servicos1 = servicoDAO.search(servico);
 				servico = servicos1.get(0);
 				agendamento.setIdCliente(cliente.getId());
+				agendamento.setIdCliente(cliente.getCpf());
 				agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 				agendamento.setDescricao(txtDescricao.getText());
 				agendamento.setHorario(txtHorario.getText());	
@@ -146,10 +147,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				sa.setQuantidade("1");
 				saDAO.update(sa);
 
-
 				ControllerAgendamento.alterarAgendamento = null;
 				
-
 				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
 				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
 				       	stage.close();

@@ -11,22 +11,22 @@
    <children>
       <Button fx:id="btCadastrar" layoutX="89.0" layoutY="415.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btCancelar" layoutX="429.0" layoutY="416.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
-      <Text fill="#3c42ff" layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Produto" wrappingWidth="368.4033203125">
+      <Text fill="#3c42ff" layoutX="168.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Produto" wrappingWidth="368.4033203125">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtProduto" layoutX="70.0" layoutY="145.0" prefHeight="26.0" prefWidth="258.0" />
-      <TextField fx:id="txtCodBarra" layoutX="69.0" layoutY="205.0" prefHeight="26.0" prefWidth="258.0" />
-      <Text layoutX="73.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto" />
-      <Text layoutX="72.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de Barras" />
-      <Text layoutX="73.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da Fabricação" />
-      <Text layoutX="72.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de Validade" />
-      <TextField fx:id="txtPrecoUni" layoutX="375.0" layoutY="145.0" prefHeight="26.0" prefWidth="126.0" />
-      <Text layoutX="378.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitário" />
-      <TextField fx:id="txtEstoque" layoutX="378.0" layoutY="205.0" prefHeight="26.0" prefWidth="126.0" />
-      <Text layoutX="379.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque" />
-      <DatePicker fx:id="dpDataFab" layoutX="71.0" layoutY="271.0" />
-      <DatePicker fx:id="dpDataVal" layoutX="71.0" layoutY="342.0" />
+      <TextField fx:id="txtProduto" layoutX="98.0" layoutY="186.0" prefHeight="26.0" prefWidth="237.0" />
+      <TextField fx:id="txtCodBarra" layoutX="97.0" layoutY="249.0" prefHeight="26.0" prefWidth="238.0" />
+      <Text layoutX="101.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto" />
+      <Text layoutX="100.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de Barras" />
+      <Text layoutX="371.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da Fabricação" />
+      <Text layoutX="370.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de Validade" />
+      <TextField fx:id="txtPrecoUni" layoutX="100.0" layoutY="317.0" prefHeight="26.0" prefWidth="126.0" />
+      <Text layoutX="102.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitário" />
+      <TextField fx:id="txtEstoque" layoutX="253.0" layoutY="318.0" prefHeight="26.0" prefWidth="126.0" />
+      <Text layoutX="256.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque" />
+      <DatePicker fx:id="dpDataFab" layoutX="369.0" layoutY="185.0" />
+      <DatePicker fx:id="dpDataVal" layoutX="369.0" layoutY="250.0" />
    </children>
 </AnchorPane>

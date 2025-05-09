@@ -58,8 +58,8 @@
             <TableColumn fx:id="columnHorario" prefWidth="124.800048828125" style="-fx-alignment: center;" text="Horario" />
         </columns>
       </TableView>
-      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="188.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" text="Agendamento" />
-      <Button fx:id="btServico" alignment="CENTER" layoutX="467.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" text="Serviço" />
-      <Button fx:id="btUsuario" alignment="BOTTOM_CENTER" layoutX="753.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="46.0" prefWidth="170.0" text="Usuario" />
+      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="188.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendamento" textFill="WHITE" />
+      <Button fx:id="btServico" alignment="CENTER" layoutX="467.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Serviço" textFill="WHITE" />
+      <Button fx:id="btUsuario" alignment="CENTER" layoutX="753.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="46.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Usuario" textFill="WHITE" />
    </children>
 </AnchorPane>
