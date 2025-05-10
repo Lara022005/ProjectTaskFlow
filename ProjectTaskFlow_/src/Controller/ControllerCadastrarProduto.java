@@ -65,7 +65,7 @@ public class ControllerCadastrarProduto implements Initializable {
     		Alerts.showAlert("Sucesso!", "Produto cadastrado", "Seja bem vindo", AlertType.INFORMATION);
     		Stage stage = (Stage) btCancelar.getScene().getWindow();
         	stage.close();
-    	}else if(ControllerProduto.alterarProduto == null) {
+    	}else if(ControllerProduto.alterarProduto != null) {
     		produtoDAO.create(produto);     		
     		Alerts.showAlert("Sucesso!", "Produto editado", "O produto foi editado com sucesso", AlertType.INFORMATION);    
     		Stage stage = (Stage) btCancelar.getScene().getWindow();
@@ -93,7 +93,6 @@ public class ControllerCadastrarProduto implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
 
 		if(ControllerProduto.alterarProduto != null) {
 			btCadastrar.setText("Salvar");

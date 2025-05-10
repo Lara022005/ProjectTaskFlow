@@ -7,7 +7,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
 import DAO.ProdutoDAO;
+import DAO.ProdutoVendaDAO;
 import Model.Produto;
+import Model.ProdutoVenda;
 import Util.Alerts;
 import application.Main;
 import javafx.collections.FXCollections;
@@ -108,14 +110,13 @@ public class ControllerProduto implements Initializable {
 	public static Produto alterarProduto = new Produto();
 	
 	@FXML
-	void actionAlterar(ActionEvent event) throws IOException {
-		Main.TelaCadastrarProduto();
+	void actionAlterar(ActionEvent event) throws IOException {	
 		int i = tableProdutos.getSelectionModel().getSelectedIndex(); // valor clicado na tela
 		if(i == -1) {
-			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
+			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um produto para editar", AlertType.ERROR);   		
 		}else {
 			alterarProduto = tableProdutos.getItems().get(i);
-			Main.TelaRegistrarAgendamento();
+			Main.TelaCadastrarProduto();
 			alterarProduto = null;
 		}
 		CarregarTableProduto();	
@@ -144,7 +145,10 @@ public class ControllerProduto implements Initializable {
 			Optional<ButtonType> resultado = confirmation.showAndWait();
 
 			if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
+				ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
+				ProdutoVenda produtoVenda = new ProdutoVenda();
 				ProdutoDAO produtoDAO = new ProdutoDAO();
+				produtoVendaDAO.delete(produtoVenda);
 				produtoDAO.delete(produto);
 
 				Alerts.showAlert("Sucesso!", "Produto excluído", "O pruduto "+ produto.getNome()+", foi excluido com sucesso", AlertType.INFORMATION);
