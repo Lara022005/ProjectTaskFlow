@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="560.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRegistrarVenda">
    <children>
       <ImageView fitHeight="240.0" fitWidth="966.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -55,11 +55,11 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <TextField fx:id="txtPesquisarCliente" layoutX="15.0" layoutY="68.0" prefHeight="25.0" prefWidth="243.0" />
-            <TextField fx:id="txtPesquisarCPF" layoutX="300.0" layoutY="68.0" />
+            <TextField fx:id="txtNomeCliente" layoutX="15.0" layoutY="68.0" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="txtCPF" layoutX="300.0" layoutY="68.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" />
             <Text layoutX="19.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
             <Text layoutX="305.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:" />
-            <TextField fx:id="txtPesquisarServico" layoutX="16.0" layoutY="168.0" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="txtPesquisarServico" layoutX="16.0" layoutY="168.0" onInputMethodTextChanged="#actionServicoType" onKeyTyped="#actionServicoType" onMouseClicked="#actionServicoClick" onMouseEntered="#actionServicoClick" prefHeight="25.0" prefWidth="243.0" />
             <TextField fx:id="txtservico" layoutX="17.0" layoutY="230.0" prefHeight="25.0" prefWidth="134.0" />
             <TextField fx:id="txtPrecoServico" layoutX="171.0" layoutY="230.0" prefHeight="25.0" prefWidth="95.0" />
             <TextField fx:id="txtQtdServico" layoutX="286.0" layoutY="229.0" prefHeight="25.0" prefWidth="85.0" />
@@ -67,15 +67,7 @@
             <TextField fx:id="txtPrecoProduto" layoutX="171.0" layoutY="374.0" prefHeight="25.0" prefWidth="95.0" />
             <TextField fx:id="txtQtdProduto" layoutX="286.0" layoutY="374.0" prefHeight="25.0" prefWidth="85.0" />
             <TextField fx:id="txtPesquisarProduto" layoutX="16.0" layoutY="316.0" prefHeight="25.0" prefWidth="243.0" />
-            <Button fx:id="btBuscarServico" layoutX="265.0" layoutY="166.0" mnemonicParsing="false" onAction="#ActionBuscarServico" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: 1;">
-               <graphic>
-                  <ImageView fx:id="btBuscarServico" fitHeight="22.0" fitWidth="41.0" onDragDetected="#AcBuscarServico" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/material-symbols-light_search.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Button fx:id="btBuscarServico" layoutX="265.0" layoutY="166.0" mnemonicParsing="false" onAction="#ActionBuscarServico" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: 1;" />
             <Button fx:id="btBuscarProduto" layoutX="265.0" layoutY="314.0" mnemonicParsing="false" onAction="#ActionBuscarProduto" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: 1;" />
             <ImageView fx:id="btBuscarProduto" fitHeight="22.0" fitWidth="41.0" layoutX="275.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,10 +75,9 @@
                </image>
             </ImageView>
             <Text layoutX="21.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço:" />
-            <Text layoutX="174.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço:" />
+            <Text layoutX="174.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
             <Text layoutX="289.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
             <Text layoutX="20.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto:" />
-            <Text layoutX="173.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço:" />
             <Text layoutX="288.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
             <Button fx:id="btAdicionarProduto" layoutX="393.0" layoutY="365.0" mnemonicParsing="false" onAction="#ActionAdicionarProduto" prefHeight="33.0" prefWidth="77.0" style="-fx-background-color: linear-gradient(to right, #4C43B0 36%, #578AE3 100%);" text="Adicionar" textFill="WHITE">
                <font>
@@ -100,6 +91,17 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ImageView fx:id="btBuscarCliente" fitHeight="22.0" fitWidth="41.0" layoutX="264.0" layoutY="70.0" onDragDetected="#AcBuscarCliente" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/material-symbols-light_search.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btBuscarServico" fitHeight="22.0" fitWidth="41.0" layoutX="264.0" layoutY="170.0" onDragDetected="#AcBuscarServico" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/material-symbols-light_search.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="177.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
          </children>
       </Pane>
       <Pane layoutX="550.0" layoutY="111.0" prefHeight="434.0" prefWidth="382.0" style="-fx-background-color: ffffff;">
