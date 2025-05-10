@@ -114,7 +114,7 @@ public class ProdutoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("delete from Produto where Id_Produto = ? or Code_Barra = ?");		
+			stmt = con.prepareStatement("Delete from Produto where Id_Produto = ? or Code_Barra = ?");		
 			stmt.setString(1, produto.getId());
 			stmt.setString(2, produto.getCodBarra());
 
