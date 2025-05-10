@@ -110,7 +110,7 @@ public class ControllerCadastrarUsuario {
 			usuario.setNome(txtNome.getText());
 			usuario.setSenha(txtSenha.getText());
 			usuario.setNivelUsuario(txtNivel.getText());
-			
+
 		}
     }
 

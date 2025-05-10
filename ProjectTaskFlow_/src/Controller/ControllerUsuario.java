@@ -2,8 +2,12 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import DAO.FuncionarioDAO;
+
+import org.controlsfx.control.textfield.TextFields;
+
+import DAO.ServicoDAO;
 import DAO.UsuarioDAO;
 import Model.Usuario;
 import Util.Alerts;
@@ -116,13 +120,14 @@ public class ControllerUsuario implements Initializable{
     }
 
     @FXML
-    void ActionSair(ActionEvent event) {
-
+    void ActionSair(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
     void actionPesquisar(ActionEvent event) {
-
+    	PesquisarTableUsuario();
+    	tableUsuarios.refresh();
     }
     
 
@@ -130,6 +135,17 @@ public class ControllerUsuario implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		CarregarTableUsuario();
+		
+		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ArrayList<String> nomesUsuarios = new ArrayList<String>();
+		nomesUsuarios = usuarioDAO.readUsuarioByNome();
+		String[] usuario = new String[nomesUsuarios.size()];
+
+		for (int i = 0; i < nomesUsuarios.size(); i++) {
+			usuario[i] = nomesUsuarios.get(i);
+		}
+		TextFields.bindAutoCompletion(txtPesquisar, usuario);
 		
 	}
 	  
@@ -147,6 +163,22 @@ public class ControllerUsuario implements Initializable{
 		columnUsuario.setCellValueFactory(new PropertyValueFactory<>("nome"));	
 		columnNivel.setCellValueFactory(new PropertyValueFactory<>("nivelUsuario"));	
 		tableUsuarios.setItems(ArrayUsuarios);						
+	}
+    
+    public void PesquisarTableUsuario() {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		usuario.setId(txtPesquisar.getText());
+
+		ArrayUsuarios = FXCollections.observableArrayList(usuarioDAO.search1(usuario.getIdFuncionario(), usuario.getIdFuncionario()));
+
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNome.setCellValueFactory(new PropertyValueFactory<>("idFuncionario"));
+		columnCpf.setCellValueFactory(new PropertyValueFactory<>("senha"));
+		columnUsuario.setCellValueFactory(new PropertyValueFactory<>("nome"));	
+		columnNivel.setCellValueFactory(new PropertyValueFactory<>("nivelUsuario"));	
+		tableUsuarios.setItems(ArrayUsuarios);						
+
 	}
     
     
