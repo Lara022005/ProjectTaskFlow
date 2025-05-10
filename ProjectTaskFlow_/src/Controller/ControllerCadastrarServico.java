@@ -1,5 +1,8 @@
 package Controller;
 
+import java.io.IOException;
+
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +21,9 @@ public class ControllerCadastrarServico {
     }
 
     @FXML
-    void actionExcluir(ActionEvent event) {
+    void actionExcluir(ActionEvent event) throws IOException {
+    	Main.TelaServico();
+    	
 
     }
 

@@ -159,7 +159,7 @@ public class ControllerAgendamento implements Initializable{
     @FXML
     void telaCliente(ActionEvent event) throws IOException {
 		Main.TelaCliente();
-		
+//		CarregarTableCliente();
     }
 
     @FXML
