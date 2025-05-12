@@ -9,6 +9,7 @@ import org.controlsfx.control.textfield.TextFields;
 
 import DAO.ServicoDAO;
 import DAO.UsuarioDAO;
+import Model.Agendamento;
 import Model.Usuario;
 import Util.Alerts;
 import application.Main;
@@ -80,7 +81,7 @@ public class ControllerUsuario implements Initializable{
     void ActionAlterar(ActionEvent event) throws IOException {
     	int i = tableUsuarios.getSelectionModel().getSelectedIndex(); // valor clicado na tela
 		if(i == -1) {
-			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um agendamento para editar", AlertType.ERROR);   		
+			Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um usuario para editar", AlertType.ERROR);   		
 		}else {
 			usuarioAlterar = tableUsuarios.getItems().get(i);
 			Main.TelaCadastrarUsuario();
@@ -90,8 +91,8 @@ public class ControllerUsuario implements Initializable{
     }
 
     @FXML
-    void ActionCadastrar(ActionEvent event) {
-
+    void ActionCadastrar(ActionEvent event) throws IOException {
+    	Main.TelaCadastrarUsuario();
     }
 
     @FXML
@@ -168,7 +169,7 @@ public class ControllerUsuario implements Initializable{
     public void PesquisarTableUsuario() {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario usuario = new Usuario();
-		usuario.setId(txtPesquisar.getText());
+		usuario.setIdFuncionario(txtPesquisar.getText());
 
 		ArrayUsuarios = FXCollections.observableArrayList(usuarioDAO.search1(usuario.getIdFuncionario(), usuario.getIdFuncionario()));
 
