@@ -66,7 +66,7 @@ public class ControllerCadastrarProduto implements Initializable {
     		Stage stage = (Stage) btCancelar.getScene().getWindow();
         	stage.close();
     	}else if(ControllerProduto.alterarProduto != null) {
-    		produtoDAO.create(produto);     		
+    		produtoDAO.update(produto);     		
     		Alerts.showAlert("Sucesso!", "Produto editado", "O produto foi editado com sucesso", AlertType.INFORMATION);    
     		Stage stage = (Stage) btCancelar.getScene().getWindow();
         	stage.close();

@@ -90,12 +90,11 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
 		}
 		else { 	
-//			agendamento.setIdServico(servico.getId());
 			agendamento.setIdCliente(cliente.getId());
 			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 			agendamento.setDescricao(txtDescricao.getText());
 			agendamento.setHorario(txtHorario.getText());
-//			agendamento.setStatusAgendamento(null);
+
 
 			if(ControllerAgendamento.alterarAgendamento == null) {
 				agendamentoDAO.create(agendamento);
@@ -201,12 +200,26 @@ public class ControllerRegistrarAgendamento implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		
+		
 		if(ControllerAgendamento.alterarAgendamento != null) {
-			btAgendar.setText("Salvar");
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
 			Agendamento agendamentoEditar = new Agendamento();
+			
+			btAgendar.setText("Salvar");
+			
 			agendamentoEditar = ControllerAgendamento.alterarAgendamento;
-			txtNomeCliente.setText(agendamentoEditar.getIdCliente());
+			txtNomeCliente.setText(agendamentoEditar.getIdCliente());	
+			
+			cliente.setNome(agendamentoEditar.getIdCliente());
+			cliente.setCpf(agendamentoEditar.getIdCliente());
+			clientes = clienteDAO.search(cliente);
+			cliente = clientes.get(0);	
+			agendamentoEditar.setIdCliente(cliente.getCpf());
+			txtCpf.setText(cliente.getCpf());
+			
 			txtServico.setText(agendamentoEditar.getIdServico());
 			LocalDate dataAgendamento = LocalDate.parse(agendamentoEditar.getDataAgendamento());
 			dpDataAgend.setValue(dataAgendamento);

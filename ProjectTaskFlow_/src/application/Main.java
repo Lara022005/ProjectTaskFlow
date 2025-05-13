@@ -240,10 +240,10 @@ public class Main extends Application {
 	
 	private static Stage RegistroVenda;
 	public static void TelaRegistroVenda() throws IOException {
-		FXMLLoader fxmlServicoVenda = new FXMLLoader();
-		fxmlServicoVenda.setLocation(Main.class.getResource("/View/ViewRegistrarVenda.fxml"));
-		Parent ServicoVenda = fxmlServicoVenda.load();
-		Scene scene2 = new Scene(ServicoVenda);
+		FXMLLoader fxmlRegistroVenda = new FXMLLoader();
+		fxmlRegistroVenda.setLocation(Main.class.getResource("/View/ViewRegistrarVenda.fxml"));
+		Parent registroVenda = fxmlRegistroVenda.load();
+		Scene scene2 = new Scene(registroVenda);
 		
 		RegistroVenda = new Stage();
 		RegistroVenda.setTitle("Registro de Venda");

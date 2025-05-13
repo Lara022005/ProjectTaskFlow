@@ -393,6 +393,5 @@ public class AgendamentoDAO {
 			ConnectionDataBase.closeConnection(con, stmt);
 		}
 	}
-	
-	
+		
 }
