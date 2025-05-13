@@ -2,20 +2,36 @@ package Controller;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.print.DocFlavor.URL;
+
+import org.controlsfx.control.textfield.TextFields;
+
 import DAO.ClienteDAO;
+import DAO.ClienteDAO;
+import DAO.ClienteDAO;
+import DAO.ClienteDAO;
+import DAO.ProdutoVendaDAO;
 import Model.Cliente;
+import Model.Cliente;
+import Model.Cliente;
+import Model.ProdutoVenda;
+import Util.Alerts;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerCliente implements Initializable{
@@ -71,7 +87,9 @@ public class ControllerCliente implements Initializable{
 	@FXML
 	private TextField txtPesquisar;
 
+	  @FXML	
 	  void actionPesquisar(ActionEvent event) {
+		  PesquisarTableCliente();
 	    	
 	    }
 	    
@@ -95,6 +113,64 @@ public class ControllerCliente implements Initializable{
 	    void ActionProduto(ActionEvent event) throws IOException {
 	    	Main.TelaProduto();
 	    }
+	    
+	    @FXML
+	    void ActionSair(ActionEvent event) {
+
+	    }
+	    
+	    
+
+	    @FXML
+	    void actionCadastrar(ActionEvent event) throws IOException {
+	    	Main.TelaCadastrarCliente();
+
+	    }
+	    
+	    
+	    @FXML
+	    void actionExcluir(ActionEvent event) {
+
+			int i = tableCliente.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+			if(i == -1) {
+				Alerts.showAlert("ERRO!", "Falha ao concluir", "Selecione um cliente", AlertType.ERROR);   		
+			}else {
+				Cliente cliente = new Cliente();
+				cliente = tableCliente.getItems().get(i);
+
+				Alert confirmation = new Alert (AlertType.CONFIRMATION);
+				confirmation.setContentText("Deseja realmente excluir esse cliente? \n   " + cliente.getNome());
+
+				Optional<ButtonType> resultado = confirmation.showAndWait();
+
+				if(resultado.isPresent() && resultado.get() == ButtonType.OK) {
+					
+					ClienteDAO clienteDAO = new ClienteDAO();
+					clienteDAO.delete(cliente);
+
+					Alerts.showAlert("Sucesso!", "Cliente excluído", "O cliente "+ cliente.getNome()+", foi excluido com sucesso", AlertType.INFORMATION);
+					CarregarTableCliente();
+				}
+			}
+
+	    }
+	    
+		public static Cliente alterarCliente = new Cliente ();
+	    
+	    @FXML
+	    void actionAlterar(ActionEvent event) throws IOException {	    	
+	    	int i = tableCliente.getSelectionModel().getSelectedIndex(); // valor clicado na tela
+			if(i == -1) {
+				Alerts.showAlert("ERRO!", "Falha ao tentar editar", "Selecione um produto para editar", AlertType.ERROR);   		
+			}else {
+				alterarCliente = tableCliente.getItems().get(i);
+				Main.TelaCadastrarCliente();
+				alterarCliente = null;
+			}
+		
+			CarregarTableCliente();
+	    	
+	    }
 
 
 	private ObservableList<Cliente> ArrayCliente;
@@ -114,6 +190,24 @@ public class ControllerCliente implements Initializable{
 		tableCliente.setItems(ArrayCliente);		
 
 	}
+	
+	
+	public void PesquisarTableCliente() {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente cliente = new Cliente();
+		cliente.setNome(txtPesquisar.getText());
+		cliente.setCpf(txtPesquisar.getText());
+
+		ArrayCliente = FXCollections.observableArrayList(clienteDAO.search(cliente));
+
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		columnCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+		columnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));	
+		columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		tableCliente.setItems(ArrayCliente);	
+	}
 
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
@@ -121,6 +215,17 @@ public class ControllerCliente implements Initializable{
 		
 		CarregarTableCliente();
 		
+		alterarCliente = null;
+		
+		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList<String> nomeclientes = new ArrayList<String>();
+		nomeclientes = clienteDAO.readClienteByNome();
+		String[] cliente = new String[nomeclientes.size()];
+
+		for (int i = 0; i < nomeclientes.size(); i++) {
+			cliente[i] = nomeclientes.get(i);
+		}
+		TextFields.bindAutoCompletion(txtPesquisar, cliente);	
 	}
 
 
