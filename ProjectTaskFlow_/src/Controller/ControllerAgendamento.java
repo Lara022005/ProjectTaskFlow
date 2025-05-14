@@ -96,7 +96,7 @@ public class ControllerAgendamento implements Initializable{
     }
     
     public static Agendamento alterarAgendamento = new Agendamento();
-    public static Agendamento AlterarStatusAgend = new Agendamento();
+   
     @FXML
     void actionAlterar(ActionEvent event) throws IOException {
     	
@@ -110,7 +110,8 @@ public class ControllerAgendamento implements Initializable{
 		}
 		CarregarTableAgendamento();		
     }    
-      
+    
+    public static Agendamento AlterarStatusAgend = new Agendamento();   
     @FXML
     void actionConcluir(ActionEvent event) {
     	

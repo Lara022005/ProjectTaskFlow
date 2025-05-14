@@ -153,9 +153,7 @@ public class ClienteDAO {
 				cliente.setTelefone(rs.getString(5));
 				cliente.setEmail(rs.getString(6));	
 
-				clientes.add(cliente);
-				
-
+				clientes.add(cliente);				
 			}
 
 		} catch (SQLException e) {
@@ -191,6 +189,40 @@ public class ClienteDAO {
 		return clientes;
 	}
 
+	// ---------------------------------------  search pesquisar apenas CPF (SELECT + LIKE) --------------------------------------- 
+		public ArrayList<Cliente> searchCPF(Cliente cliente1){
 
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Cliente> clientes = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("select * from Cliente where Cpf_Cliente like ?");
+				stmt.setString(1, "%"+cliente1.getCpf()+"%");				
+				rs = stmt.executeQuery();
+				
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Cliente cliente = new Cliente();
+					cliente.setId(rs.getString(1));
+					cliente.setNome(rs.getString(2));
+					cliente.setCpf(rs.getString(3));
+					cliente.setEndereco(rs.getString(4));
+					cliente.setTelefone(rs.getString(5));
+					cliente.setEmail(rs.getString(6));	
+
+					clientes.add(cliente);				
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return clientes;
+		}
 }
 

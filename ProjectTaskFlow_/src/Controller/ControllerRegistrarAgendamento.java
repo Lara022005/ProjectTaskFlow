@@ -40,7 +40,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 	@FXML
 	private Button btExcluir;
-	
+
 	@FXML
 	private TextField txtNomeCliente;
 
@@ -108,12 +108,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				saDAO.create(sa);
 
 				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
-				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
-				       	stage.close();
+				Stage stage = (Stage) btCancelar.getScene().getWindow();
+				stage.close();
 			}else {
 
 				ArrayList<Cliente> clientes1 = new ArrayList<>();
-				cliente.setCpf(null);
+				cliente.setCpf(ControllerAgendamento.alterarAgendamento.getIdCliente());
 				cliente.setNome(ControllerAgendamento.alterarAgendamento.getIdCliente());
 				clientes1 = clienteDAO.search(cliente);
 				System.out.println(ControllerAgendamento.alterarAgendamento.getIdCliente()); 
@@ -147,14 +147,13 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				saDAO.update(sa);
 
 				ControllerAgendamento.alterarAgendamento = null;
-				
+
 				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
-				   		Stage stage = (Stage) btCancelar.getScene().getWindow();
-				       	stage.close();
+				Stage stage = (Stage) btCancelar.getScene().getWindow();
+				stage.close();
 			}			
 		} 
 	}	
-
 	@FXML
 	void actionCancelar(ActionEvent event) throws IOException {
 		txtCpf.setText("");
@@ -166,7 +165,6 @@ public class ControllerRegistrarAgendamento implements Initializable{
 		stage.close();
 
 	}
-
 
 	@FXML
 	void actionNomeClick(MouseEvent event) {
@@ -200,26 +198,26 @@ public class ControllerRegistrarAgendamento implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
-		
+
+
 		if(ControllerAgendamento.alterarAgendamento != null) {
-			ArrayList<Cliente> clientes = new ArrayList<>();
-			ClienteDAO clienteDAO = new ClienteDAO();
-			Cliente cliente = new Cliente();
+//			ArrayList<Cliente> clientes = new ArrayList<>();
+//			ClienteDAO clienteDAO = new ClienteDAO();
+//			Cliente cliente = new Cliente();
 			Agendamento agendamentoEditar = new Agendamento();
-			
+
 			btAgendar.setText("Salvar");
-			
+
 			agendamentoEditar = ControllerAgendamento.alterarAgendamento;
 			txtNomeCliente.setText(agendamentoEditar.getIdCliente());	
-			
-			cliente.setNome(agendamentoEditar.getIdCliente());
-			cliente.setCpf(agendamentoEditar.getIdCliente());
-			clientes = clienteDAO.search(cliente);
-			cliente = clientes.get(0);	
-			agendamentoEditar.setIdCliente(cliente.getCpf());
-			txtCpf.setText(cliente.getCpf());
-			
+
+//			cliente.setNome(null);
+//			cliente.setCpf(agendamentoEditar.getIdCliente());
+//			clientes = clienteDAO.search(cliente);
+//			cliente = clientes.get(0);	
+//			txtCpf.setText(cliente.getCpf());
+//			agendamentoEditar.setIdCliente(cliente.getCpf());
+
 			txtServico.setText(agendamentoEditar.getIdServico());
 			LocalDate dataAgendamento = LocalDate.parse(agendamentoEditar.getDataAgendamento());
 			dpDataAgend.setValue(dataAgendamento);

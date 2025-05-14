@@ -3,10 +3,9 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import Model.Produto;
 import Model.Servico;
-import application.Main;
+import Util.Alerts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +14,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -27,15 +26,6 @@ public class ControllerRegistrarVenda implements Initializable {
 
     @FXML
     private Button btAdicionarServico;
-
-    @FXML
-    private ImageView btBuscarCliente;
-
-    @FXML
-    private ImageView btBuscarProduto;
-
-    @FXML
-    private ImageView btBuscarServico;
 
     @FXML
     private Button btCancelar;
@@ -53,7 +43,7 @@ public class ControllerRegistrarVenda implements Initializable {
     private Button btRegistrar;
 
     @FXML
-    private ImageView btVoltar;
+    private Button btVoltar;
 
     @FXML
     private ChoiceBox<String> choiceFormaPag;
@@ -127,28 +117,35 @@ public class ControllerRegistrarVenda implements Initializable {
     @FXML
     private TextField txtVendedor;
 
-    @FXML
-    void AcBuscarCliente(MouseEvent event) {
-
-    }
-
-    @FXML
-    void AcBuscarServico(MouseEvent event) {
-
-    }
-
+      
+    
     @FXML
     void ActionAdicionarProduto(ActionEvent event) {
+    	
+    	if(txtCPF.getText() == "" || txtNomeCliente.getText() == "" || txtTotalProduto.getText() == "" || 
+    			txtPesquisarProduto.getText() == "" || txtQtdProduto.getText() == "" ||txtPrecoProduto.getText() == "") {
+    		Alerts.showAlert("Erro!", "Campos inválidos"," Verifique se os campos estãos preenchidos e tente novamente!", AlertType.ERROR);  
+    		
+    	} else {}
+    	
+    }
+    
+    @FXML
+    void ActionDesconto(ActionEvent event) {
 
     }
 
     @FXML
-    void ActionBuscarServico(ActionEvent event) {
+    void ActionRegistrar(ActionEvent event) {
 
     }
 
     @FXML
     void ActionCancelar(ActionEvent event) {
+    	
+    }
+    @FXML
+    void ActionVoltar(ActionEvent event) throws IOException {  	
     	
     	txtCPF.setText("");
     	txtDesconto.setText("");
@@ -163,30 +160,15 @@ public class ControllerRegistrarVenda implements Initializable {
 		txtTotalVenda.setText("");
 		txtVendedor.setText("");
 		txtDesconto.setText("");		
-		choiceFormaPag.setValue(null);    	   	
-
-		Stage stage = (Stage) btCancelar.getScene().getWindow();
+		choiceFormaPag.setValue(null);
+		
+    	Stage stage = (Stage) btVoltar.getScene().getWindow();
 		stage.close();
-
+  //  	Main.TelaHome();
     }
 
     @FXML
-    void ActionDesconto(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ActionRegistrar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ActionVoltar(MouseEvent event) throws IOException {
-    	Main.TelaHome();
-    }
-
-    @FXML
-    void ActionbtAdicionarServico(ActionEvent event) {
+    void ActionAdicionarServico(ActionEvent event) {
 
     }
 
