@@ -30,7 +30,7 @@
       <TextField fx:id="txtNome" layoutX="229.0" layoutY="203.0" prefHeight="26.0" prefWidth="317.0" />
       <TextField fx:id="txtNivel" layoutX="672.0" layoutY="203.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="txtSenha" layoutX="229.0" layoutY="264.0" prefHeight="26.0" prefWidth="200.0" />
-      <Text layoutX="229.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+      <Text layoutX="229.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome(Usuario)" />
       <Text layoutX="672.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível" />
       <Text layoutX="231.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
       <TextField fx:id="txtCpf" layoutX="630.0" layoutY="264.0" prefHeight="26.0" prefWidth="243.0" />
