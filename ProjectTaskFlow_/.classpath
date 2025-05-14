@@ -12,15 +12,27 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/controlsFX">
+<<<<<<< HEAD
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx">
+=======
+>>>>>>> branch 'master' of https://github.com/Lara022005/ProjectTaskFlow.git
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SQLserver"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SQLServer"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JAVAfx">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+>>>>>>> branch 'master' of https://github.com/Lara022005/ProjectTaskFlow.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>

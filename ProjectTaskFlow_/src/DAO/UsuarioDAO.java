@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import ConnectionFactory.ConnectionDataBase;
+import Model.Agendamento;
+import Model.Funcionario;
 import Model.Usuario;
 import Util.Alerts;
 import javafx.scene.control.Alert.AlertType;
@@ -189,5 +191,126 @@ public class UsuarioDAO {
 		}				
 		return usuario;		
 	}
+	
+	// --------------------------------------- ler as tabelas todas juntas
+		public ArrayList<Usuario> readCompleta(){
+
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Usuario> usuario1 = new ArrayList<>();	
+			Funcionario funcionario = new Funcionario();
+			
+			try {
+				stmt = con.prepareStatement("select Id_Usuario, Nome_Funcionario, Cpf_Funcionario, Nome_Usuario, Nivel_Usuario\n"
+						+ "from Usuario, Funcionario\n"
+						+ "where Id_Funcionario = Fk_Funcionario");
+
+				rs = stmt.executeQuery();			
+				int i = 1;
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Usuario usuario = new Usuario();
+					usuario.setId("" + i);
+					usuario.setIdFuncionario(rs.getString(2));	
+					usuario.setSenha(rs.getString(3));	
+					usuario.setNome(rs.getString(4));									
+					usuario.setNivelUsuario(rs.getString(5));
+
+					usuario1.add(usuario);
+					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return usuario1;
+		}
+		
+		public ArrayList<Usuario> search1(String nome, String cpf){
+			
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Usuario> usuarios = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("SELECT \n"
+						+"	u.Id_Usuario,\n"						
+						+ "    f.Nome_Funcionario,\n"
+						+ "    f.Cpf_Funcionario,\n"
+						+ "	u.Nome_Usuario,\n"
+						+ "	u.Nivel_Usuario\n"
+						+ "\n"
+						+ "FROM \n"
+						+ "    Usuario u\n"
+						+ "\n"
+						+ "JOIN \n"
+						+ "    Funcionario f ON u.Fk_Funcionario = f.Id_Funcionario\n"
+						+ "Where\n"
+						+ "(? IS NULL OR Nome_Funcionario LIKE ?) or (? IS NULL OR Cpf_Funcionario LIKE ?)"); 
+
+				stmt.setString(1, "%"+nome+"%");
+				stmt.setString(2, "%"+nome+"%");
+				stmt.setString(3, "%"+cpf+"%");
+				stmt.setString(4, "%"+cpf+"%");
+						
+				rs = stmt.executeQuery();
+				int i = 1;
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Usuario usuario = new Usuario();
+					usuario.setId("" + i);
+					usuario.setIdFuncionario(rs.getString(2));	
+					usuario.setSenha(rs.getString(3));	
+					usuario.setNome(rs.getString(4));									
+					usuario.setNivelUsuario(rs.getString(5));
+						
+					usuarios.add(usuario);
+					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return usuarios;
+		}
+		
+		public ArrayList<String> readUsuarioByNome() {
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<String> usuarios = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("SELECT Nome_Funcionario FROM Funcionario");
+				rs = stmt.executeQuery();
+
+				while (rs.next()) {
+					String nome;
+					nome = rs.getString(1);
+					usuarios.add(nome);
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("Erro ao ler os clientes!", e);
+			} finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return usuarios;
+		}
+		
+	
+	
+
+
+	
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="TelaUsuario" prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCadastrarUsuario">
    <children>
       <ImageView fitHeight="560.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,17 +21,19 @@
       <Button fx:id="btFuncionario" layoutX="39.0" layoutY="390.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="42.0" prefWidth="78.0" style="-fx-background-color: 1;" />
       <Button fx:id="btSair" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="42.0" prefWidth="78.0" style="-fx-background-color: 1;" />
       <Button fx:id="btCadastrar" layoutX="217.0" layoutY="489.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
-      <Button fx:id="btExcluir" layoutX="778.0" layoutY="490.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
+      <Button fx:id="btCancelar" layoutX="778.0" layoutY="490.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
       <Text fill="#3c42ff" layoutX="223.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Usuário" wrappingWidth="368.4033203125">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField layoutX="229.0" layoutY="203.0" prefHeight="26.0" prefWidth="317.0" />
-      <TextField layoutX="672.0" layoutY="203.0" prefHeight="26.0" prefWidth="200.0" />
-      <TextField layoutX="229.0" layoutY="264.0" prefHeight="26.0" prefWidth="200.0" />
-      <Text layoutX="229.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+      <TextField fx:id="txtNome" layoutX="229.0" layoutY="203.0" prefHeight="26.0" prefWidth="317.0" />
+      <TextField fx:id="txtNivel" layoutX="672.0" layoutY="203.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="txtSenha" layoutX="229.0" layoutY="264.0" prefHeight="26.0" prefWidth="200.0" />
+      <Text layoutX="229.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome(Usuario)" />
       <Text layoutX="672.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível" />
       <Text layoutX="231.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+      <TextField fx:id="txtCpf" layoutX="630.0" layoutY="264.0" prefHeight="26.0" prefWidth="243.0" />
+      <Text layoutX="630.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
    </children>
 </AnchorPane>
