@@ -365,7 +365,6 @@ public class ControllerRegistrarVenda implements Initializable {
 		columnQtdProd.setCellValueFactory(new PropertyValueFactory<>("estoque"));
 		columnPrecoUniP.setCellValueFactory(new PropertyValueFactory<>("precoUni"));
 		columnTotalProd.setCellValueFactory(new PropertyValueFactory<>("totalProduto"));	
-
 		tableVendaProduto.setItems(produtosVendidos);						
 	}
 }
