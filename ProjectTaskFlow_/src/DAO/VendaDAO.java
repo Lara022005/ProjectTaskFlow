@@ -196,5 +196,49 @@ public class VendaDAO {
 		return idVenda;
 
 	}
+	// ------------------------- relacionamento entre as tabelas venda e cliente ---------------------------
+	public ArrayList<Venda> readTableVenda(){
 
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Venda> venda1 = new ArrayList<>();
+
+		try {
+			stmt = con.prepareStatement("select Id_Venda, Nome_Cliente, Cpf_Cliente, Data_Venda,"
+					+ " Preco_Total, Forma_Pagamento, Desconto\r\n"					
+					+ "from Venda, Cliente\r\n"
+					+ "where Id_Cliente = Fk_Cliente");
+			rs = stmt.executeQuery();
+			int i = 1;
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				Venda venda = new Venda();
+				venda.setId("" + i);
+				venda.setIdUsuario(rs.getString(2));				
+				venda.setIdCliente(rs.getString(3));
+				venda.setDataVenda(rs.getString(4));
+				venda.setPrecoTotal(rs.getString(5));
+
+				String PrecoTotal = venda.getPrecoTotal();
+				double num = Double.parseDouble(PrecoTotal);
+				PrecoTotal = String.format("%.2f", num);
+								
+				venda.setFormaPag(rs.getString(6));	
+				venda.setDesconto(rs.getString(7));		
+
+				venda1.add(venda);
+				i++;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return venda1;
+	}	
+	
 }

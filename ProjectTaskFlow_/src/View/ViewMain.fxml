@@ -29,24 +29,25 @@
       </Pane>
       <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="736.0" style="-fx-background-color: ffffff;">
          <children>
-            <Label fx:id="txtNome" layoutX="71.0" layoutY="38.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
+            <Label fx:id="txtNome" layoutX="50.0" layoutY="15.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtAgendamento" alignment="CENTER" layoutX="165.0" layoutY="79.0" prefHeight="30.0" prefWidth="58.0" text="10">
+            <Label fx:id="txtAgendamento" alignment="CENTER" layoutX="117.0" layoutY="82.0" prefHeight="30.0" prefWidth="58.0" text="10">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtTotalVendido" alignment="CENTER" layoutX="384.0" layoutY="79.0" prefHeight="30.0" prefWidth="121.0" text="10.00">
+            <Label fx:id="txtTotalVendido" alignment="CENTER" layoutX="268.0" layoutY="83.0" prefHeight="30.0" prefWidth="121.0" text="10.00">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Text layoutX="145.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos realizados" wrappingWidth="148.0" />
-            <Text layoutX="371.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faturamento " wrappingWidth="148.0" />
-            <Button fx:id="btRegistroVenda" alignment="CENTER" layoutX="544.0" layoutY="15.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="178.0" text="Registro venda" />
+            <Text layoutX="72.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos realizados" wrappingWidth="148.0" />
+            <Text layoutX="295.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faturamento " wrappingWidth="79.0" />
+            <Button fx:id="btRegistroVenda" alignment="CENTER" layoutX="563.0" layoutY="15.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Registro venda" textFill="WHITE" />
+            <Button fx:id="btRelatorioVenda" layoutX="564.0" layoutY="71.0" mnemonicParsing="false" onAction="#actionRelatorioVenda" prefHeight="25.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Relatorio das Venda" textFill="#fffcfc" />
          </children>
       </Pane>
       <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="736.0">
@@ -58,8 +59,17 @@
             <TableColumn fx:id="columnHorario" prefWidth="124.800048828125" style="-fx-alignment: center;" text="Horario" />
         </columns>
       </TableView>
-      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="188.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendamento" textFill="WHITE" />
-      <Button fx:id="btServico" alignment="CENTER" layoutX="467.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Serviço" textFill="WHITE" />
-      <Button fx:id="btUsuario" alignment="CENTER" layoutX="753.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="46.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Usuario" textFill="WHITE" />
+      <Button fx:id="btAgendamento" alignment="CENTER" layoutX="188.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaAgendamento" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Agendamento" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btServico" alignment="CENTER" layoutX="467.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaServico" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Serviço" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btUsuario" alignment="CENTER" layoutX="753.0" layoutY="219.0" mnemonicParsing="false" onAction="#telaUsuario" prefHeight="46.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Usuario" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

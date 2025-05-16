@@ -19,8 +19,6 @@ public class Main extends Application {
 	private static Scene cliente;
 	private static Scene produto;
 	private static Scene funcionario;
-//	private static Scene registroVenda;
-
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -252,18 +250,21 @@ public class Main extends Application {
 		RegistroVenda.showAndWait();
 	}
 
-	//	public static void TelaRegistroVenda() throws IOException {
-	//		FXMLLoader fxmlRegistroVenda = new FXMLLoader();
-	//		fxmlRegistroVenda.setLocation(Main.class.getResource("/View/ViewRegistrarVenda.fxml"));
-	//		Parent TelaRegistroVenda = fxmlRegistroVenda.load();
-	//		registroVenda = new Scene(TelaRegistroVenda);
-	//		
-	//		stage.setTitle("Registro de Venda");
-	//		stage.setScene(registroVenda);
-	//		stage.setResizable(false);
-	//		stage.centerOnScreen();
-	//		stage.show();	
-	//	}
+
+	private static Stage RelatorioVenda;
+	public static void TelaReLatorioVenda() throws IOException {
+		FXMLLoader fxmlRelatorioVenda = new FXMLLoader();
+		fxmlRelatorioVenda.setLocation(Main.class.getResource("/View/ViewRelatorioVenda.fxml"));
+		Parent relatorioVenda = fxmlRelatorioVenda.load();
+		Scene scene2 = new Scene(relatorioVenda);
+
+		RelatorioVenda = new Stage();
+		RelatorioVenda.setTitle("Registro de Venda");
+		RelatorioVenda.initModality(Modality.WINDOW_MODAL);
+		RelatorioVenda.setScene(scene2);
+		RelatorioVenda.centerOnScreen();
+		RelatorioVenda.showAndWait();
+	}
 
 	public static void main(String[] args) {
 

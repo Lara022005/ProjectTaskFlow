@@ -9,12 +9,13 @@ public class Produto {
 	private String dataVal;
 	private String precoUni;
 	private String estoque;
+	private String totalProduto;
 		
 	public Produto() {
 		super();
 	}
 	public Produto(String id, String nome, String codBarra, String dataFab, String dataVal, String precoUni,
-			String estoque) {
+			String estoque, String totalProduto) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -23,6 +24,14 @@ public class Produto {
 		this.dataVal = dataVal;
 		this.precoUni = precoUni;
 		this.estoque = estoque;
+		this.totalProduto = totalProduto;
+	}
+	
+	public String getTotalProduto() {
+		return totalProduto;
+	}
+	public void setTotalProduto(String totalProduto) {
+		this.totalProduto = totalProduto;
 	}
 	public String getId() {
 		return id;

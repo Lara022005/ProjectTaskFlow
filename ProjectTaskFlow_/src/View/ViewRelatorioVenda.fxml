@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" prefHeight="584.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRelatorioVenda">
+   <children>
+      <Text fill="#3c42ff" layoutX="247.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relátorio de Vendas" wrappingWidth="314.40001525878915">
+         <font>
+            <Font name="Arial Bold Italic" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtPesquisar" layoutX="176.0" layoutY="108.0" prefHeight="26.0" prefWidth="386.0" />
+      <TableView fx:id="tableVendas" layoutX="22.0" layoutY="152.0" prefHeight="407.0" prefWidth="826.0">
+         <columns>
+            <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
+            <TableColumn fx:id="columnNomeCliente" prefWidth="163.199951171875" style="-fx-alignment: center;" text="Cliente" />
+            <TableColumn fx:id="columnCpfCliente" prefWidth="140.80006408691406" style="-fx-alignment: center;" text="CPF" />
+            <TableColumn fx:id="columnDataVenda" prefWidth="120.0" style="-fx-alignment: center;" text="Data Venda" />
+            <TableColumn fx:id="columnPrecoVenda" prefWidth="112.00006103515625" style="-fx-alignment: center;" text="Preço Total" />
+            <TableColumn fx:id="columnDesconto" prefWidth="136.79998779296875" style="-fx-alignment: center;" text="Desconto" />
+            <TableColumn fx:id="columnFormaPag" prefWidth="116.0" style="-fx-alignment: center;" text="Forma pagamento" />
+         </columns>
+      </TableView>
+      <Button fx:id="btPesquisar" layoutX="588.0" layoutY="108.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
+      <Text layoutX="118.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="49.60001220703134">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

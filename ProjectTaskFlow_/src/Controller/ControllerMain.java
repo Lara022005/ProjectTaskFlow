@@ -43,6 +43,9 @@ public class ControllerMain implements Initializable {
 
     @FXML
     private Button btRegistroVenda;
+    
+    @FXML
+    private Button btRelatorioVenda;
 
     @FXML
     private Button btSair;
@@ -131,6 +134,10 @@ public class ControllerMain implements Initializable {
     @FXML
     void telaUsuario(ActionEvent event) throws IOException {
     	Main.TelaUsuario();
+    }
+    @FXML
+    void actionRelatorioVenda(ActionEvent event) throws IOException {
+    	Main.TelaReLatorioVenda();
     }
     
     private ObservableList<Agendamento> ArrayAgendamentos;

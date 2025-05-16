@@ -1,4 +1,4 @@
-package ConnectionFactory;
+ package ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnectionDataBase {
 		
 	private static final String Driver= "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String URL = "jdbc:sqlserver://192.168.70.238:51860;encrypt=false;databaseName=TaskFlow;user=sa;password=Senailab05";
+	private static final String URL = "jdbc:sqlserver://192.168.70.229:51860;encrypt=false;databaseName=TaskFlow;user=sa;password=Senailab05";
 	private static final String user = "sa";
 	private static final String password = "Senailab05";
 	

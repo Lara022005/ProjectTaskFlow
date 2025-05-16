@@ -34,12 +34,12 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#3c42ff" layoutX="16.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço">
+            <Text fill="#3c42ff" layoutX="16.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviço">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#3c42ff" layoutX="16.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
+            <Text fill="#3c42ff" layoutX="16.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -55,18 +55,18 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <TextField fx:id="txtNomeCliente" layoutX="15.0" layoutY="68.0" prefHeight="25.0" prefWidth="243.0" />
-            <TextField fx:id="txtCPF" layoutX="305.0" layoutY="68.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" />
-            <Text layoutX="19.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
-            <Text layoutX="309.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:" />
-            <TextField fx:id="txtPesquisarServico" layoutX="16.0" layoutY="168.0" onInputMethodTextChanged="#actionServicoType" onKeyTyped="#actionServicoType" onMouseClicked="#actionServicoClick" onMouseEntered="#actionServicoClick" prefHeight="25.0" prefWidth="243.0" />
-            <TextField fx:id="txtPrecoServico" layoutX="19.0" layoutY="229.0" prefHeight="25.0" prefWidth="95.0" />
+            <TextField fx:id="txtNomeCliente" layoutX="197.0" layoutY="64.0" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="txtCPF" layoutX="19.0" layoutY="65.0" onInputMethodTextChanged="#actionNomeType" onKeyTyped="#actionNomeType" onMouseClicked="#actionNomeClick" onMouseEntered="#actionNomeClick" />
+            <Text layoutX="201.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="20.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:" />
+            <TextField fx:id="txtServico" layoutX="19.0" layoutY="176.0" onInputMethodTextChanged="#actionSertype" onKeyTyped="#actionSertype" onMouseClicked="#actionSerClick" onMouseEntered="#actionSerClick" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="txtPrecoUniServico" layoutX="19.0" layoutY="229.0" prefHeight="25.0" prefWidth="95.0" />
             <TextField fx:id="txtQtdServico" layoutX="133.0" layoutY="229.0" prefHeight="25.0" prefWidth="85.0" />
-            <TextField fx:id="txtPrecoProduto" layoutX="18.0" layoutY="380.0" prefHeight="25.0" prefWidth="95.0" />
+            <TextField fx:id="txtPrecoUniProduto" layoutX="18.0" layoutY="380.0" prefHeight="25.0" prefWidth="95.0" />
             <TextField fx:id="txtQtdProduto" layoutX="133.0" layoutY="380.0" prefHeight="25.0" prefWidth="85.0" />
-            <TextField fx:id="txtPesquisarProduto" layoutX="16.0" layoutY="316.0" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="txtProduto" layoutX="18.0" layoutY="321.0" onInputMethodTextChanged="#actionProdtype" onKeyTyped="#actionProdtype" onMouseClicked="#actionProdClick" onMouseEntered="#actionProdClick" prefHeight="25.0" prefWidth="243.0" />
             <Text layoutX="19.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
-            <Text layoutX="136.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
+            <Text layoutX="140.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
             <Text layoutX="135.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
             <Button fx:id="btAdicionarProduto" layoutX="393.0" layoutY="376.0" mnemonicParsing="false" onAction="#ActionAdicionarProduto" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: linear-gradient(to right, #4C43B0 36%, #578AE3 100%);" text="Adicionar" textFill="WHITE">
                <font>
@@ -85,30 +85,8 @@
             <TextField fx:id="txtTotalProduto" layoutX="241.0" layoutY="380.0" prefHeight="25.0" prefWidth="117.0" />
             <Text layoutX="246.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
             <Text layoutX="245.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
-            <Button fx:id="btPesquisarServico" layoutX="258.0" layoutY="168.0" mnemonicParsing="false" onAction="#actionPesquisarServico" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: 1;">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/material-symbols-light_search.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="btPesquisarProduto" layoutX="260.0" layoutY="312.0" mnemonicParsing="false" onAction="#actionPesquisarProduto" prefHeight="33.0" prefWidth="43.0" style="-fx-background-color: 1;">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/material-symbols-light_search.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="btPesquisarCliente" layoutX="258.0" layoutY="68.0" mnemonicParsing="false" onAction="#actionPesquisarCliente" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: 1;">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/material-symbols-light_search.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
+            <Text layoutX="21.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome " />
+            <Text layoutX="21.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome " />
          </children>
       </Pane>
       <Pane layoutX="532.0" layoutY="111.0" prefHeight="434.0" prefWidth="410.0" style="-fx-background-color: ffffff;">
@@ -155,7 +133,7 @@
             </Pane>
             <TableView fx:id="tableVendaProduto" layoutX="14.0" layoutY="25.0" prefHeight="97.0" prefWidth="388.0">
               <columns>
-                <TableColumn prefWidth="20.79998779296875" />
+                <TableColumn fx:id="columnIndiceProd" prefWidth="20.79998779296875" />
                 <TableColumn fx:id="columnNomeProd" prefWidth="112.0" text="Nome" />
                   <TableColumn fx:id="columnQtdProd" prefWidth="80.00006103515625" text="Quantidade" />
                   <TableColumn fx:id="columnPrecoUniP" prefWidth="89.59991455078125" text="Preço uni" />
@@ -164,7 +142,7 @@
             </TableView>
             <TableView fx:id="tableVendaServico" layoutX="14.0" layoutY="147.0" prefHeight="103.0" prefWidth="388.0">
                <columns>
-                  <TableColumn prefWidth="22.4000244140625" />
+                  <TableColumn fx:id="columnIndiceServ" prefWidth="22.4000244140625" />
                   <TableColumn fx:id="columnNomeServ" prefWidth="108.79998779296875" text="Nome" />
                   <TableColumn fx:id="columnQtdServ" prefWidth="81.60003662109375" text="Quantidade" />
                   <TableColumn fx:id="columnPrecoUniS" prefWidth="88.79998779296875" text="Preço Uni" />
@@ -178,17 +156,15 @@
             </Text>
          </children>
       </Pane>
-      <Button fx:id="btVoltar" alignment="CENTER_RIGHT" layoutX="99.0" layoutY="28.0" mnemonicParsing="false" onAction="#ActionVoltar" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: 1;" textFill="WHITE">
+      <Button fx:id="btVoltar" alignment="CENTER_RIGHT" layoutX="85.0" layoutY="28.0" mnemonicParsing="false" onAction="#ActionVoltar" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: 1;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="53.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Group%20136.png" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
+      <ImageView fitHeight="53.0" fitWidth="95.0" layoutX="85.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Group%20136.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
