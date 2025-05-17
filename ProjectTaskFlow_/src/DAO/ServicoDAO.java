@@ -20,7 +20,7 @@ public class ServicoDAO {
 
 			stmt = con.prepareStatement("insert into Servico values(?, ?, ?)");
 			stmt.setString(1, servico.getNome());
-			stmt.setString(2, servico.getPreco());
+			stmt.setString(2, servico.getPrecoUni());
 			stmt.setString(3, servico.getDescricao());									
 
 			stmt.executeUpdate();
@@ -48,7 +48,7 @@ public class ServicoDAO {
 				Servico servico = new Servico();
 				servico.setId("" + i);
 				servico.setNome(rs.getString(2));				
-				servico.setPreco(rs.getString(3));
+				servico.setPrecoUni(rs.getString(3));
 				servico.setDescricao(rs.getString(4));			
 
 				servico1.add(servico);
@@ -74,7 +74,7 @@ public class ServicoDAO {
 
 			stmt = con.prepareStatement("update Servico set Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where Id_Servico = ?");						
 			stmt.setString(1, servico.getNome());
-			stmt.setString(2, servico.getPreco());
+			stmt.setString(2, servico.getPrecoUni());
 			stmt.setString(3, servico.getDescricao());						
 			stmt.setString(4, servico.getId());
 
@@ -133,7 +133,7 @@ public class ServicoDAO {
 					Servico servico = new Servico();				
 					servico.setId("" + i);
 					servico.setNome(rs.getString(2));				
-					servico.setPreco(rs.getString(3));
+					servico.setPrecoUni(rs.getString(3));
 					servico.setDescricao(rs.getString(4));			
 					
 					servicos.add(servico);
