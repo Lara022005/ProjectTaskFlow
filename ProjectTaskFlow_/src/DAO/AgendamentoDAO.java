@@ -106,13 +106,14 @@ public class AgendamentoDAO {
 				agendamento.setIdCliente(rs.getString(2));			
 				agendamento.setIdServico(rs.getString(3));
 				agendamento.setDataAgendamento(rs.getString(4));							
-				agendamento.setHorario(rs.getString(5));
-				agendamento.setStatusAgendamento(rs.getString(6));
+				agendamento.setHorario(rs.getString(5));				
 				
 				String aux = agendamento.getHorario();
 				aux = aux.replace(":00.0000000", "");
 				agendamento.setHorario(aux);
-
+				
+				agendamento.setStatusAgendamento(rs.getString(6));
+				
 				agendamento1.add(agendamento);
 				i++;
 			}

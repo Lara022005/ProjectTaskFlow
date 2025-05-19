@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionario">
    <children>
       <ImageView fitHeight="560.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,19 +28,19 @@
          </font>
       </Text>
       <TextField fx:id="txtPesquisar" layoutX="207.0" layoutY="122.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView fx:id="tableFuncionarios" layoutX="178.0" layoutY="188.0" prefHeight="256.0" prefWidth="742.0">
+      <TableView fx:id="tableFuncionarios" layoutX="169.0" layoutY="188.0" prefHeight="256.0" prefWidth="766.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
-            <TableColumn fx:id="columnNomeCliente" prefWidth="172.79994201660156" style="-fx-alignment: center;" text=" Cliente" />
-            <TableColumn fx:id="columnData" prefWidth="108.0" style="-fx-alignment: center;" text="Data " />
-            <TableColumn fx:id="columnDescricao" prefWidth="156.800048828125" style="-fx-alignment: center;" text="Descrição" />
-            <TableColumn fx:id="columnHorario" prefWidth="116.0" style="-fx-alignment: center;" text="Horario" />
-            <TableColumn fx:id="columnServico" prefWidth="146.4000244140625" style="-fx-alignment: center;" text="Serviço" />
+            <TableColumn fx:id="columnNomeFunc" prefWidth="169.60000610351562" style="-fx-alignment: center;" text="Nome" />
+            <TableColumn fx:id="columnCPF" prefWidth="148.79998779296875" style="-fx-alignment: center;" text="CPF" />
+            <TableColumn fx:id="columnEmail" prefWidth="121.60003662109375" style="-fx-alignment: center;" text="Email" />
+            <TableColumn fx:id="columnEndereco" prefWidth="104.0" style="-fx-alignment: center;" text="Endereço" />
+            <TableColumn fx:id="columnTelefone" prefWidth="95.199951171875" style="-fx-alignment: center;" text="Telefone" />
+            <TableColumn fx:id="columnDataNasc" prefWidth="88.7999267578125" style="-fx-alignment: center;" text="Data nasc" />
          </columns>
       </TableView>
-      <Button fx:id="btCadastrar" layoutX="207.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
-      <Button fx:id="btAlterar" layoutX="480.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
-      <Button fx:id="btExcluir" layoutX="768.0" layoutY="481.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
+      <Button fx:id="btCadastrar" layoutX="270.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="btAlterar" layoutX="713.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btPesquisar" layoutX="591.0" layoutY="122.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
    </children>
 </AnchorPane>

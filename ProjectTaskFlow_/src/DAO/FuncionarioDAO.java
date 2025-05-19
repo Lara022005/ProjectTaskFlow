@@ -244,7 +244,7 @@ public class FuncionarioDAO {
 
 		return TotalVendido;
 	}
-	
+	// -------------------------------- pesquisar id ------------------------------
 	public ArrayList<Funcionario> readCPF(){
 
 		Connection con = ConnectionDataBase.getConnection();
@@ -275,7 +275,30 @@ public class FuncionarioDAO {
 		}
 		return funcionario1;
 	}
+// ------------------------------ puxar somente funcionario --------------------
+	
+	public ArrayList<String> readFuncionarioByNome() {
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<String> funcionarios = new ArrayList<>();
 
+		try {
+			stmt = con.prepareStatement("SELECT Nome_Funcionario FROM Funcionario");
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				String nome;
+				nome = rs.getString(1);
+				funcionarios.add(nome);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao ler os clientes!", e);
+		} finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return funcionarios;
+	}
 	
 }
 

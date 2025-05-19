@@ -87,14 +87,16 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				txtHorario.getText() == "") {   		
 			Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
 		}else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
-			Alerts.showAlert("Erro!", "CPF inválido"," Verifique o CPF e tente novamente", AlertType.ERROR);
-		}
+			Alerts.showAlert("Erro!", "CPF inválido"," Verifique se o campo CPF está preenchido e tente novamente", AlertType.ERROR);
+		} // else if (txtCpf.getText() != ){
+//			Alerts.showAlert("Erro!", "Cliente não cadastrado no sistema", "Cadastrar cliente e tentar novamente", AlertType.ERROR);
+//		}
 		else { 	
 			agendamento.setIdCliente(cliente.getId());
+//			agendamento.setIdServico(servico.getId());
 			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 			agendamento.setDescricao(txtDescricao.getText());
 			agendamento.setHorario(txtHorario.getText());
-
 
 			if(ControllerAgendamento.alterarAgendamento == null) {
 				agendamentoDAO.create(agendamento);
@@ -106,12 +108,13 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				sa.setIdAgendamento(agendamento.getId());
 				sa.setQuantidade("0");
 				saDAO.create(sa);
-
+													
 				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
 				Stage stage = (Stage) btCancelar.getScene().getWindow();
 				stage.close();
+								
 			}else {
-
+								
 				ArrayList<Cliente> clientes1 = new ArrayList<>();
 				cliente.setCpf(ControllerAgendamento.alterarAgendamento.getIdCliente());
 				cliente.setNome(ControllerAgendamento.alterarAgendamento.getIdCliente());
@@ -120,8 +123,8 @@ public class ControllerRegistrarAgendamento implements Initializable{
 				cliente = clientes1.get(0);
 				System.out.println("Cliente: "+ cliente.getId());
 				ControllerAgendamento.alterarAgendamento.setIdCliente(cliente.getId());
-				System.out.println(ControllerAgendamento.alterarAgendamento.getHorario()); 
 				System.out.println(ControllerAgendamento.alterarAgendamento.getDataAgendamento());
+				System.out.println(ControllerAgendamento.alterarAgendamento.getHorario()); 
 				agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.alterarAgendamento);
 				agendamento = agendamentos.get(0); 
 				cliente.setCpf(txtCpf.getText());
@@ -172,6 +175,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			ClienteDAO clienteDAO = new ClienteDAO();
 			Cliente cliente = new Cliente();
 			cliente.setCpf(txtCpf.getText());
+			cliente.setNome(txtNomeCliente.getText());
 			ArrayList<Cliente> clientes = new ArrayList<>();		
 			clientes = clienteDAO.search(cliente);
 			cliente = clientes.get(0);
@@ -201,9 +205,9 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 
 		if(ControllerAgendamento.alterarAgendamento != null) {
-//			ArrayList<Cliente> clientes = new ArrayList<>();
-//			ClienteDAO clienteDAO = new ClienteDAO();
-//			Cliente cliente = new Cliente();
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
 			Agendamento agendamentoEditar = new Agendamento();
 
 			btAgendar.setText("Salvar");
@@ -211,12 +215,12 @@ public class ControllerRegistrarAgendamento implements Initializable{
 			agendamentoEditar = ControllerAgendamento.alterarAgendamento;
 			txtNomeCliente.setText(agendamentoEditar.getIdCliente());	
 
-//			cliente.setNome(null);
-//			cliente.setCpf(agendamentoEditar.getIdCliente());
-//			clientes = clienteDAO.search(cliente);
-//			cliente = clientes.get(0);	
-//			txtCpf.setText(cliente.getCpf());
-//			agendamentoEditar.setIdCliente(cliente.getCpf());
+			cliente.setNome(txtNomeCliente.getText());
+			cliente.setCpf(ControllerCliente.alterarCliente.getCpf());
+			clientes = clienteDAO.search(cliente);
+			cliente = clientes.get(0);	
+			txtCpf.setText(cliente.getCpf());
+			agendamentoEditar.setIdCliente(cliente.getCpf());
 
 			txtServico.setText(agendamentoEditar.getIdServico());
 			LocalDate dataAgendamento = LocalDate.parse(agendamentoEditar.getDataAgendamento());

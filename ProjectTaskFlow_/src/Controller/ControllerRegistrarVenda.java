@@ -4,15 +4,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import org.controlsfx.control.textfield.TextFields;
-
 import DAO.ClienteDAO;
+import DAO.FuncionarioDAO;
 import DAO.ProdutoDAO;
+import DAO.ProdutoVendaDAO;
 import DAO.ServicoDAO;
+import DAO.ServicoVendaDAO;
+import DAO.VendaDAO;
 import Model.Cliente;
 import Model.Produto;
+import Model.ProdutoVenda;
 import Model.Servico;
+import Model.ServicoVenda;
+import Model.Venda;
 import Util.Alerts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -177,7 +182,13 @@ public class ControllerRegistrarVenda implements Initializable {
 			ArrayProdutos.add(produtoVenda);
 			CarregarTableProdutos(ArrayProdutos);	
 
-			Alerts.showAlert("Sucesso!", "Parabéns","Produto adicionado com sucesso", AlertType.INFORMATION);		
+			//	Alerts.showAlert("Sucesso!", "Parabéns","Produto adicionado com sucesso", AlertType.INFORMATION);		
+
+			txtProduto.setText("");
+			txtPrecoUniProduto.setText("");
+			txtQtdProduto.setText("");
+			txtTotalProduto.setText("");
+
 		}
 
 	}
@@ -198,22 +209,109 @@ public class ControllerRegistrarVenda implements Initializable {
 			String valor = txtTotalServico.getText();
 			valor = valor.replace(",", ".");
 			double precoTotal = Double.parseDouble(valor);
-			totalVendaServico = totalVendaProd + precoTotal;
+			totalVendaServico = totalVendaServico + precoTotal;
 			valor = String.format("%.2f", totalVendaProd);
 			txtTotalVenda.setText(valor);
 
 			nomeServicos[ArrayServicos.size()] = txtServico.getText();
 			quantidadeServico[ArrayServicos.size()] = txtQtdServico.getText();
 
-			ArrayProdutos.add(produtoVenda);
-			CarregarTableServicos(ArrayServicos);			
+			ArrayServicos.add(servicoVenda);
+			CarregarTableServicos(ArrayServicos);		
+
+			//	Alerts.showAlert("Sucesso!", "Parabéns","Produto adicionado com sucesso", AlertType.INFORMATION);	
+
+			txtServico.setText("");
+			txtPrecoUniServico.setText("");
+			txtQtdServico.setText("");
+			txtTotalServico.setText("");
+
 		}
 	}
 
 
 	@FXML
 	void ActionRegistrar(ActionEvent event) {
+		if(choiceFormaPag.getValue() == null || txtTotalVenda.getText() == "" || txtVendedor.getText() == ""){
+			Alerts.showAlert("Erro!", "Campo inválido"," Verifique se o campo de pagamento está preenchido e tente novamente!", AlertType.ERROR);      		
+		} else {
 
+			Venda venda = new Venda();
+			VendaDAO vendaDAO = new VendaDAO();
+			Cliente cliente = new Cliente();
+			ClienteDAO clienteDAO = new ClienteDAO();		
+			ProdutoDAO produtoDAO = new ProdutoDAO();			
+			ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
+			ArrayList<Cliente> clientes = new ArrayList<>();		
+			cliente.setCpf(txtCPF.getText());
+			clientes = clienteDAO.search(cliente);
+			cliente = clientes.get(0);
+
+			venda.setIdUsuario(ControllerLogin.funcionario.getId());
+			venda.setIdCliente(cliente.getId());
+			venda.setFormaPag(choiceFormaPag.getValue().toString());
+			venda.setDesconto("" + desconto);		
+			venda.setPrecoTotal(txtTotalServico.getText());
+
+			String valor = txtTotalVenda.getText();
+			valor = valor.replace(",", ".");
+			double TotalServicoProduto =  Double.parseDouble(valor);
+			totalVendaServico = totalVendaProd + totalVendaServico + TotalServicoProduto;
+			venda.setPrecoTotal("%.2f" + totalVendaServico);
+						
+			vendaDAO.create(venda);
+
+			for(int i =0; i < ArrayProdutos.size(); i++) { // size tamanho do array
+				Produto produto = new Produto();
+				ProdutoVenda produtoVenda = new ProdutoVenda();
+				ArrayList<Produto> produtos = new ArrayList<>();
+				produto.setNome(nomesProdutos[i]);		
+				produtos = produtoDAO.search(produto);
+				produto = produtos.get(0);			
+				produtoVenda.setIdProduto(produto.getId());
+				produtoVenda.setIdVenda(vendaDAO.readID());
+				produtoVenda.setQuantidade(quantidadeProd[i]);
+				produtoVendaDAO.create(produtoVenda);
+
+				for(int J =0; i < ArrayServicos.size(); J++) {
+					Servico servico = new Servico();
+					ServicoDAO servicoDAO = new ServicoDAO();
+					ServicoVenda servicoVenda = new ServicoVenda();
+					ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
+					ArrayList<Servico> servicos = new ArrayList<>();
+					servico.setNome(nomeServicos[J]);
+					servicos = servicoDAO.search(servico);
+					servico = servicos.get(0);
+					servicoVenda.setIdServico(servico.getId());
+					servicoVenda.setIdVenda(vendaDAO.readID());
+					servicoVenda.setQuantidade(quantidadeServico[J]);
+					servicoVendaDAO.create(servicoVenda);
+
+				}
+
+				txtCPF.setText("");
+				txtDesconto.setText("");
+				txtNomeCliente.setText("");
+				txtProduto.setText("");
+				txtServico.setText("");
+				txtPrecoUniProduto.setText("");
+				txtPrecoUniServico.setText("");
+				txtQtdProduto.setText("");
+				txtQtdServico.setText("");
+				txtTotalProduto.setText("");
+				txtTotalServico.setText("");
+				txtTotalVenda.setText("");
+				txtVendedor.setText("");
+				txtDesconto.setText("");		
+				choiceFormaPag.setValue(null); 
+
+				Alerts.showAlert("Sucesso!", "Parabéns","Venda realizada com sucesso", AlertType.INFORMATION);
+			}
+		}
+		ArrayProdutos = new ArrayList<Produto>();
+		ArrayServicos = new ArrayList<Servico>();
+		CarregarTableProdutos(ArrayProdutos);
+		CarregarTableServicos(ArrayServicos);
 	}
 
 	@FXML
@@ -240,7 +338,7 @@ public class ControllerRegistrarVenda implements Initializable {
 		}else if(quantidade < 15){
 			double precoTotal = precoUni * quantidade;
 			txtDesconto.setText("0.00");
-			txtTotalProduto.setText("R$" + String.format("%.2f", precoTotal));
+			txtTotalProduto.setText("" + String.format("%.2f", precoTotal));
 
 		}else {
 			txtDesconto.setText(null);
@@ -259,14 +357,9 @@ public class ControllerRegistrarVenda implements Initializable {
 		servico = servicos.get(0);
 		double quantidade = Double.parseDouble(txtQtdServico.getText());
 		double precoUni = Double.parseDouble(servico.getPrecoUni());
-		if(quantidade < 15){
-			double precoTotal = precoUni * quantidade;			
-			txtTotalServico.setText("R$" + String.format("%.2f", precoTotal));
 
-		}else {			
-			txtTotalServico.setText(null);
-			txtPrecoUniServico.setText(null);
-		}
+		double precoTotal = precoUni * quantidade;			
+		txtTotalServico.setText("" + String.format("%.2f", precoTotal));
 	}
 
 	@FXML
@@ -437,6 +530,17 @@ public class ControllerRegistrarVenda implements Initializable {
 			cliente[i] = nomeclientes.get(i);
 		}
 		TextFields.bindAutoCompletion(txtNomeCliente, cliente);	
+		// ----------------- barra de pesquisar Vendedor(func) ----------------------------
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		ArrayList<String> nomeFuncionarios = new ArrayList<String>();
+		nomeFuncionarios = funcionarioDAO.readFuncionarioByNome();
+		String[] funcionario = new String[nomeFuncionarios.size()];
+
+		for (int i = 0; i < nomeFuncionarios.size(); i++) {
+			funcionario[i] = nomeFuncionarios.get(i);
+		}
+		TextFields.bindAutoCompletion(txtVendedor, funcionario);	
+
 	}
 
 	private void CarregarTableProdutos(ArrayList<Produto> ArrayProdutos) {
