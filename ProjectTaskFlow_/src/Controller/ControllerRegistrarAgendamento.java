@@ -74,86 +74,89 @@ public class ControllerRegistrarAgendamento implements Initializable{
 		cliente.setCpf(txtCpf.getText());
 		cliente.setNome(txtNomeCliente.getText());
 		clientes = clienteDAO.search(cliente);
-		cliente = clientes.get(0);
+		
+		if(clientes.isEmpty()) {
 
-		ArrayList<Servico> servicos = new ArrayList<>();
-		servico.setNome(txtServico.getText());
-		servicos = servicoDAO.search(servico);
-		servico = servicos.get(0);
+			Alerts.showAlert("Erro!", "Cliente não cadastrado no sistema", "Cadastrar cliente e tentar novamente", AlertType.ERROR);
 
-		ArrayList<Agendamento> agendamentos = new ArrayList<>();
+		}else {
+			cliente = clientes.get(0);
+			ArrayList<Servico> servicos = new ArrayList<>();
+			servico.setNome(txtServico.getText());
+			servicos = servicoDAO.search(servico);
+			servico = servicos.get(0);
 
-		if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
-				txtHorario.getText() == "") {   		
-			Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
-		}else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
-			Alerts.showAlert("Erro!", "CPF inválido"," Verifique se o campo CPF está preenchido e tente novamente", AlertType.ERROR);
-		} // else if (txtCpf.getText() != ){
-//			Alerts.showAlert("Erro!", "Cliente não cadastrado no sistema", "Cadastrar cliente e tentar novamente", AlertType.ERROR);
-//		}
-		else { 	
-			agendamento.setIdCliente(cliente.getId());
-//			agendamento.setIdServico(servico.getId());
-			agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
-			agendamento.setDescricao(txtDescricao.getText());
-			agendamento.setHorario(txtHorario.getText());
+			ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
-			if(ControllerAgendamento.alterarAgendamento == null) {
-				agendamentoDAO.create(agendamento);
-				agendamentos = agendamentoDAO.readIDAdcionado();
-				ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
-				ServicoAgendamento sa = new ServicoAgendamento();
-				agendamento = agendamentos.get(0);
-				sa.setIdServico(servico.getId());
-				sa.setIdAgendamento(agendamento.getId());
-				sa.setQuantidade("0");
-				saDAO.create(sa);
-													
-				Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
-				Stage stage = (Stage) btCancelar.getScene().getWindow();
-				stage.close();
-								
-			}else {
-								
-				ArrayList<Cliente> clientes1 = new ArrayList<>();
-				cliente.setCpf(ControllerAgendamento.alterarAgendamento.getIdCliente());
-				cliente.setNome(ControllerAgendamento.alterarAgendamento.getIdCliente());
-				clientes1 = clienteDAO.search(cliente);
-				System.out.println(ControllerAgendamento.alterarAgendamento.getIdCliente()); 
-				cliente = clientes1.get(0);
-				System.out.println("Cliente: "+ cliente.getId());
-				ControllerAgendamento.alterarAgendamento.setIdCliente(cliente.getId());
-				System.out.println(ControllerAgendamento.alterarAgendamento.getDataAgendamento());
-				System.out.println(ControllerAgendamento.alterarAgendamento.getHorario()); 
-				agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.alterarAgendamento);
-				agendamento = agendamentos.get(0); 
-				cliente.setCpf(txtCpf.getText());
-				cliente.setNome(txtNomeCliente.getText());
-				clientes = clienteDAO.search(cliente);
-				cliente = clientes.get(0);
-				ArrayList<Servico> servicos1 = new ArrayList<>();
-				servico.setNome(txtServico.getText());
-				servicos1 = servicoDAO.search(servico);
-				servico = servicos1.get(0);
+			if(txtNomeCliente.getText() == "" || txtServico.getText() == "" ||dpDataAgend.getValue() == null || 
+					txtHorario.getText() == "") {   		
+				Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);    		
+			}else if(txtCpf.getText() == "" || cpfValidador.validarCPF(txtCpf.getText()) == false) {   		
+				Alerts.showAlert("Erro!", "CPF inválido"," Verifique se o campo CPF está preenchido e tente novamente", AlertType.ERROR);
+			} 
+			else { 	
 				agendamento.setIdCliente(cliente.getId());
-				agendamento.setIdCliente(cliente.getCpf());
+				//			agendamento.setIdServico(servico.getId());
 				agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
 				agendamento.setDescricao(txtDescricao.getText());
-				agendamento.setHorario(txtHorario.getText());	
-				System.out.println("Agendamento: "+ agendamento.getId()); 
-				agendamentoDAO.update(agendamento);
-				ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
-				ServicoAgendamento sa = new ServicoAgendamento();
-				sa.setIdServico(servico.getId());
-				sa.setIdAgendamento(agendamento.getId());
-				sa.setQuantidade("1");
-				saDAO.update(sa);
+				agendamento.setHorario(txtHorario.getText());
 
-				ControllerAgendamento.alterarAgendamento = null;
+				if(ControllerAgendamento.alterarAgendamento == null) {
+					agendamentoDAO.create(agendamento);
+					agendamentos = agendamentoDAO.readIDAdcionado();
+					ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
+					ServicoAgendamento sa = new ServicoAgendamento();
+					agendamento = agendamentos.get(0);
+					sa.setIdServico(servico.getId());
+					sa.setIdAgendamento(agendamento.getId());
+					sa.setQuantidade("0");
+					saDAO.create(sa);
 
-				Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
-				Stage stage = (Stage) btCancelar.getScene().getWindow();
-				stage.close();
+					Alerts.showAlert("Sucesso!", "Cliente Agendado", "Agendamento concluído com sucesso", AlertType.INFORMATION);
+					Stage stage = (Stage) btCancelar.getScene().getWindow();
+					stage.close();
+
+				}else {
+
+					ArrayList<Cliente> clientes1 = new ArrayList<>();
+					cliente.setCpf(ControllerAgendamento.alterarAgendamento.getIdCliente());
+					cliente.setNome(ControllerAgendamento.alterarAgendamento.getIdCliente());
+					clientes1 = clienteDAO.search(cliente);
+					cliente = clientes1.get(0);
+					System.out.println("Cliente: "+ cliente.getId());
+					ControllerAgendamento.alterarAgendamento.setIdCliente(cliente.getId());
+//					System.out.println(ControllerAgendamento.alterarAgendamento.getDataAgendamento());
+//					System.out.println(ControllerAgendamento.alterarAgendamento.getHorario()); 
+					agendamentos = agendamentoDAO.searchIdAgendamento(ControllerAgendamento.alterarAgendamento);
+					agendamento = agendamentos.get(0); 
+					cliente.setCpf(txtCpf.getText());
+					cliente.setNome(txtNomeCliente.getText());
+					clientes = clienteDAO.search(cliente);
+					cliente = clientes.get(0);
+					ArrayList<Servico> servicos1 = new ArrayList<>();
+					servico.setNome(txtServico.getText());
+					servicos1 = servicoDAO.search(servico);
+					servico = servicos1.get(0);
+					agendamento.setIdCliente(cliente.getId());
+					agendamento.setDataAgendamento(dpDataAgend.getValue().toString());	
+					agendamento.setDescricao(txtDescricao.getText());
+					agendamento.setHorario(txtHorario.getText());	
+					System.out.println("Agendamento: "+ agendamento.getId()); 
+					agendamentoDAO.update(agendamento);
+					ServicoAgendamentoDAO saDAO = new ServicoAgendamentoDAO();
+					ServicoAgendamento sa = new ServicoAgendamento();
+					sa.setIdServico(servico.getId());
+					sa.setIdAgendamento(agendamento.getId());
+					sa.setQuantidade("1");
+					saDAO.update(sa);
+
+					ControllerAgendamento.alterarAgendamento = null;
+
+					Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
+					Stage stage = (Stage) btCancelar.getScene().getWindow();
+					stage.close();
+
+				}
 			}			
 		} 
 	}	

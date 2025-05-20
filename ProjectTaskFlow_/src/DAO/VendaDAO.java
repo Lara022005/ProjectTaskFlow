@@ -215,7 +215,7 @@ public class VendaDAO {
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Venda venda = new Venda();
 				venda.setId("" + i);
-				venda.setIdUsuario(rs.getString(2));				
+				venda.setIdCliente(rs.getString(2));				
 				venda.setIdCliente(rs.getString(3));
 				venda.setDataVenda(rs.getString(4));
 				venda.setPrecoTotal(rs.getString(5));
