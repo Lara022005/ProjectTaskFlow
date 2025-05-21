@@ -119,7 +119,8 @@ public class ControllerCadastrarUsuario implements Initializable {
 			usuarioDAO.create(usuario);
 
 
-			Alerts.showAlert("Sucesso!", "Usuario Cadastrado", "Usuario Cadastrado com sucesso", AlertType.INFORMATION);
+
+			
 			//   		Stage stage = (Stage) btCancelar.getScene().getWindow();
 			//       	stage.close();
 
