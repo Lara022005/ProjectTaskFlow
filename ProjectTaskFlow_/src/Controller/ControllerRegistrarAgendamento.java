@@ -152,7 +152,7 @@ public class ControllerRegistrarAgendamento implements Initializable{
 
 					ControllerAgendamento.alterarAgendamento = null;
 
-					Alerts.showAlert("Sucesso!", "Cliente editado", "O cliente foi editado com sucesso", AlertType.INFORMATION);    
+					Alerts.showAlert("Sucesso!", "Agendamento editado", "O agendamento foi editado com sucesso", AlertType.INFORMATION);    
 					Stage stage = (Stage) btCancelar.getScene().getWindow();
 					stage.close();
 

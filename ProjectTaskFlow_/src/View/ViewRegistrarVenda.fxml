@@ -91,11 +91,6 @@
       </Pane>
       <Pane layoutX="523.0" layoutY="105.0" prefHeight="479.0" prefWidth="418.0" style="-fx-background-color: ffffff;">
          <children>
-            <Text fill="#3c42ff" layoutX="27.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos da Venda">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-            </Text>
             <Text fill="#3c42ff" layoutX="16.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmar Pagamento">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
@@ -131,16 +126,7 @@
                   <Text layoutX="242.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto:" />
                </children>
             </Pane>
-            <TableView fx:id="tableVendaProduto" layoutX="14.0" layoutY="25.0" prefHeight="113.0" prefWidth="395.0">
-              <columns>
-                <TableColumn fx:id="columnIndiceProd" prefWidth="20.79998779296875" />
-                <TableColumn fx:id="columnNomeProd" prefWidth="112.0" text="Nome" />
-                  <TableColumn fx:id="columnQtdProd" prefWidth="80.00006103515625" text="Quantidade" />
-                  <TableColumn fx:id="columnPrecoUniP" prefWidth="89.59991455078125" text="Preço Unitario" />
-                  <TableColumn fx:id="columnTotalProd" prefWidth="90.99993896484375" text="Total" />
-              </columns>
-            </TableView>
-            <TableView fx:id="tableVendaServico" layoutX="14.0" layoutY="161.0" prefHeight="128.0" prefWidth="395.0">
+            <TableView fx:id="tableVendaServico" layoutX="14.0" layoutY="27.0" prefHeight="128.0" prefWidth="395.0">
                <columns>
                   <TableColumn fx:id="columnIndiceServ" prefWidth="22.4000244140625" />
                   <TableColumn fx:id="columnNomeServ" prefWidth="108.79998779296875" text="Nome" />
@@ -149,7 +135,21 @@
                   <TableColumn fx:id="columnTotalServ" prefWidth="90.99993896484375" text="Total" />
                </columns>
             </TableView>
-            <Text fill="#3c42ff" layoutX="17.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços Realizado">
+            <Text fill="#3c42ff" layoutX="17.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços Realizado">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Text>
+            <TableView fx:id="tableVendaProduto" layoutX="14.0" layoutY="179.0" prefHeight="113.0" prefWidth="395.0">
+              <columns>
+                <TableColumn fx:id="columnIndiceProd" prefWidth="20.79998779296875" />
+                <TableColumn fx:id="columnNomeProd" prefWidth="112.0" text="Nome" />
+                  <TableColumn fx:id="columnQtdProd" prefWidth="80.00006103515625" text="Quantidade" />
+                  <TableColumn fx:id="columnPrecoUniP" prefWidth="89.59991455078125" text="Preço Unitario" />
+                  <TableColumn fx:id="columnTotalProd" prefWidth="90.99993896484375" text="Total" />
+              </columns>
+            </TableView>
+            <Text fill="#3c42ff" layoutX="15.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos da Venda">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,8 +27,7 @@ public class Main extends Application {
 		try {
 			stage = primaryStage;
 			primaryStage.setTitle("TaskFlow");
-
-
+			stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
 			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/View/viewLogin.fxml"));
 			login = new Scene(fxmlLogin);
 

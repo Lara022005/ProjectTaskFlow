@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionario">
+<AnchorPane prefHeight="560.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionario">
    <children>
       <ImageView fitHeight="560.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +22,7 @@
       <Button fx:id="btProduto" layoutX="50.0" layoutY="314.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="46.0" prefWidth="58.0" style="-fx-background-color: 1;" />
       <Button fx:id="btFuncionario" layoutX="41.0" layoutY="388.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: 1;" />
       <Button fx:id="btSair" layoutX="32.0" layoutY="478.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: 1;" />
-      <Text fill="#3c42ff" layoutX="207.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionarios">
+      <Text fill="#3c42ff" layoutX="209.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
@@ -36,7 +36,7 @@
             <TableColumn fx:id="columnEmail" prefWidth="121.60003662109375" style="-fx-alignment: center;" text="Email" />
             <TableColumn fx:id="columnEndereco" prefWidth="104.0" style="-fx-alignment: center;" text="Endereço" />
             <TableColumn fx:id="columnTelefone" prefWidth="95.199951171875" style="-fx-alignment: center;" text="Telefone" />
-            <TableColumn fx:id="columnDataNasc" prefWidth="88.7999267578125" style="-fx-alignment: center;" text="Data nasc" />
+            <TableColumn fx:id="columnDataNasc" prefWidth="88.7999267578125" style="-fx-alignment: center;" text="Data Nasc" />
          </columns>
       </TableView>
       <Button fx:id="btCadastrar" layoutX="270.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
