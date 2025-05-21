@@ -22,24 +22,24 @@
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPesquisar" layoutX="205.0" layoutY="121.0" prefHeight="26.0" prefWidth="366.0" />
-      <TableView fx:id="tableUsuarios" layoutX="229.0" layoutY="178.0" prefHeight="256.0" prefWidth="624.0">
+      <TextField fx:id="txtPesquisar" layoutX="237.0" layoutY="120.0" prefHeight="26.0" prefWidth="366.0" />
+      <TableView fx:id="tableUsuarios" layoutX="196.0" layoutY="172.0" prefHeight="275.0" prefWidth="690.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="34.400054931640625" />
-            <TableColumn fx:id="columnNome" prefWidth="197.59999084472656" text="Nome" />
-            <TableColumn fx:id="columnCpf" prefWidth="133.60003662109375" text="CPF" />
-            <TableColumn fx:id="columnUsuario" prefWidth="152.0" text="Usuario" />
-            <TableColumn fx:id="columnNivel" prefWidth="105.60003662109375" text="Nivel" />
+            <TableColumn fx:id="columnNome" prefWidth="230.4000244140625" style="-fx-alignment: center;" text="Nome" />
+            <TableColumn fx:id="columnCpf" prefWidth="200.79998779296875" style="-fx-alignment: center;" text="CPF" />
+            <TableColumn fx:id="columnUsuario" prefWidth="143.20001220703125" style="-fx-alignment: center;" text="Usuario" />
+            <TableColumn fx:id="columnNivel" prefWidth="81.5999755859375" style="-fx-alignment: center;" text="Nivel" />
          </columns>
       </TableView>
       <Button fx:id="btCadastrar" layoutX="205.0" layoutY="478.0" mnemonicParsing="false" onAction="#ActionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="478.0" layoutY="478.0" mnemonicParsing="false" onAction="#ActionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="766.0" layoutY="479.0" mnemonicParsing="false" onAction="#ActionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
-      <Button fx:id="btMain" layoutX="43.0" layoutY="178.0" mnemonicParsing="false" onAction="#ActionMain" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btCliente" layoutX="43.0" layoutY="249.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btProduto" layoutX="43.0" layoutY="317.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btFuncionario" layoutX="32.0" layoutY="387.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="42.0" prefWidth="77.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btMain" layoutX="36.0" layoutY="170.0" mnemonicParsing="false" onAction="#ActionMain" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btCliente" layoutX="34.0" layoutY="239.0" mnemonicParsing="false" onAction="#ActionCliente" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btProduto" layoutX="35.0" layoutY="315.0" mnemonicParsing="false" onAction="#ActionProduto" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: 1;" />
+      <Button fx:id="btFuncionario" layoutX="26.0" layoutY="385.0" mnemonicParsing="false" onAction="#ActionFuncionario" prefHeight="54.0" prefWidth="92.0" style="-fx-background-color: 1;" />
       <Button fx:id="btSair" layoutX="32.0" layoutY="479.0" mnemonicParsing="false" onAction="#ActionSair" prefHeight="42.0" prefWidth="77.0" style="-fx-background-color: 1;" />
-      <Button fx:id="btPesquisar" layoutX="590.0" layoutY="119.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
+      <Button fx:id="btPesquisar" layoutX="626.0" layoutY="121.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
    </children>
 </AnchorPane>

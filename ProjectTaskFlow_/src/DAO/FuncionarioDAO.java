@@ -154,15 +154,14 @@ public class FuncionarioDAO {
 		ArrayList<Funcionario> Funcionarios = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from Funcionario where Cpf_Funcionario like ? or Nome_Funcionario like ?");
+			stmt = con.prepareStatement("select * from Funcionario where Cpf_Funcionario = ? ");
 			stmt.setString(1, funcionario1.getCpf());
-			stmt.setString(2, funcionario1.getNome());
 			rs = stmt.executeQuery();
-			int i = 1;
+		
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Funcionario funcionario = new Funcionario();
-				funcionario.setId("" + i);
+				funcionario.setId(rs.getString(1));
 				funcionario.setNome(rs.getString(2));
 				funcionario.setCpf(rs.getString(3));
 				funcionario.setEmail(rs.getString(4));
@@ -173,7 +172,7 @@ public class FuncionarioDAO {
 				funcionario.setDataNasc(rs.getString(9));	
 
 				Funcionarios.add(funcionario);
-				i++;
+			
 			}
 
 		} catch (SQLException e) {

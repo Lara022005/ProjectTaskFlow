@@ -134,22 +134,21 @@ public class UsuarioDAO {
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from Usuario where Id_Usuario like ? or Nome_Usuario like ?");
-			stmt.setString(1, usuario1.getId());
-			stmt.setString(2, usuario1.getNome());
+			stmt = con.prepareStatement("select * from Usuario where Nome_Usuario = ?");
+			stmt.setString(1, usuario1.getNome());
 			rs = stmt.executeQuery();
-			int i = 1;
+
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Usuario usuario = new Usuario();
-				usuario.setId("" + i);
+				usuario.setId(rs.getString(1));
 				usuario.setIdFuncionario(rs.getString(2));
 				usuario.setNome(rs.getString(3));
 				usuario.setNivelUsuario(rs.getString(4));
 				usuario.setSenha(rs.getString(5));
 
 				usuarios.add(usuario);
-				i++;
+		
 			}
 
 		} catch (SQLException e) {
@@ -230,6 +229,35 @@ public class UsuarioDAO {
 			}
 			return usuario1;
 		}
+//		==============================================Fazer===================================================
+		public ArrayList<Usuario> readIDAdcionado(){
+
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Usuario> usuario1 = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("SELECT * FROM Usuario ORDER BY Id_Usuario DESC");					
+				rs = stmt.executeQuery();
+				
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Usuario usuario = new Usuario();
+					usuario.setId(rs.getString(1));								
+
+					usuario1.add(usuario);				
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return usuario1;
+		}
+//		=========================================================================================================
 		
 		public ArrayList<Usuario> search1(String nome, String cpf){
 			
@@ -307,6 +335,49 @@ public class UsuarioDAO {
 			return usuarios;
 		}
 		
+		
+		
+		public ArrayList<Usuario> searchIdUsuario(Usuario usuario1){
+			
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Usuario> usuarios = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("SELECT * from Usuario \n"
+						+ "\n"
+						+ "WHERE \n"
+						+ "Fk_Funcionario = ?"); 
+
+				stmt.setString(1, usuario1.getIdFuncionario());
+
+						
+				rs = stmt.executeQuery();
+				
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Usuario usuario = new Usuario();
+					usuario.setId(rs.getString(1));			
+					usuario.setIdFuncionario(rs.getString(2));				
+					usuario.setNome(rs.getString(3));				
+					usuario.setNivelUsuario(rs.getString(4));
+					usuario.setSenha(rs.getString(5));
+						
+
+					usuarios.add(usuario);
+					
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return usuarios;
+		}
 	
 	
 
