@@ -205,17 +205,17 @@ public class VendaDAO {
 		ArrayList<Venda> venda1 = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select Id_Venda, Nome_Cliente, Cpf_Cliente, Data_Venda,"
-					+ " Preco_Total, Forma_Pagamento, Desconto\r\n"					
-					+ "from Venda, Cliente\r\n"
-					+ "where Id_Cliente = Fk_Cliente");
+			stmt = con.prepareStatement("select Id_Venda, Nome_Cliente, Cpf_Cliente, Data_Venda, Preco_Total, Forma_Pagamento, Desconto					\n"
+					+ "from Venda, Cliente\n"
+					+ "where Id_Cliente = Fk_Cliente  \n");
 			rs = stmt.executeQuery();
+			
 			int i = 1;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Venda venda = new Venda();
 				venda.setId("" + i);
-				venda.setIdCliente(rs.getString(2));				
+				venda.setIdUsuario(rs.getString(2));				
 				venda.setIdCliente(rs.getString(3));
 				venda.setDataVenda(rs.getString(4));
 				venda.setPrecoTotal(rs.getString(5));
@@ -240,5 +240,6 @@ public class VendaDAO {
 		}
 		return venda1;
 	}	
+	
 	
 }

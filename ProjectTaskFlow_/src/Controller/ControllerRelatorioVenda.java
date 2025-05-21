@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
 import DAO.ClienteDAO;
 import DAO.VendaDAO;
+import Model.Cliente;
 import Model.Venda;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,11 +75,17 @@ public class ControllerRelatorioVenda implements Initializable {
 	
 	public void CarregarTableVenda() {
 		VendaDAO vendaDAO = new VendaDAO();
-			
+		Venda venda = new Venda();
+		Cliente cliente = new Cliente();
+		ClienteDAO  clienteDAO = new ClienteDAO();
+		
 		ArrayVendas = FXCollections.observableArrayList(vendaDAO.readTableVenda());
-
+		
+		venda.setIdCliente(cliente.getNome());
+		ArrayList<String> nome = clienteDAO.readClienteByNome();
+	
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
-		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>(nome + "idCliente"));
 		columnCpfCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
 		columnDataVenda.setCellValueFactory(new PropertyValueFactory<>("dataVenda"));
 		columnPrecoVenda.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));			
