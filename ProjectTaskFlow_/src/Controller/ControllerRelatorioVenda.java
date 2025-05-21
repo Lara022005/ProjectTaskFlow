@@ -84,6 +84,7 @@ public class ControllerRelatorioVenda implements Initializable {
 		venda.setIdCliente(cliente.getNome());
 		ArrayList<String> nome = clienteDAO.readClienteByNome();
 	
+		
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
 		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>(nome + "idCliente"));
 		columnCpfCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
