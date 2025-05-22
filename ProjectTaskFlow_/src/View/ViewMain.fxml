@@ -25,29 +25,39 @@
             <Button fx:id="btProduto" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="336.0" mnemonicParsing="false" onAction="#telaProduto" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
             <Button fx:id="btSair" layoutX="41.0" layoutY="517.0" mnemonicParsing="false" onAction="#actionSair" prefHeight="46.0" prefWidth="79.0" style="-fx-opacity: 1; -fx-background-color: 100;" />
             <Button fx:id="btFuncionario" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="414.0" mnemonicParsing="false" onAction="#telaFuncionario" prefHeight="62.0" prefWidth="110.0" style="-fx-background-color: 1;" />
+            <Button fx:id="btRelatorioVenda" layoutX="21.0" layoutY="139.0" mnemonicParsing="false" onAction="#actionRelatorioVenda" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: ffffff; -fx-background-radius: 15;" text="Relatorio de venda" textFill="#0d0d0d" />
          </children>
       </Pane>
-      <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="736.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="736.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);">
          <children>
-            <Label fx:id="txtNome" layoutX="50.0" layoutY="15.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina">
+            <Label fx:id="txtNome" layoutX="87.0" layoutY="34.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina" textFill="#fff8f8">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtAgendamento" alignment="CENTER" layoutX="117.0" layoutY="82.0" prefHeight="30.0" prefWidth="58.0" text="10">
+            <Label fx:id="txtAgendamento" alignment="CENTER" layoutX="264.0" layoutY="62.0" prefHeight="38.0" prefWidth="79.0" text="10" textFill="#fffafa">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtTotalVendido" alignment="CENTER" layoutX="268.0" layoutY="83.0" prefHeight="30.0" prefWidth="121.0" text="10.00">
+            <Label fx:id="txtTotalVendido" alignment="CENTER" layoutX="407.0" layoutY="65.0" prefHeight="30.0" prefWidth="121.0" text="10.00" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Text layoutX="72.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos realizados" wrappingWidth="148.0" />
-            <Text layoutX="295.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faturamento " wrappingWidth="79.0" />
-            <Button fx:id="btRegistroVenda" alignment="CENTER" layoutX="563.0" layoutY="15.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Registro venda" textFill="WHITE" />
-            <Button fx:id="btRelatorioVenda" layoutX="564.0" layoutY="71.0" mnemonicParsing="false" onAction="#actionRelatorioVenda" prefHeight="25.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Relatorio das Venda" textFill="#fffcfc" />
+            <Text fill="WHITE" layoutX="232.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: ffffff;" text="Agendamentos realizados" wrappingWidth="148.0" />
+            <Text fill="WHITE" layoutX="418.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: ffffff;" text="Faturamento do mês" wrappingWidth="110.0" />
+            <Button fx:id="btRegistroVenda" alignment="CENTER_RIGHT" layoutX="594.0" layoutY="8.0" mnemonicParsing="false" onAction="#telaRegistroVenda" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: ffffff;" text="Registro venda" textFill="#0d0d0d" />
+            <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="604.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/imageMais.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="72.0" fitWidth="104.0" layoutX="5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/imageUser.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="736.0">
@@ -71,5 +81,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Text layoutX="193.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos do dia" wrappingWidth="148.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

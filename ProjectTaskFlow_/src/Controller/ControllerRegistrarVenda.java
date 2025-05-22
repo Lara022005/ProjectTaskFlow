@@ -279,13 +279,19 @@ public class ControllerRegistrarVenda implements Initializable {
 			venda.setDesconto("" + desconto);
 			venda.setPrecoTotal(txtTotalServico.getText());
 			venda.setPrecoTotal(txtTotalProduto.getText());
-
+					
+			
+	
+			
+		//	venda.setDesconto(desc);
+			
 			String valor = txtTotalVenda.getText();
 			valor = valor.replace(",", ".");
 			double TotalServicoProduto = Double.parseDouble(valor);
 			totalVendaProd = totalVendaProd + totalVendaServico + TotalServicoProduto;
-			venda.setPrecoTotal("%.2f" + totalVendaServico);
-
+			String aux = String.format("%.2f", totalVendaServico);
+			aux = aux.replace(",", ".");
+			venda.setPrecoTotal(aux);
 			vendaDAO.create(venda);
 
 			for (int i = 0; i < ArrayProdutos.size(); i++) { // size tamanho do array
@@ -341,7 +347,9 @@ public class ControllerRegistrarVenda implements Initializable {
 	}
 
 	@FXML
-	void ActionCancelar(ActionEvent event) {
+	void ActionCancelar(ActionEvent event) {	
+		Stage stage = (Stage) btCancelar.getScene().getWindow();
+    	stage.close();
 
 	}
 
@@ -528,6 +536,7 @@ public class ControllerRegistrarVenda implements Initializable {
 		choiceFormaPag.getItems().add("Credito");
 		choiceFormaPag.getItems().add("Dinheiro");
 		choiceFormaPag.getItems().add("Pix");
+		txtVendedor.setText(ControllerLogin.funcionario.getNome());
 
 		// -------------------- barra de pesquisar produto --------------------
 		ProdutoDAO produtoDAO = new ProdutoDAO();
