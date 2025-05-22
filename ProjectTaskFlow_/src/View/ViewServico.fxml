@@ -36,7 +36,7 @@
             <TableColumn fx:id="columnDescricao" prefWidth="262.0" style="-fx-alignment: center;" text="Descricao" />
          </columns>
       </TableView>
-      <Button fx:id="btCadastrar" layoutX="207.0" layoutY="479.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="btCadastrar" layoutX="207.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="480.0" layoutY="479.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="768.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
       <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" layoutX="597.0" layoutY="119.0" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
