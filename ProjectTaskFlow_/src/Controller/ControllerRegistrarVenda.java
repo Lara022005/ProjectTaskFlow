@@ -353,6 +353,8 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	}
 
+	
+	
 	@FXML
 	void actionDescontoProd(KeyEvent event) {
 		ProdutoDAO produtoDAO = new ProdutoDAO();
