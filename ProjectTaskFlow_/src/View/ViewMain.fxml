@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="570.0" prefWidth="950.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMain">
+<AnchorPane prefHeight="570.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMain">
    <children>
       <Pane layoutX="-1.0" prefHeight="600.0" prefWidth="160.0" style="-fx-background-color: #371D49;">
          <children>
@@ -30,6 +30,11 @@
       </Pane>
       <Pane layoutX="188.0" layoutY="31.0" prefHeight="158.0" prefWidth="736.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);">
          <children>
+            <ImageView fitHeight="179.0" fitWidth="749.0" layoutX="-5.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/istockphoto-1390631668-612x612%201%20(2).png" />
+               </image>
+            </ImageView>
             <Label fx:id="txtNome" layoutX="87.0" layoutY="34.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina" textFill="#fff8f8">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -60,7 +65,7 @@
             </ImageView>
          </children>
       </Pane>
-      <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="300.0" prefHeight="282.0" prefWidth="736.0">
+      <TableView fx:id="tableClientesAgend" layoutX="188.0" layoutY="323.0" prefHeight="259.0" prefWidth="736.0">
         <columns>
           <TableColumn fx:id="columnIndice" prefWidth="32.79998779296875" />
           <TableColumn fx:id="columnNome" prefWidth="186.4000244140625" style="-fx-alignment: center;" text="Nome" />
@@ -81,9 +86,9 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text layoutX="193.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos do dia" wrappingWidth="148.0">
+      <Text fill="#3c42ff" layoutX="193.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos do dia" wrappingWidth="178.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Text>
    </children>

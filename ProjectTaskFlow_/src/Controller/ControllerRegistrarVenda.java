@@ -19,6 +19,7 @@ import Model.Servico;
 import Model.ServicoVenda;
 import Model.Venda;
 import Util.Alerts;
+import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -208,7 +209,7 @@ public class ControllerRegistrarVenda implements Initializable {
 	}
 
 	@FXML
-	void ActionAdicionarServico(ActionEvent event) {
+	void ActionAdicionarServico(ActionEvent event) throws IOException {
 		if (txtCPF.getText() == "" || txtNomeCliente.getText() == "" || txtTotalServico.getText() == ""
 				|| txtServico.getText() == "" || txtQtdServico.getText() == "" || txtPrecoUniServico.getText() == "") {
 			Alerts.showAlert("Erro!", "Campos inválidos",
@@ -256,7 +257,7 @@ public class ControllerRegistrarVenda implements Initializable {
 	}
 
 	@FXML
-	void ActionRegistrar(ActionEvent event) {
+	void ActionRegistrar(ActionEvent event) throws IOException {
 		if (choiceFormaPag.getValue() == null || txtTotalVenda.getText() == "" || txtVendedor.getText() == "") {
 			Alerts.showAlert("Erro!", "Campo inválido",
 					" Verifique se os campos estão preenchidos e tente novamente!", AlertType.ERROR);
@@ -266,8 +267,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			VendaDAO vendaDAO = new VendaDAO();
 			Cliente cliente = new Cliente();
 			ClienteDAO clienteDAO = new ClienteDAO();
-			ProdutoDAO produtoDAO = new ProdutoDAO();
-			ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
+
 			ArrayList<Cliente> clientes = new ArrayList<>();
 			cliente.setCpf(txtCPF.getText());
 			clientes = clienteDAO.search(cliente);
@@ -296,7 +296,9 @@ public class ControllerRegistrarVenda implements Initializable {
 
 			for (int i = 0; i < ArrayProdutos.size(); i++) { // size tamanho do array
 				Produto produto = new Produto();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
 				ProdutoVenda produtoVenda = new ProdutoVenda();
+				ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
 				ArrayList<Produto> produtos = new ArrayList<>();
 				produto.setNome(nomesProdutos[i]);
 				produtos = produtoDAO.search(produto);
@@ -305,8 +307,10 @@ public class ControllerRegistrarVenda implements Initializable {
 				produtoVenda.setIdVenda(vendaDAO.readID());
 				produtoVenda.setQuantidade(quantidadeProd[i]);
 				produtoVendaDAO.create(produtoVenda);
+				
+			}
 
-				for (int J = 0; i < ArrayServicos.size(); J++) {
+				for (int J = 0; J < ArrayServicos.size(); J++) {
 					Servico servico = new Servico();
 					ServicoDAO servicoDAO = new ServicoDAO();
 					ServicoVenda servicoVenda = new ServicoVenda();
@@ -339,7 +343,7 @@ public class ControllerRegistrarVenda implements Initializable {
 
 				Alerts.showAlert("Sucesso!", "Parabéns", "Venda realizada com sucesso", AlertType.INFORMATION);
 			}
-		}
+		
 		ArrayProdutos = new ArrayList<Produto>();
 		ArrayServicos = new ArrayList<Servico>();
 		CarregarTableProdutos(ArrayProdutos);
@@ -401,6 +405,7 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	@FXML
 	void ActionVoltar(ActionEvent event) throws IOException {
+	
 
 		txtCPF.setText("");
 		txtDesconto.setText("");
@@ -420,7 +425,7 @@ public class ControllerRegistrarVenda implements Initializable {
 
 		Stage stage = (Stage) btVoltar.getScene().getWindow();
 		stage.close();
-		// Main.TelaHome();
+		Main.TelaHome();
 	}
 
 	@FXML

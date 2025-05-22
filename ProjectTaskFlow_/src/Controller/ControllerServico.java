@@ -98,7 +98,8 @@ public class ControllerServico implements Initializable {
     }
 
     @FXML
-    void ActionSair(ActionEvent event) {
+    void ActionSair(ActionEvent event) throws IOException {
+    	Main.TelaHome();
 
     }
 

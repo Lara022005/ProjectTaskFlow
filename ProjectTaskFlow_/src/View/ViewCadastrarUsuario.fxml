@@ -6,22 +6,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="TelaUsuario" prefHeight="560.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCadastrarUsuario">
+<AnchorPane fx:id="TelaUsuario" prefHeight="515.0" prefWidth="600.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCadastrarUsuario">
    <children>
-      <Button fx:id="btCadastrar" layoutX="141.0" layoutY="406.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
-      <Button fx:id="btCancelar" layoutX="453.0" layoutY="398.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
-      <Text fill="#3c42ff" layoutX="223.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Usuário" wrappingWidth="368.4033203125">
+      <Button fx:id="btCadastrar" layoutX="46.0" layoutY="410.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
+      <Button fx:id="btCancelar" layoutX="358.0" layoutY="402.0" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cancelar" textFill="WHITE" />
+      <Text fill="#3c42ff" layoutX="30.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Usuário" wrappingWidth="368.4033203125">
          <font>
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtNome" layoutX="77.0" layoutY="216.0" prefHeight="26.0" prefWidth="317.0" />
-      <TextField fx:id="txtNivel" layoutX="520.0" layoutY="216.0" prefHeight="26.0" prefWidth="200.0" />
-      <TextField fx:id="txtSenha" layoutX="77.0" layoutY="277.0" prefHeight="26.0" prefWidth="200.0" />
-      <Text layoutX="77.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome(Usuario)" />
-      <Text layoutX="520.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível" />
-      <Text layoutX="79.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
-      <TextField fx:id="txtCpf" layoutX="478.0" layoutY="277.0" prefHeight="26.0" prefWidth="243.0" />
-      <Text layoutX="478.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
+      <TextField fx:id="txtNome" layoutX="28.0" layoutY="216.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="txtNivel" layoutX="332.0" layoutY="211.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="txtSenha" layoutX="28.0" layoutY="277.0" prefHeight="26.0" prefWidth="200.0" />
+      <Text layoutX="28.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome(Usuario)" />
+      <Text layoutX="332.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível" />
+      <Text layoutX="30.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+      <TextField fx:id="txtCpf" layoutX="332.0" layoutY="272.0" prefHeight="26.0" prefWidth="243.0" />
+      <Text layoutX="332.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" />
    </children>
 </AnchorPane>

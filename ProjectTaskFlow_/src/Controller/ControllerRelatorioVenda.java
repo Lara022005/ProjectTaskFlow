@@ -86,7 +86,7 @@ public class ControllerRelatorioVenda implements Initializable {
 		
 		
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
-		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>(nome + "idCliente"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>( "nome"));
 		columnCpfCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
 		columnDataVenda.setCellValueFactory(new PropertyValueFactory<>("dataVenda"));
 		columnPrecoVenda.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));			

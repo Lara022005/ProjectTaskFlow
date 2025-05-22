@@ -22,8 +22,8 @@ public class ProdutoVendaDAO {
 		try {
 
 			stmt = con.prepareStatement("insert into ProdutoVenda values(?, ?, ?)");
-			stmt.setString(1, produtoVenda.getIdVenda());
-			stmt.setString(2, produtoVenda.getIdProduto());
+			stmt.setString(1, produtoVenda.getIdProduto());
+			stmt.setString(2, produtoVenda.getIdVenda());
 			stmt.setString(3, produtoVenda.getQuantidade());				
 
 			stmt.executeUpdate();

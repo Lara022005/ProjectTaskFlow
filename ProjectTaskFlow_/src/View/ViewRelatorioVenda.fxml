@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="0.0" prefHeight="584.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRelatorioVenda">
+<AnchorPane minHeight="0.0" prefHeight="584.0" prefWidth="871.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerRelatorioVenda">
    <children>
       <Text fill="#3c42ff" layoutX="247.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relátorio de Vendas" wrappingWidth="314.40001525878915">
          <font>
@@ -27,11 +30,20 @@
             <TableColumn fx:id="columnFormaPag" prefWidth="116.0" style="-fx-alignment: center;" text="Forma pagamento" />
          </columns>
       </TableView>
-      <Button fx:id="btPesquisar" layoutX="588.0" layoutY="108.0" mnemonicParsing="false" onAction="#actionPesquisar" text="Pesquisar" />
       <Text layoutX="118.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="49.60001220703134">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
+      <Group layoutX="612.0" layoutY="108.0">
+         <children>
+            <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
+            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/material-symbols_search.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
    </children>
 </AnchorPane>
