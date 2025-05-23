@@ -32,7 +32,7 @@
          <children>
             <ImageView fitHeight="179.0" fitWidth="749.0" layoutX="-5.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/istockphoto-1390631668-612x612%201%20(2).png" />
+                  <Image url="@../Images/istockphoto-1390631668-612x612%201%20(2).png" />
                </image>
             </ImageView>
             <Label fx:id="txtNome" layoutX="87.0" layoutY="34.0" prefHeight="30.0" prefWidth="148.0" text="Lara Cristina" textFill="#fff8f8">
