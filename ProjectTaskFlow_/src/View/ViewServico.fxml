@@ -42,7 +42,7 @@
       <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" layoutX="597.0" layoutY="119.0" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
       <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="599.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/material-symbols_search.png" />
+            <Image url="@../Images/material-symbols_search.png" />
          </image>
       </ImageView>
    </children>
