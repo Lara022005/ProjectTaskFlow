@@ -216,7 +216,7 @@ public class FuncionarioDAO {
 	}
 
 	//----------------------------------------- soma valor total -------------------------------------- 
-	public String getTotalVendido(String id) {
+	public String SomaTotalVendido(String id) {
 
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null; 
