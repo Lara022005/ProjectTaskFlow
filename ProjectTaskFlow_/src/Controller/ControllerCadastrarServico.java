@@ -32,6 +32,9 @@ public class ControllerCadastrarServico implements Initializable{
 
     @FXML
     private Button btExcluir;
+    
+    @FXML
+    private TextField txtID;
 
     @FXML
     void actionCadastrar(ActionEvent event) {
@@ -82,6 +85,7 @@ public class ControllerCadastrarServico implements Initializable{
 			btCadastrar.setText("Salvar");
 			Servico servicoEditar = new Servico();
 			servicoEditar = ControllerServico.alterarServico;
+			txtID.setText(servicoEditar.getId());
 			txtServico.setText(servicoEditar.getNome());
 			txtPreco.setText(servicoEditar.getPrecoUni());
 			txtDesc.setText(servicoEditar.getDescricao());

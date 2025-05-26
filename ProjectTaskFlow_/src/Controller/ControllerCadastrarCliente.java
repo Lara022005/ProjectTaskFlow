@@ -52,6 +52,7 @@ public class ControllerCadastrarCliente implements Initializable {
     		Alerts.showAlert("Erro!", "Informações obrigatorias não foram preenchidas"," Verifique e tente novamente", AlertType.ERROR);
     		
     	} else { 
+    		
     		cliente.setNome(txtCliente.getText());
     		cliente.setCpf(txtCPF.getText());
     		cliente.setEndereco( txtEndereco.getText());

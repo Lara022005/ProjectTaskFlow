@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
+
+import DAO.ServicoDAO;
 import DAO.ServicoDAO;
 import DAO.ServicoVendaDAO;
+import Model.Servico;
 import Model.Servico;
 import Model.ServicoVenda;
 import Util.Alerts;
@@ -122,6 +125,7 @@ public class ControllerServico implements Initializable {
 
     @FXML
     void actionCadastrar(ActionEvent event) throws IOException {
+    	alterarServico = null;
     	Main.TelaCadastrarServico();
     	CarregarTableServico();
     }
@@ -157,7 +161,7 @@ public class ControllerServico implements Initializable {
 
     @FXML
     void actionPesquisar(ActionEvent event) {
-    	
+    	PesquisarTableServico();
 
     }
     
@@ -178,6 +182,25 @@ public class ControllerServico implements Initializable {
 		tableServico.setItems(ArrayServico);
 
 
+	}
+    
+    
+
+    public void PesquisarTableServico() {
+		ServicoDAO sercivoDAO = new ServicoDAO();
+		Servico servico = new Servico();
+		servico.setNome(txtPesquisar.getText());
+		
+
+		ArrayServico = FXCollections.observableArrayList(sercivoDAO.search(servico));
+		
+		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
+		columnNomeServico.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		columnPrecoUni.setCellValueFactory(new PropertyValueFactory<>("precoUni"));
+		columnDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+		tableServico.setItems(ArrayServico);
+
+	
 	}
   
 

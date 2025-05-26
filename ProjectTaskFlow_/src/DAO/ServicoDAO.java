@@ -72,12 +72,12 @@ public class ServicoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("update Servico set Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where Id_Servico = ?");						
+			stmt = con.prepareStatement("update Servico set  Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where   Descricao_Servico = ? or  Nome_Servico = ?");						
 			stmt.setString(1, servico.getNome());
 			stmt.setString(2, servico.getPrecoUni());
 			stmt.setString(3, servico.getDescricao());						
-			stmt.setString(4, servico.getId());
-
+			stmt.setString(4, servico.getDescricao());
+			stmt.setString(5, servico.getNome());
 			stmt.executeUpdate();
 			System.out.println("Atualizar com sucesso!");
 
