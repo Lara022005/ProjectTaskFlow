@@ -2,14 +2,10 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import DAO.ClienteDAO;
 import Model.Cliente;
-import Model.Cliente;
 import Util.Alerts;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -72,8 +68,6 @@ public class ControllerCadastrarCliente implements Initializable {
     		}   	
     		
     	} 	  
-    	
-    	
     }
 
     @FXML

@@ -72,12 +72,13 @@ public class ServicoDAO {
 
 		try {
 
-			stmt = con.prepareStatement("update Servico set  Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where   Descricao_Servico = ? or  Nome_Servico = ?");						
+			stmt = con.prepareStatement("update Servico set Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where  Nome_Servico = ? or  Descricao_Servico = ?");						
 			stmt.setString(1, servico.getNome());
 			stmt.setString(2, servico.getPrecoUni());
 			stmt.setString(3, servico.getDescricao());						
-			stmt.setString(4, servico.getDescricao());
-			stmt.setString(5, servico.getNome());
+			stmt.setString(4, servico.getNome());
+			stmt.setString(5, servico.getDescricao());
+
 			stmt.executeUpdate();
 			System.out.println("Atualizar com sucesso!");
 
@@ -138,6 +139,43 @@ public class ServicoDAO {
 					
 					servicos.add(servico);
 					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return servicos;
+
+		}
+		
+		
+		public ArrayList<Servico> searchId(Servico servico1){
+
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Servico> servicos = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("select * from Servico where Id_Servico like ? or Nome_Servico like ? ");
+				stmt.setString(1, "%"+servico1.getId()+"%");
+				stmt.setString(2, "%"+servico1.getNome()+"%");
+				rs = stmt.executeQuery();
+			
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Servico servico = new Servico();				
+					servico.setId(rs.getString(1));
+					servico.setNome(rs.getString(2));				
+					servico.setPrecoUni(rs.getString(3));
+					servico.setDescricao(rs.getString(4));			
+					
+					servicos.add(servico);
+				
 				}
 
 			} catch (SQLException e) {

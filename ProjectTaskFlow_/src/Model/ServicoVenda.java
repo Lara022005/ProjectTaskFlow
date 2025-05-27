@@ -6,6 +6,8 @@ public class ServicoVenda {
 	private String idServico;
 	private String idVenda;
 	private String quantidade;
+	private String precoUni;
+
 	
 	public ServicoVenda() {
 		super();
@@ -17,6 +19,14 @@ public class ServicoVenda {
 		this.idVenda = idVenda;
 		this.quantidade = quantidade;
 	}
+	
+	public String getPrecoUni() {
+		return precoUni;
+	}
+	public void setPrecoUni(String precoUni) {
+		this.precoUni = precoUni;
+	}
+	
 	public String getId() {
 		return id;
 	}

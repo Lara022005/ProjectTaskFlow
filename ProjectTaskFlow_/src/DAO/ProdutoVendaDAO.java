@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import ConnectionFactory.ConnectionDataBase;
 import Model.ProdutoVenda;
 
@@ -47,15 +46,17 @@ public class ProdutoVendaDAO {
 		try {
 			stmt = con.prepareStatement("select * from ProdutoVenda");
 			rs = stmt.executeQuery();
+			int i = 0;
 
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				ProdutoVenda produtoVenda = new ProdutoVenda();
-				produtoVenda.setId(rs.getString(1));
+				produtoVenda.setId("" + i);
 				produtoVenda.setIdVenda(rs.getString(2));
 				produtoVenda.setIdProduto(rs.getString(3));				
 				produtoVenda.setQuantidade(rs.getString(4));				
 
 				produtoVenda1.add(produtoVenda);
+				i++;
 			}
 
 		} catch (SQLException e) {
@@ -155,5 +156,44 @@ public class ProdutoVendaDAO {
 		}
 		return produtoVendas;
 	}
+	// ------------------------- ler a tabela produto ---------------------------
+	public ArrayList<ProdutoVenda> readTableVendaProduto(){
+
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<ProdutoVenda> produtoVendas = new ArrayList<>();
+
+		try {
+			stmt = con.prepareStatement("select Id_Venda, Nome_Produto, Quantidade_pv, Preco_Uni\n"
+					+ "from ProdutoVenda, Venda, Produto\n"
+					+ "where Id_Venda = Fk_Venda\n"
+					+ "and Id_Produto = Fk_Produto");
+			rs = stmt.executeQuery();				
+			int i = 1;
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				ProdutoVenda produtoVenda = new ProdutoVenda();
+				produtoVenda.setId("" + i);
+				produtoVenda.setIdProduto(rs.getString(2));				
+				produtoVenda.setQuantidade(rs.getString(3));	
+				produtoVenda.setPrecoUn(rs.getString(4));
+
+				produtoVendas.add(produtoVenda);
+				i++;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}
+		finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return produtoVendas;
+	}	
+
+
+
 
 }

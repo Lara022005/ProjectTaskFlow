@@ -56,8 +56,13 @@ public class ProdutoDAO {
 				produto.setNome(rs.getString(2));
 				produto.setCodBarra(rs.getString(3));			
 				produto.setDataFab(rs.getString(4));
-				produto.setDataVal(rs.getString(5));				
+				produto.setDataVal(rs.getString(5));						
 				produto.setPrecoUni(rs.getString(6));
+				
+				String precoUni = produto.getPrecoUni();
+				double num = Double.parseDouble(precoUni);
+				precoUni = String.format("%.2f", num);
+				
 				produto.setEstoque(rs.getString(7));
 
 				produtos.add(produto);
@@ -138,9 +143,8 @@ public class ProdutoDAO {
 		ArrayList<Produto> produtos = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from Produto where Nome_Produto like ? or Code_Barra like ?");			
+			stmt = con.prepareStatement("select * from Produto where Nome_Produto like ? ");			
 			stmt.setString(1,"%" +produto1.getNome() +"%");
-			stmt.setString(2, "%"+produto1.getCodBarra()+"%");
 			rs = stmt.executeQuery();
 			int i = 1;
 
@@ -152,6 +156,11 @@ public class ProdutoDAO {
 				produto.setDataFab(rs.getString(4));
 				produto.setDataVal(rs.getString(5));				
 				produto.setPrecoUni(rs.getString(6));
+				
+				String precoUni = produto.getPrecoUni();
+				double num = Double.parseDouble(precoUni);
+				precoUni = String.format("%.2f", num);
+				
 				produto.setEstoque(rs.getString(7));
 
 				produtos.add(produto);
@@ -167,42 +176,48 @@ public class ProdutoDAO {
 		return produtos;
 
 	}
+	
+	public ArrayList<Produto> searchId(Produto produto1){
 
-//	public ArrayList<Produto> searchID(Produto produto1){
-//
-//		Connection con = ConnectionDataBase.getConnection();
-//		PreparedStatement stmt = null;
-//		ResultSet rs = null;
-//		ArrayList<Produto> produtos = new ArrayList<>();
-//
-//		try {
-//			stmt = con.prepareStatement("select * from Produto where nomeProduto like ? or codBarra like ?");		
-//			stmt.setString(1,"%" +produto1.getNome() +"%");
-//			stmt.setString(2, "%"+produto1.getCodBarra()+"%");
-//			rs = stmt.executeQuery();
-//
-//			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
-//				Produto produto = new Produto();
-//				produto.setId(rs.getString(1));			
-//				produto.setNome(rs.getString(2));
-//				produto.setCodBarra(rs.getString(3));			
-//				produto.setDataFab(rs.getString(4));
-//				produto.setDataVal(rs.getString(5));				
-//				produto.setPrecoUni(rs.getString(6));
-//				produto.setEstoque(rs.getString(7));
-//
-//				produtos.add(produto);
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			throw new RuntimeException("Erro ao ler informações!", e);
-//		}finally {
-//			ConnectionDataBase.closeConnection(con, stmt, rs);
-//		}
-//		return produtos;
-//
-//	}
+		Connection con = ConnectionDataBase.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Produto> produtos = new ArrayList<>();
+
+		try {
+			stmt = con.prepareStatement("select * from Produto where Nome_Produto like ? ");			
+			stmt.setString(1,"%" +produto1.getNome() +"%");
+			rs = stmt.executeQuery();
+			
+
+			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+				Produto produto = new Produto();
+				produto.setId(rs.getString(1));			
+				produto.setNome(rs.getString(2));
+				produto.setCodBarra(rs.getString(3));			
+				produto.setDataFab(rs.getString(4));
+				produto.setDataVal(rs.getString(5));				
+				produto.setPrecoUni(rs.getString(6));
+				
+				String precoUni = produto.getPrecoUni();
+				double num = Double.parseDouble(precoUni);
+				precoUni = String.format("%.2f", num);
+				
+				produto.setEstoque(rs.getString(7));
+
+				produtos.add(produto);
+			
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("Erro ao ler informações!", e);
+		}finally {
+			ConnectionDataBase.closeConnection(con, stmt, rs);
+		}
+		return produtos;
+
+	}
 
 	public ArrayList<String> readProdutoByNome() {
 		Connection con = ConnectionDataBase.getConnection();

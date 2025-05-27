@@ -1,4 +1,4 @@
- package Controller;
+package Controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -164,30 +164,30 @@ public class ControllerRegistrarVenda implements Initializable {
 			produtoVenda.setNome(txtProduto.getText());
 			produtoVenda.setEstoque(txtQtdProduto.getText());
 			produtoVenda.setPrecoUni(txtPrecoUniProduto.getText());
-			produtoVenda.setTotalProduto(txtTotalProduto.getText());
+			produtoVenda.setTotalProduto(txtTotalProduto.getText()); // 30,00
 			produtoVenda.setId("" + ArrayProdutos.size());
 			String valor = txtTotalProduto.getText();
 			valor = valor.replace(",", ".");
 			double um = Double.parseDouble(valor);
-			String totalVenda = txtTotalVenda.getText();
-			totalVenda = totalVenda.replace(",", ".");
-			
+			//			String totalVenda = txtTotalVenda.getText();
+			//			totalVenda = totalVenda.replace(",", ".");
+
 			if(txtTotalVenda.getText().equals("")) {
 				double tres = um;
 				double precoTotal = Double.parseDouble(valor);
 				totalVendaProd = totalVendaProd + precoTotal;
 				valor = String.format("%.2f", totalVendaProd);
-				txtTotalVenda.setText("" +tres);
+				txtTotalVenda.setText("" + tres);
 			}else {
-			double dois = Double.parseDouble(txtTotalVenda.getText());
-			double tres = um + dois;
-			double precoTotal = Double.parseDouble(valor);
-			totalVendaProd = totalVendaProd + precoTotal;
-			valor = String.format("%.2f", totalVendaProd);
-			
-			txtTotalVenda.setText("" +tres);
+				double dois = Double.parseDouble(txtTotalVenda.getText());
+				double tres = um + dois;
+				double precoTotal = Double.parseDouble(valor);
+				totalVendaProd = totalVendaProd + precoTotal;
+				valor = String.format("%.2f", totalVendaProd);
+
+				txtTotalVenda.setText("" +tres);
 			}
-			
+
 			valor = txtDesconto.getText();
 			valor = valor.replace(",", ".");
 			double valorDesconto = Double.parseDouble(valor);
@@ -214,7 +214,6 @@ public class ControllerRegistrarVenda implements Initializable {
 				|| txtServico.getText() == "" || txtQtdServico.getText() == "" || txtPrecoUniServico.getText() == "") {
 			Alerts.showAlert("Erro!", "Campos inválidos",
 					" Verifique se os campos estãos preenchidos e tente novamente!", AlertType.ERROR);
-
 		} else {
 			servicoVenda.setNome(txtServico.getText());
 			servicoVenda.setEstoque(txtQtdServico.getText());
@@ -227,7 +226,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			double um = Double.parseDouble(valor);
 			String totalVenda = txtTotalVenda.getText();
 			totalVenda = totalVenda.replace(",", ".");
-			
+
 			if(txtTotalVenda.getText().equals("")) {
 				double tres = um;
 				double precoTotal = Double.parseDouble(valor);
@@ -235,13 +234,13 @@ public class ControllerRegistrarVenda implements Initializable {
 				valor = String.format("%.2f", totalVendaServico);
 				txtTotalVenda.setText("" +tres);
 			}else {
-			double dois = Double.parseDouble(txtTotalVenda.getText());
-			double tres = um + dois;
-			double precoTotal = Double.parseDouble(valor);
-			totalVendaServico = totalVendaServico + precoTotal;
-			valor = String.format("%.2f", totalVendaServico);
-			
-			txtTotalVenda.setText("" +tres);
+				double dois = Double.parseDouble(txtTotalVenda.getText());
+				double tres = um + dois;
+				double precoTotal = Double.parseDouble(valor);
+				totalVendaServico = totalVendaServico + precoTotal;
+				valor = String.format("%.2f", totalVendaServico);
+
+				txtTotalVenda.setText("" +tres);
 			}
 			nomeServicos[ArrayServicos.size()] = txtServico.getText();
 			quantidadeServico[ArrayServicos.size()] = txtQtdServico.getText();
@@ -277,73 +276,60 @@ public class ControllerRegistrarVenda implements Initializable {
 			venda.setIdCliente(cliente.getId());
 			venda.setFormaPag(choiceFormaPag.getValue().toString());
 			venda.setDesconto("" + desconto);
-			venda.setPrecoTotal(txtTotalServico.getText());
-			venda.setPrecoTotal(txtTotalProduto.getText());
-					
-			
-	
-			
-		//	venda.setDesconto(desc);
-			
-			String valor = txtTotalVenda.getText();
-			valor = valor.replace(",", ".");
-			double TotalServicoProduto = Double.parseDouble(valor);
-			totalVendaProd = totalVendaProd + totalVendaServico + TotalServicoProduto;
-			String aux = String.format("%.2f", totalVendaServico);
-			aux = aux.replace(",", ".");
-			venda.setPrecoTotal(aux);
-			vendaDAO.create(venda);
 
-			for (int i = 0; i < ArrayProdutos.size(); i++) { // size tamanho do array
+			venda.setPrecoTotal(txtTotalVenda.getText());
+			vendaDAO.create(venda);
+			int produtosSize = tableVendaProduto.getItems().size();
+			for (int i = 0; i < produtosSize; i++) { // size tamanho do array
 				Produto produto = new Produto();
 				ProdutoDAO produtoDAO = new ProdutoDAO();
 				ProdutoVenda produtoVenda = new ProdutoVenda();
 				ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
 				ArrayList<Produto> produtos = new ArrayList<>();
-				produto.setNome(nomesProdutos[i]);
-				produtos = produtoDAO.search(produto);
+				produto = tableVendaProduto.getItems().get(i);
+				produtos = produtoDAO.searchId(produto);
 				produto = produtos.get(0);
+				produtoVenda.setQuantidade(quantidadeProd[i]);
 				produtoVenda.setIdProduto(produto.getId());
 				produtoVenda.setIdVenda(vendaDAO.readID());
-				produtoVenda.setQuantidade(quantidadeProd[i]);
 				produtoVendaDAO.create(produtoVenda);
-				
+
+			}
+			int servicosSize = tableVendaServico.getItems().size();
+			for (int J = 0; J < servicosSize; J++) {
+				Servico servico = new Servico();
+				ServicoDAO servicoDAO = new ServicoDAO();
+				ServicoVenda servicoVenda = new ServicoVenda();
+				ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
+				ArrayList<Servico> servicos = new ArrayList<>();
+				servico = tableVendaServico.getItems().get(J);
+				servicos = servicoDAO.searchId(servico);
+				servico = servicos.get(0);
+				servicoVenda.setQuantidade(quantidadeServico[J]);
+				servicoVenda.setIdServico(servico.getId());
+				servicoVenda.setIdVenda(vendaDAO.readID());
+				servicoVendaDAO.create(servicoVenda);
 			}
 
-				for (int J = 0; J < ArrayServicos.size(); J++) {
-					Servico servico = new Servico();
-					ServicoDAO servicoDAO = new ServicoDAO();
-					ServicoVenda servicoVenda = new ServicoVenda();
-					ServicoVendaDAO servicoVendaDAO = new ServicoVendaDAO();
-					ArrayList<Servico> servicos = new ArrayList<>();
-					servico.setNome(nomeServicos[J]);
-					servicos = servicoDAO.search(servico);
-					servico = servicos.get(0);
-					servicoVenda.setIdServico(servico.getId());
-					servicoVenda.setIdVenda(vendaDAO.readID());
-					servicoVenda.setQuantidade(quantidadeServico[J]);
-					servicoVendaDAO.create(servicoVenda);
-				}
+			txtCPF.setText("");
+			txtDesconto.setText("");
+			txtNomeCliente.setText("");
+			txtProduto.setText("");
+			txtServico.setText("");
+			txtPrecoUniProduto.setText("");
+			txtPrecoUniServico.setText("");
+			txtQtdProduto.setText("");
+			txtQtdServico.setText("");
+			txtTotalProduto.setText("");
+			txtTotalServico.setText("");
+			txtTotalVenda.setText("");
+	//		txtVendedor.setText("");
+			txtDesconto.setText("");
+			choiceFormaPag.setValue(null);
 
-				txtCPF.setText("");
-				txtDesconto.setText("");
-				txtNomeCliente.setText("");
-				txtProduto.setText("");
-				txtServico.setText("");
-				txtPrecoUniProduto.setText("");
-				txtPrecoUniServico.setText("");
-				txtQtdProduto.setText("");
-				txtQtdServico.setText("");
-				txtTotalProduto.setText("");
-				txtTotalServico.setText("");
-				txtTotalVenda.setText("");
-				txtVendedor.setText("");
-				txtDesconto.setText("");
-				choiceFormaPag.setValue(null);
+			Alerts.showAlert("Sucesso!", "Parabéns", "Venda realizada com sucesso", AlertType.INFORMATION);
+		}
 
-				Alerts.showAlert("Sucesso!", "Parabéns", "Venda realizada com sucesso", AlertType.INFORMATION);
-			}
-		
 		ArrayProdutos = new ArrayList<Produto>();
 		ArrayServicos = new ArrayList<Servico>();
 		CarregarTableProdutos(ArrayProdutos);
@@ -351,14 +337,24 @@ public class ControllerRegistrarVenda implements Initializable {
 	}
 
 	@FXML
-	void ActionCancelar(ActionEvent event) {	
-		Stage stage = (Stage) btCancelar.getScene().getWindow();
-    	stage.close();
-
+	void ActionCancelar(ActionEvent event) throws IOException {	
+		
+		txtCPF.setText("");
+		txtDesconto.setText("");
+		txtNomeCliente.setText("");
+		txtProduto.setText("");
+		txtServico.setText("");
+		txtPrecoUniProduto.setText("");
+		txtPrecoUniServico.setText("");
+		txtQtdProduto.setText("");
+		txtQtdServico.setText("");
+		txtTotalProduto.setText("");
+		txtTotalServico.setText("");
+		txtTotalVenda.setText("");
+	//	txtVendedor.setText("");
+		txtDesconto.setText("");
+		choiceFormaPag.setValue(null);
 	}
-
-	
-	
 	@FXML
 	void actionDescontoProd(KeyEvent event) {
 		ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -405,7 +401,6 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	@FXML
 	void ActionVoltar(ActionEvent event) throws IOException {
-	
 
 		txtCPF.setText("");
 		txtDesconto.setText("");

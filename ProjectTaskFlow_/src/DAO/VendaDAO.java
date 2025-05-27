@@ -240,6 +240,60 @@ public class VendaDAO {
 		}
 		return venda1;
 	}	
-	
+	// ---------------------------------------  search pesquisar cliente na tabela relatorio venda --------------------------------------- 
+		public ArrayList<Venda> searchCliente(Venda venda2){
+
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<Venda> vendas = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("SELECT\n"
+						+ "    v.Id_Venda AS Numero_venda,\n"
+						+ "    c.Nome_Cliente,\n"
+						+ "	   c.Cpf_Cliente,\n"
+						+ "    v.Data_Venda,\n"
+						+ "    v.Preco_Total,\n"
+						+ "    v.Desconto,\n"
+						+ "    v.Forma_Pagamento\n"
+						+ "FROM\n"
+						+ "    Venda v JOIN Cliente c \n"
+						+ "	ON v.Fk_Cliente = c.Id_Cliente\n"
+						+ "WHERE c.Nome_Cliente LIKE ? \n"
+						+ "\n"
+						+ "ORDER BY\n"
+						+ "    v.Data_Venda DESC");
+				
+				stmt.setString(1, "%"+venda2.getId()+"%");
+				stmt.setString(2, "%"+venda2.getNome()+"%");
+				rs = stmt.executeQuery();
+				int i = 1;
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					Venda venda = new Venda();
+					venda.setId("" + i);
+					venda.setIdUsuario(rs.getString(2));				
+					venda.setIdCliente(rs.getString(3));
+					venda.setDataVenda(rs.getString(4));
+					venda.setPrecoTotal(rs.getString(5));	
+					venda.setDesconto(rs.getString(6));					
+					venda.setFormaPag(rs.getString(7));	
+
+					vendas.add(venda);
+					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return vendas;
+
+		}
+
 	
 }

@@ -153,5 +153,43 @@ public class ServicoVendaDAO {
 		}
 		return servicoVendas;
 	}
+	// ---------------------------------------  ler a tabela de servico em relatorio venda	--------------------------------------------------------
+		public ArrayList<ServicoVenda> readTableVendaServico(){
 
+			Connection con = ConnectionDataBase.getConnection();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArrayList<ServicoVenda> servicoVenda1 = new ArrayList<>();
+
+			try {
+				stmt = con.prepareStatement("\n"
+						+ "select Id_Venda, Nome_Servico, Quantidade_sv, Preco\n"
+						+ "from ServicoVenda, Venda, Servico\n"
+						+ "where Id_Venda = Fk_Venda\n"
+						+ "and Id_Servico = Fk_Servico");
+				rs = stmt.executeQuery();
+				int i = 1;
+
+				while(rs.next()) { // so ira funcionar enquanto estiver linha 				
+					ServicoVenda servicoVenda = new ServicoVenda();
+					servicoVenda.setId("" + i);
+					servicoVenda.setIdServico(rs.getString(2));				
+					servicoVenda.setQuantidade(rs.getString(3));				
+					servicoVenda.setPrecoUni(rs.getString(4));
+
+					servicoVenda1.add(servicoVenda);
+					i++;
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException("Erro ao ler informações!", e);
+			}
+			finally {
+				ConnectionDataBase.closeConnection(con, stmt, rs);
+			}
+			return servicoVenda1;
+
+		}
+	
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="560.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionario">
+<AnchorPane prefHeight="560.0" prefWidth="950.0" style="-fx-background-color: #DFE1E6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionario">
    <children>
       <ImageView fitHeight="560.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -44,7 +44,7 @@
       <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" layoutX="602.0" layoutY="123.0" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
       <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="604.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/material-symbols_search.png" />
+            <Image url="@../Images/material-symbols_search.png" />
          </image>
       </ImageView>
    </children>

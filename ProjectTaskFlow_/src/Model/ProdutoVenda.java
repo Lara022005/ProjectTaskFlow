@@ -6,6 +6,8 @@ public class ProdutoVenda {
 	private String idProduto;
 	private String idVenda;
 	private String quantidade;
+	private String precoUn;
+
 	
 	public ProdutoVenda() {
 		super();
@@ -41,5 +43,12 @@ public class ProdutoVenda {
 	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
 	}
+	public String getPrecoUn() {
+		return precoUn;
+	}
+	public void setPrecoUn(String precoUn) {
+		this.precoUn = precoUn;
+	}
+	
 
 }

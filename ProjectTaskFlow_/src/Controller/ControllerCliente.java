@@ -5,19 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javax.print.DocFlavor.URL;
-
 import org.controlsfx.control.textfield.TextFields;
-
 import DAO.ClienteDAO;
-import DAO.ClienteDAO;
-import DAO.ClienteDAO;
-import DAO.ClienteDAO;
-import DAO.ProdutoVendaDAO;
 import Model.Cliente;
-import Model.Cliente;
-import Model.Cliente;
-import Model.ProdutoVenda;
 import Util.Alerts;
 import application.Main;
 import javafx.collections.FXCollections;
@@ -115,11 +105,9 @@ public class ControllerCliente implements Initializable{
 	    }
 	    
 	    @FXML
-	    void ActionSair(ActionEvent event) {
-
+	    void ActionSair(ActionEvent event) throws IOException {
+	    	Main.TelaHome();
 	    }
-	    
-	    
 
 	    @FXML
 	    void actionCadastrar(ActionEvent event) throws IOException {

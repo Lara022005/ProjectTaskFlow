@@ -33,6 +33,14 @@ public class Main extends Application {
 
 			primaryStage.setScene(login);
 			primaryStage.show();
+			
+			cadAgendamento.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			cadastrarUsuario.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			cadastrarCliente.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			cadastrarFuncionario.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			cadastrarServico.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			cadastrarProduto.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
+			RelatorioVenda.getIcons().add(new Image(getClass().getResourceAsStream("/Images/iconsSistema.png")));
 
 		} catch(Exception e) {
 			e.printStackTrace();
