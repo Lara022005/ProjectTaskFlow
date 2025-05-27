@@ -51,26 +51,15 @@ public class ControllerRelatorioVenda implements Initializable {
     @FXML
     private TextField txtPesquisar;
 
+    
+    
+    
     @FXML
-    void actionPesquisar(ActionEvent event) {
+   void actionPesquisar(ActionEvent event) {
     	PesquisarTableVenda();
     }
+    
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		CarregarTableVenda();
-		
-		ClienteDAO clienteDAO = new ClienteDAO();
-		ArrayList<String> nomeclientes = new ArrayList<String>();
-		nomeclientes = clienteDAO.readClienteByNome();
-		String[] cliente = new String[nomeclientes.size()];
-
-		for (int i = 0; i < nomeclientes.size(); i++) {
-			cliente[i] = nomeclientes.get(i);
-		}
-		TextFields.bindAutoCompletion(txtPesquisar, cliente);	
-	}
 	private ObservableList<Venda> ArrayVendas;
 	
 	public void CarregarTableVenda() {
@@ -97,18 +86,43 @@ public class ControllerRelatorioVenda implements Initializable {
 	
 	
 	public void PesquisarTableVenda() {
-		VendaDAO vendaDAO = new VendaDAO();
-		Venda venda = new Venda();
-		venda.setNome(txtPesquisar.getText());
 		
-		ArrayVendas = FXCollections.observableArrayList(vendaDAO.search(venda));
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente cliente = new Cliente();
+		cliente.setNome(txtPesquisar.getText());
+		cliente.setCpf(txtPesquisar.getText());
+
+		ObservableList<Cliente> ArrayCliente = FXCollections.observableArrayList(clienteDAO.search(cliente));
+
 		columnIndice.setCellValueFactory(new PropertyValueFactory<>("id"));
-		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+		columnNomeCliente.setCellValueFactory(new PropertyValueFactory<>( "nome"));
 		columnCpfCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
 		columnDataVenda.setCellValueFactory(new PropertyValueFactory<>("dataVenda"));
 		columnPrecoVenda.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));			
 		columnDesconto.setCellValueFactory(new PropertyValueFactory<>("desconto"));
-		columnFormaPag.setCellValueFactory(new PropertyValueFactory<>("formaPag"));		
+		columnFormaPag.setCellValueFactory(new PropertyValueFactory<>("formaPag"));	
 		tableVendas.setItems(ArrayVendas);						
 	}
+    
+    
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		CarregarTableVenda();
+		
+		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList<String> nomeclientes = new ArrayList<String>();
+		nomeclientes = clienteDAO.readClienteByNome();
+		String[] cliente = new String[nomeclientes.size()];
+
+		for (int i = 0; i < nomeclientes.size(); i++) {
+			cliente[i] = nomeclientes.get(i);
+		}
+		TextFields.bindAutoCompletion(txtPesquisar, cliente);	
+	}
+	
+	
+	
+	
 }

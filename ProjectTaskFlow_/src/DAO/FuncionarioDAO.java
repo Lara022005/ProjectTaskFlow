@@ -154,11 +154,11 @@ public class FuncionarioDAO {
 		ArrayList<Funcionario> Funcionarios = new ArrayList<>();
 
 		try {
-			stmt = con.prepareStatement("select * from Funcionario where Cpf_Funcionario = ? ");
-			stmt.setString(1, funcionario1.getCpf());
+			stmt = con.prepareStatement("select * from Funcionario where Cpf_Funcionario like ? or Nome_Funcionario like ?");
+			stmt.setString(1, "%"+funcionario1.getCpf()+"%");
+			stmt.setString(2, "%"+funcionario1.getNome()+"%");
 			rs = stmt.executeQuery();
-		
-
+			
 			while(rs.next()) { // so ira funcionar enquanto estiver linha 				
 				Funcionario funcionario = new Funcionario();
 				funcionario.setId(rs.getString(1));
