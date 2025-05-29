@@ -6,11 +6,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.textfield.TextFields;
-
-import DAO.ServicoDAO;
 import DAO.ServicoDAO;
 import DAO.ServicoVendaDAO;
-import Model.Servico;
 import Model.Servico;
 import Model.ServicoVenda;
 import Util.Alerts;

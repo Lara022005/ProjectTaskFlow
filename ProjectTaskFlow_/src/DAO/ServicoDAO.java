@@ -66,13 +66,13 @@ public class ServicoDAO {
 	}	
 	//---------------------------------------  update atualizar (update)--------------------------------------- 
 	public void update(Servico servico) {
-
 		Connection con = ConnectionDataBase.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
+			stmt = con.prepareStatement("update Servico set Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where  "
+					+ "Nome_Servico = ? or  Descricao_Servico = ?");						
 
-			stmt = con.prepareStatement("update Servico set Nome_Servico = ?, Preco = ?, Descricao_Servico = ? where  Nome_Servico = ? or  Descricao_Servico = ?");						
 			stmt.setString(1, servico.getNome());
 			stmt.setString(2, servico.getPrecoUni());
 			stmt.setString(3, servico.getDescricao());						

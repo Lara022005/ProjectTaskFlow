@@ -68,7 +68,7 @@
       </Text>
       <TableView fx:id="tableVendaProd" layoutX="11.0" layoutY="387.0" prefHeight="182.0" prefWidth="426.0">
          <columns>
-            <TableColumn fx:id="columnIndiceProd" prefWidth="31.99997043609619" text="N°" />
+            <TableColumn fx:id="columnIndiceProd" prefWidth="31.99997043609619" style="-fx-alignment: center;" text="N°" />
             <TableColumn fx:id="columnProduto" prefWidth="191.19995880126953" style="-fx-alignment: center;" text="Produto" />
             <TableColumn fx:id="columnQtdProd" prefWidth="97.60003662109375" style="-fx-alignment: center;" text="Quantidade" />
             <TableColumn fx:id="columnPrecoUniProd" prefWidth="106.39996337890625" style="-fx-alignment: center;" text="Preco Unitario" />
@@ -76,7 +76,7 @@
       </TableView>
       <TableView fx:id="tableVendaSer" layoutX="454.0" layoutY="389.0" prefHeight="182.0" prefWidth="426.0">
          <columns>
-            <TableColumn fx:id="columnIndiceServ" prefWidth="31.99997043609619" text="N°" />
+            <TableColumn fx:id="columnIndiceServ" prefWidth="31.99997043609619" style="-fx-alignment: center;" text="N°" />
             <TableColumn fx:id="columnServico" prefWidth="188.79995727539062" style="-fx-alignment: center;" text="Serviço" />
             <TableColumn fx:id="columnQtdSer" prefWidth="97.5999755859375" style="-fx-alignment: center;" text="Quantidade" />
             <TableColumn fx:id="columnPrecoUniSer" prefWidth="109.59991455078125" style="-fx-alignment: center;" text="Preco Unitario" />

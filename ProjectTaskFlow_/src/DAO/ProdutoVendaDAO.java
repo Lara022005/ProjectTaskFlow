@@ -177,6 +177,7 @@ public class ProdutoVendaDAO {
 				produtoVenda.setId("" + i);
 				produtoVenda.setIdProduto(rs.getString(2));				
 				produtoVenda.setQuantidade(rs.getString(3));	
+			//	produtoVenda.setIdVenda(rs.getString(2));
 				produtoVenda.setPrecoUn(rs.getString(4));
 
 				produtoVendas.add(produtoVenda);

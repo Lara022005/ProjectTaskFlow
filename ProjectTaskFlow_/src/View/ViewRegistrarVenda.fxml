@@ -60,14 +60,14 @@
             <Text layoutX="201.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
             <Text layoutX="20.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:" />
             <TextField fx:id="txtServico" layoutX="19.0" layoutY="183.0" onInputMethodTextChanged="#actionSertype" onKeyTyped="#actionSertype" onMouseClicked="#actionSerClick" onMouseEntered="#actionSerClick" prefHeight="25.0" prefWidth="243.0" />
-            <TextField fx:id="txtPrecoUniServico" layoutX="19.0" layoutY="236.0" prefHeight="25.0" prefWidth="95.0" />
-            <TextField fx:id="txtQtdServico" layoutX="133.0" layoutY="236.0" onKeyTyped="#ActionCalcularTotal" prefHeight="25.0" prefWidth="85.0" />
-            <TextField fx:id="txtPrecoUniProduto" layoutX="16.0" layoutY="414.0" prefHeight="25.0" prefWidth="95.0" />
-            <TextField fx:id="txtQtdProduto" layoutX="131.0" layoutY="414.0" onKeyTyped="#actionDescontoProd" prefHeight="25.0" prefWidth="85.0" />
+            <TextField fx:id="txtPrecoUniServico" layoutX="120.0" layoutY="236.0" prefHeight="25.0" prefWidth="95.0" />
+            <TextField fx:id="txtQtdServico" layoutX="19.0" layoutY="236.0" onKeyTyped="#ActionCalcularTotal" prefHeight="25.0" prefWidth="85.0" />
+            <TextField fx:id="txtPrecoUniProduto" layoutX="124.0" layoutY="414.0" prefHeight="25.0" prefWidth="95.0" />
+            <TextField fx:id="txtQtdProduto" layoutX="18.0" layoutY="414.0" onKeyTyped="#actionDescontoProd" prefHeight="25.0" prefWidth="85.0" />
             <TextField fx:id="txtProduto" layoutX="16.0" layoutY="355.0" onInputMethodTextChanged="#actionProdtype" onKeyTyped="#actionProdtype" onMouseClicked="#actionProdClick" onMouseEntered="#actionProdClick" prefHeight="25.0" prefWidth="243.0" />
-            <Text layoutX="19.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
-            <Text layoutX="135.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
-            <Text layoutX="134.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
+            <Text layoutX="122.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
+            <Text layoutX="21.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
+            <Text layoutX="21.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
             <Button fx:id="btAdicionarProduto" layoutX="391.0" layoutY="410.0" mnemonicParsing="false" onAction="#ActionAdicionarProduto" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: linear-gradient(to right, #4C43B0 36%, #578AE3 100%);" text="Adicionar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
@@ -80,7 +80,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Text layoutX="22.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
+            <Text layoutX="130.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço Unitario:" wrappingWidth="85.0" />
             <TextField fx:id="txtTotalServico" layoutX="241.0" layoutY="236.0" prefHeight="25.0" prefWidth="117.0" />
             <TextField fx:id="txtTotalProduto" layoutX="239.0" layoutY="414.0" prefHeight="25.0" prefWidth="117.0" />
             <Text layoutX="243.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />

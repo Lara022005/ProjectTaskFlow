@@ -27,7 +27,7 @@
             <Font name="Arial Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPesquisar" layoutX="207.0" layoutY="118.0" prefHeight="26.0" prefWidth="366.0" />
+      <TextField fx:id="txtPesquisar" layoutX="295.0" layoutY="116.0" prefHeight="26.0" prefWidth="366.0" />
       <TableView fx:id="tableServico" layoutX="231.0" layoutY="185.0" prefHeight="256.0" prefWidth="631.0">
          <columns>
             <TableColumn fx:id="columnIndice" prefWidth="37.5999755859375" />
@@ -39,8 +39,8 @@
       <Button fx:id="btCadastrar" layoutX="207.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionCadastrar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Cadastrar" textFill="WHITE" />
       <Button fx:id="btAlterar" layoutX="480.0" layoutY="479.0" mnemonicParsing="false" onAction="#actionAlterar" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Alterar" textFill="WHITE" />
       <Button fx:id="btExcluir" layoutX="768.0" layoutY="480.0" mnemonicParsing="false" onAction="#actionExcluir" prefHeight="41.0" prefWidth="126.0" style="-fx-background-color: linear-gradient(to right, #36307D 36%, #5F55DD 100%);" text="Excluir" textFill="WHITE" />
-      <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" layoutX="597.0" layoutY="119.0" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
-      <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="599.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btPesquisar" alignment="BOTTOM_RIGHT" layoutX="685.0" layoutY="117.0" mnemonicParsing="false" onAction="#actionPesquisar" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: ffffff;" text="Pesquisar" />
+      <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="687.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/material-symbols_search.png" />
          </image>

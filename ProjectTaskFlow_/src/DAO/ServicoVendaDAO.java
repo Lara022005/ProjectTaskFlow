@@ -174,6 +174,7 @@ public class ServicoVendaDAO {
 					ServicoVenda servicoVenda = new ServicoVenda();
 					servicoVenda.setId("" + i);
 					servicoVenda.setIdServico(rs.getString(2));				
+				//	servicoVenda.setIdVenda(rs.getString(2));
 					servicoVenda.setQuantidade(rs.getString(3));				
 					servicoVenda.setPrecoUni(rs.getString(4));
 

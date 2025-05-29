@@ -165,7 +165,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			produtoVenda.setEstoque(txtQtdProduto.getText());
 			produtoVenda.setPrecoUni(txtPrecoUniProduto.getText());
 			produtoVenda.setTotalProduto(txtTotalProduto.getText()); // 30,00
-			produtoVenda.setId("" + ArrayProdutos.size());
+			produtoVenda.setId("" + (ArrayProdutos.size()+1));
 			String valor = txtTotalProduto.getText();
 			valor = valor.replace(",", ".");
 			double um = Double.parseDouble(valor);
@@ -203,11 +203,8 @@ public class ControllerRegistrarVenda implements Initializable {
 			txtPrecoUniProduto.setText("");
 			txtQtdProduto.setText("");
 			txtTotalProduto.setText("");
-
 		}
-
 	}
-
 	@FXML
 	void ActionAdicionarServico(ActionEvent event) throws IOException {
 		if (txtCPF.getText() == "" || txtNomeCliente.getText() == "" || txtTotalServico.getText() == ""
@@ -219,7 +216,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			servicoVenda.setEstoque(txtQtdServico.getText());
 			servicoVenda.setPrecoUni(txtPrecoUniServico.getText());
 			servicoVenda.setTotalServico(txtTotalServico.getText());
-			servicoVenda.setId("" + ArrayProdutos.size());
+			servicoVenda.setId("" + (ArrayServicos.size()+1));
 
 			String valor = txtTotalServico.getText();
 			valor = valor.replace(",", ".");

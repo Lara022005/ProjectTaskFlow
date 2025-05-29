@@ -265,8 +265,8 @@ public class VendaDAO {
 						+ "ORDER BY\n"
 						+ "    v.Data_Venda DESC");
 				
-				stmt.setString(1, "%"+venda2.getId()+"%");
-				stmt.setString(2, "%"+venda2.getNome()+"%");
+	//			stmt.setString(1, "%"+venda2.getId()+"%");
+				stmt.setString(1, "%"+venda2.getNome()+"%");
 				rs = stmt.executeQuery();
 				int i = 1;
 

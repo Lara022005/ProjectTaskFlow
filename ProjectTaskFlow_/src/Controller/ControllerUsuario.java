@@ -5,14 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import org.controlsfx.control.textfield.TextFields;
-
-import DAO.ClienteDAO;
-import DAO.ServicoDAO;
 import DAO.UsuarioDAO;
-import Model.Agendamento;
-import Model.Cliente;
 import Model.Usuario;
 import Util.Alerts;
 import application.Main;
@@ -116,11 +110,6 @@ public class ControllerUsuario implements Initializable{
     }
 
     @FXML
-    void ActionCliente(ActionEvent event) {
-
-    }
-
-    @FXML
     void ActionExcluir(ActionEvent event) {
     	int i = tableUsuarios.getSelectionModel().getSelectedIndex();
     	if(i == -1) {
@@ -143,20 +132,24 @@ public class ControllerUsuario implements Initializable{
     		}
     	}
     }
-
     @FXML
-    void ActionFuncionario(ActionEvent event) {
+    void ActionCliente(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
 
+    }
+    @FXML
+    void ActionFuncionario(ActionEvent event) throws IOException {
+    	Main.TelaFuncionario();
     }
 
     @FXML
-    void ActionMain(ActionEvent event) {
-
+    void ActionMain(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
-    void ActionProduto(ActionEvent event) {
-
+    void ActionProduto(ActionEvent event) throws IOException {
+    	Main.TelaProduto();
     }
 
     @FXML
